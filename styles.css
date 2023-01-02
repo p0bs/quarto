@@ -1,1 +1,7 @@
 /* css styles */
+#quarto-header {
+    color: #63431c !important;
+    background-color: #edd9c0 !important;
+    font-size: 15px;
+    font-weight: 600;
+}

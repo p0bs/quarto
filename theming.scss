@@ -1,0 +1,23 @@
+/*-- scss:defaults --*/
+
+// Colors
+$body-bg:    white !default;
+$body-color: black !default;
+
+$primary:    #63431c !default;
+
+$link-color: #63431c !default;
+$navbar-fg:  #63431c !default;
+$navbar-bg:  #edd9c0 !default;
+
+$red:        #d9534f !default;
+$yellow:     #ffc107 !default;
+$green:      #5cb85c !default;
+$cyan:       #1bc7dc !default;
+
+$success:   $green !default;
+$info:      $cyan !default;
+$warning:   $yellow !default;
+$danger:    $red !default;
+
+/*-- scss:rules --*/

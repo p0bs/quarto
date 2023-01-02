@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Robin Penfold -</title>
+<title>Robin Penfold - Tweets</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -60,42 +58,12 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -116,7 +84,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./tweets.html">
+    <a class="nav-link active" href="./tweets.html" aria-current="page">
  <span class="menu-text">Tweets</span></a>
   </li>  
   <li class="nav-item compact">
@@ -136,76 +104,38 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Tweets</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<a class="twitter-timeline" data-lang="en" data-width="500" data-height="5000" data-chrome="noheader nofooter" data-link-color="#996633" href="https://twitter.com/P0BS"></a>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+</main></div>
 
 
 
 
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="politics,geo-viz" data-listing-date-sort="1476226800000" data-listing-file-modified-sort="1672671465835" data-listing-reading-time-sort="4.355">
-<div class="thumbnail">
-<p><a href="./posts/brexit/index.html"> <img src="./posts/brexit/map.png" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/brexit/index.html">
-<h3 class="no-anchor listing-title">
-Brexit vote analysis
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-<p>I wanted more insight into the recent vote and so investigated each constituency, comparing the Brexit vote with that of the winning parliamentary party from 2016</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/brexit/index.html">
-<div class="listing-date">
-Oct 12, 2016
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="animation,sport" data-listing-date-sort="1475967600000" data-listing-file-modified-sort="1672670124108" data-listing-reading-time-sort="1.635">
-<div class="thumbnail">
-<p><a href="./posts/batting/index.html"> <img src="./posts/batting/batsman.jpg" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/batting/index.html">
-<h3 class="no-anchor listing-title">
-Who bats best?
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-<p>Cricket commentators often talk of changes in batting quality through the ages. Or they say that batting order matters to averages (or vice-versa). But is there anything in these questions?</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/batting/index.html">
-<div class="listing-date">
-Oct 9, 2016
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+ <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -339,7 +269,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-</div> <!-- /content -->
+ <!-- /content -->
 
 
 

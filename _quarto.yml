@@ -2,18 +2,22 @@ project:
   type: website
 
 website:
-  title: "site"
+  title: "Robin Penfold"
+  description: | 
+    A data science and investment nerd.
+    At work, I analyze asset managers, using investment techniques and data science
+    I also volunteer with DataKind to help charities to get more from their data
+    Otherwise, you'll find me with my family and friends, or supporting sports teams that rarely win
   navbar:
     right:
       - about.qmd
       - icon: github
-        href: https://github.com/
+        href: https://github.com/P0BS
       - icon: twitter
-        href: https://twitter.com
+        href: https://twitter.com/p0bs
 format:
   html:
     theme: [morph, theming.scss]
     css: styles.css
 
 editor: visual
-

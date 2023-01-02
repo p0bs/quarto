@@ -2,9 +2,9 @@
 title: "Who bats best?"
 date: "2016-10-09"
 categories: [animation, sport]
-image: "bat.jpg"
+image: "batsman.jpg"
 description: |
-  Cricket commentators often talk of changes in batting quality through the ages. Or they say that batting order matters to averages ... or vice-versa. But is there anything in these questions? In this post, I try and find out a bit.
+  Cricket commentators often talk of changes in batting quality through the ages. Or they say that batting order matters to averages (or vice-versa). But is there anything in these questions?
 ---
 
 A couple of years ago, I downloaded the top 200 averages for each batting order from the wonderful stats engine at [espnCricinfo](http://stats.espncricinfo.com/ci/engine/stats/index.html), before: 
@@ -17,7 +17,7 @@ For reference, here are the first six rows of the resulting data.
 ```{r}
 #| message: false
 
-suppressMessages(library(tidyverse))
+library(tidyverse)
 library(gganimate)
 library(glue)
   

@@ -12,6 +12,7 @@ You can scroll down for an interactive chart of each constituency, but the follo
 
 ```{r}
 #| message: false
+#| code-fold: true
 
 library(dplyr)
 library(forcats)
@@ -107,6 +108,8 @@ Basically, outside of Scotland, there seems to be a bigger split in Leaver const
 To get the details for each constituency, hover over the relevant spot in the chart below.
 
 ```{r}
+#| code-fold: true
+
 gg <- data_brexit |> 
   ggplot() + 
   geom_sf_interactive(
@@ -153,5 +156,3 @@ gg <- data_brexit |>
 
 girafe(ggobj = gg)
 ```
-
-

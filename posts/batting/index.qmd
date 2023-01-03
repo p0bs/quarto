@@ -7,15 +7,16 @@ description: |
   Cricket commentators often talk of changes in batting quality through the ages. Or they say that batting order matters to averages (or vice-versa). But is there anything in these questions?
 ---
 
-A couple of years ago, I downloaded the top 200 averages for each batting order from the wonderful stats engine at [espnCricinfo](http://stats.espncricinfo.com/ci/engine/stats/index.html), before: 
+A couple of years ago, I downloaded the top 200 averages for each batting order from the wonderful stats engine at [espnCricinfo](http://stats.espncricinfo.com/ci/engine/stats/index.html), before:
 
-  * Ignoring averages from players with fewer than twenty innings
-  * Considering only results against Australia, England, India, New Zealand, Pakistan, South Africa, Sri Lanka and the West Indies
+-   Ignoring averages from players with fewer than twenty innings
+-   Considering only results against Australia, England, India, New Zealand, Pakistan, South Africa, Sri Lanka and the West Indies
 
 For reference, here are the first six rows of the resulting data.
 
 ```{r}
 #| message: false
+#| code-fold: true
 
 library(tidyverse)
 library(gganimate)
@@ -44,6 +45,8 @@ glimpse(batOrder, width = 70)
 We can then analyse the data by batting order, using the splendid `gganimate`.
 
 ```{r}
+#| code-fold: true
+
 batOrder |> 
   ggplot(
     aes(
@@ -69,6 +72,3 @@ batOrder |>
     ) + 
   ease_aes('cubic-in-out') 
 ```
-
-
-

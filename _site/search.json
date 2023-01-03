@@ -18,7 +18,7 @@
     "href": "index.html",
     "title": "Robin Penfold",
     "section": "",
-    "text": "Asset manager evaluation\n\n\n\n\n\nBack in the day, I wrote research papers about investment practice. One example concerned how asset owners could better evaluate the investment performance of their asset managers. Basically, the idea is to view performance in the way that a Bayesian would.\n\n\n\n\n\n\nOct 20, 2016\n\n\n\n\n\n\n  \n\n\n\n\nBrexit vote analysis\n\n\n\n\n\nI wanted more insight into the recent vote and so investigated each constituency, comparing the Brexit vote with that of the winning parliamentary party from 2016\n\n\n\n\n\n\nOct 12, 2016\n\n\n\n\n\n\n  \n\n\n\n\nWho bats best?\n\n\n\n\n\nCricket commentators often talk of changes in batting quality through the ages. Or they say that batting order matters to averages (or vice-versa). But is there anything in these questions?\n\n\n\n\n\n\nOct 9, 2016\n\n\n\n\n\n\nNo matching items"
+    "text": "PremPredict\n\n\n\n\n\nThey think it’s all over. It is now.\n\n\n\n\n\n\nSep 19, 2020\n\n\n\n\n\n\n  \n\n\n\n\nAsset manager evaluation\n\n\n\n\n\nBack in the day, I wrote research papers about investment practice. One example concerned how asset owners could better evaluate the investment performance of their asset managers. Basically, the idea is to view performance in the way that a Bayesian would.\n\n\n\n\n\n\nOct 20, 2016\n\n\n\n\n\n\n  \n\n\n\n\nBrexit vote analysis\n\n\n\n\n\nI wanted more insight into the recent vote and so investigated each constituency, comparing the Brexit vote with that of the winning parliamentary party from 2016\n\n\n\n\n\n\nOct 12, 2016\n\n\n\n\n\n\n  \n\n\n\n\nWho bats best?\n\n\n\n\n\nCricket commentators often talk of changes in batting quality through the ages. Or they say that batting order matters to averages (or vice-versa). But is there anything in these questions?\n\n\n\n\n\n\nOct 9, 2016\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -33,5 +33,12 @@
     "title": "Asset manager evaluation",
     "section": "",
     "text": "The idea is pretty simple, which I’ll outline below. (I can do so, as the materials are already in the public domain.)\nIf you want the details, check out the formal paper at SSRN. For a more accessible introduction, I’d recommend the video below that was taken (and won an award) at the International Congress of Actuaries in 2014.\n\n\n\nThe gist of the idea\nIn short, a key mantra of investment advisors is that asset owners should ignore the performance of their asset manager. Whether the manager has outperformed for you or not, it is claimed, is irrelevant to how you should expect them to perform in the future. However, a key idea in statistics, called Bayesian thinking, suggests the opposite: that you should use any new information you get about something to update your thinking on it.\nIn this work, I therefore used Bayesian thinking to understand the advice that asset owners should get. It turns out that this advice makes common sense, particularly when paired with an understanding of whether the asset manager has some longer-term cyclicality in their performance.\nHere’s that video that I mentioned:"
+  },
+  {
+    "objectID": "posts/prempredict/index.html",
+    "href": "posts/prempredict/index.html",
+    "title": "PremPredict",
+    "section": "",
+    "text": "After a good run of thirteen years, now feels like the right time to end our PremPredict competition.\nThanks to all of you who have shared in the fun over this time. I’m pleased to say that this included Les Penfold, Mike Finnis and Roger Gathercole.\nAs you’ll see below, though, this post and the Wall of Fame will remain here, always showing that Peter Finnis was left holding the crown!\n(Oh yeah – and always showing how some of the biggest football nerds remained winless.)\n\n\n\nPremPredict champions\n\n2007/08 – Robert Wye\n2008/09 – Les Penfold\n2009/10 – Beth Penfold\n2010/11 – George Quin and Miranda Stride\n2011/12 – Hannah Finnis\n2012/13 – Michael Cheeseman\n2013/14 – Danny Russell\n2014/15 – Mathew Saunders\n2015/16 – Roger Gathercole\n2016/17 – Luke Finnis\n2017/18 – George Quin\n2018/19 – Roger Gathercole\n2019/20 – Peter Finnis\n\n\nThanks again for all the fun!"
   }
 ]

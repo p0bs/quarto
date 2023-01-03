@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/evaluation/index.html",
       "/posts/brexit/index.html",
       "/posts/batting/index.html"
     ]

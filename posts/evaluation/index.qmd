@@ -1,0 +1,28 @@
+---
+title: "Asset manager evaluation"
+date: "2016-10-20"
+categories: [performance, presentations]
+image: "evaluation.png"
+description: |
+  Back in the day, I wrote research papers about investment practice. One example concerned how asset owners could better evaluate the investment performance of their asset managers. Basically, the idea is to view performance in the way that a Bayesian would.
+---
+
+The idea is pretty simple, which I'll outline below. (I can do so, as the materials are already in the public domain.)
+
+If you want the details, check out [the formal paper](http://papers.ssrn.com/sol3/papers.cfm?abstract_id=2101771) at SSRN. For a more accessible introduction, I'd recommend the video below that was taken (and won an award) at the International Congress of Actuaries in 2014.
+
+<p class="half-line"></p>
+
+### The gist of the idea
+
+In short, a key mantra of investment advisors is that asset owners should ignore the performance of their asset manager. Whether the manager has outperformed for you or not, it is claimed, is irrelevant to how you should expect them to perform in the future. However, a key idea in statistics, called Bayesian thinking, suggests the opposite: that you should use any new information you get about something to update your thinking on it.
+
+In this work, I therefore used Bayesian thinking to understand the advice that asset owners **should** get. It turns out that this advice makes common sense, particularly when paired with an understanding of whether the asset manager has some longer-term cyclicality in their performance.
+
+Here's that video that I mentioned:
+
+<p class="half-line"></p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xutu2axBa0o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+
+</iframe>

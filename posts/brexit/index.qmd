@@ -2,7 +2,7 @@
 title: "Brexit vote analysis"
 date: "2016-10-12"
 categories: [politics, geo-viz]
-image: "map.png"
+image: "map1.png"
 code-fold: true
 description: |
   I wanted more insight into the recent vote and so investigated each constituency, comparing the Brexit vote with that of the winning parliamentary party from 2016

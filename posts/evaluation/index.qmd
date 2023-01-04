@@ -2,7 +2,7 @@
 title: "Asset manager evaluation"
 date: "2016-10-20"
 categories: [performance, presentations]
-image: "evaluation.png"
+image: "evaluation1.png"
 description: |
   Back in the day, I wrote research papers about investment practice. One example concerned how asset owners could better evaluate the investment performance of their asset managers. Basically, the idea is to view performance in the way that a Bayesian would.
 ---
@@ -11,7 +11,9 @@ The idea is pretty simple, which I'll outline below. (I can do so, as the materi
 
 If you want the details, check out [the formal paper](http://papers.ssrn.com/sol3/papers.cfm?abstract_id=2101771) at SSRN. For a more accessible introduction, I'd recommend the video below that was taken (and won an award) at the International Congress of Actuaries in 2014.
 
-<p class="half-line"></p>
+<p class="half-line">
+
+</p>
 
 ### The gist of the idea
 
@@ -21,7 +23,9 @@ In this work, I therefore used Bayesian thinking to understand the advice that a
 
 Here's that video that I mentioned:
 
-<p class="half-line"></p>
+<p class="half-line">
+
+</p>
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/xutu2axBa0o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 

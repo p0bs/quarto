@@ -1,8 +1,11 @@
 ---
 title: "My Life In Months"
 date: "2020-09-20"
+draft: true
 categories: [dashboard]
 image: "mlim.png"
+code-fold: true
+code-summary: "</>"
 description: |
   Many of us have recently had more time to reflect. One artifact of this reflection is My Life In Months: a chart that explains each month of your life. To me, it feels like the most meta personal dashboard available.
 ---
@@ -135,7 +138,7 @@ html_text <- glue(
 life_in_months_base <- life_data %>%
   count(fill_colour_final, sort = FALSE) %>% 
   ggplot(aes(fill = fill_colour_final, values = n)) +
-  geom_waffle(color = background_colour, n_rows = 12, linewidth = 1, flip = FALSE) + 
+  geom_waffle(color = background_colour, n_rows = 12, linewidth = 1, flip = FALSE, na.rm = TRUE) + 
   coord_equal() + 
   geom_segment(aes(x = life_25 + 1, xend = life_25 + 1, y = -0, yend = 13), linetype = 3, size = 0.5, color = '#DDDDDD') +
   geom_segment(aes(x = life_75 + 1, xend = life_75 + 1, y = -0, yend = 13), linetype = 3, size = 0.5, color = '#DDDDDD') +

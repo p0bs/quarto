@@ -5,7 +5,7 @@ about:
   template: marquee
 ---
 
--   **At work** -- Leading my firm's quant analysis of asset managers, using investment techniques and data science
+-   **At work** -- Quant analysis of asset managers, using data science and investment knowledge
 
 -   **As a volunteer** -- Helping charities to get more from their data with [DataKind](https://www.datakind.org/chapters/datakind-uk)
 

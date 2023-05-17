@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.2.475">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -215,30 +215,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Ignoring averages from players with fewer than twenty innings</li>
 <li>Considering only results against Australia, England, India, New Zealand, Pakistan, South Africa, Sri Lanka and the West Indies</li>
 </ul>
-<p>For reference, here are the first six rows of the resulting data.</p>
+<p>For reference, here is a summary of the resulting data.</p>
 <div class="cell">
 <details>
-<summary>Code</summary>
+<summary>&lt;/&gt;</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gganimate)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glue)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>batOrder <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"BattingOrder.csv"</span>) <span class="sc">|&gt;</span>  </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">Name =</span> <span class="fu">word</span>(Player, <span class="at">start =</span> 1L, <span class="at">end =</span> <span class="sc">-</span>2L),</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">fullCountry =</span> <span class="fu">word</span>(Player, <span class="sc">-</span><span class="dv">1</span>),</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">Country =</span> <span class="fu">str_sub</span>(fullCountry, <span class="dv">2</span>,<span class="sc">-</span><span class="dv">2</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    Country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Aus"</span>, <span class="st">"Ban"</span>, <span class="st">"Eng"</span>, <span class="st">"India"</span>, <span class="st">"NZ"</span>, <span class="st">"Pak"</span>, <span class="st">"SA"</span>, <span class="st">"SL"</span>, <span class="st">"WI"</span>)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">Start =</span> <span class="fu">as.integer</span>(<span class="fu">str_sub</span>(Span, <span class="dv">1</span>, <span class="dv">4</span>)),</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">Decade =</span> <span class="dv">10</span><span class="sc">*</span><span class="fu">trunc</span>(Start<span class="sc">/</span><span class="dv">10</span>),</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">Name =</span> <span class="fu">str_replace_all</span>(Name, <span class="st">"'"</span>, <span class="st">" "</span>) </span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Name, Country, Start, Decade, Ave, <span class="at">Innings =</span> Inns, Runs, Bat)</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(batOrder, <span class="at">width =</span> <span class="dv">70</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>batOrder <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"BattingOrder.csv"</span>) <span class="sc">|&gt;</span>  </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">Name =</span> <span class="fu">word</span>(Player, <span class="at">start =</span> 1L, <span class="at">end =</span> <span class="sc">-</span>2L),</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">fullCountry =</span> <span class="fu">word</span>(Player, <span class="sc">-</span><span class="dv">1</span>),</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">Country =</span> <span class="fu">str_sub</span>(fullCountry, <span class="dv">2</span>,<span class="sc">-</span><span class="dv">2</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    Country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Aus"</span>, <span class="st">"Ban"</span>, <span class="st">"Eng"</span>, <span class="st">"India"</span>, <span class="st">"NZ"</span>, <span class="st">"Pak"</span>, <span class="st">"SA"</span>, <span class="st">"SL"</span>, <span class="st">"WI"</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">Start =</span> <span class="fu">as.integer</span>(<span class="fu">str_sub</span>(Span, <span class="dv">1</span>, <span class="dv">4</span>)),</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">Decade =</span> <span class="dv">10</span><span class="sc">*</span><span class="fu">trunc</span>(Start<span class="sc">/</span><span class="dv">10</span>),</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">Name =</span> <span class="fu">str_replace_all</span>(Name, <span class="st">"'"</span>, <span class="st">" "</span>) </span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Name, Country, Start, Decade, Ave, <span class="at">Innings =</span> Inns, Runs, Bat)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(batOrder, <span class="at">width =</span> <span class="dv">70</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 873
@@ -257,7 +258,7 @@ $ Bat     &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…</c
 <p>We can then analyse the data by batting order, using the splendid <code>gganimate</code>.</p>
 <div class="cell">
 <details>
-<summary>Code</summary>
+<summary>&lt;/&gt;</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>batOrder <span class="sc">|&gt;</span> </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>

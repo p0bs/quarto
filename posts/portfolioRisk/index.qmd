@@ -133,12 +133,11 @@ variance_active_monthly_cont |>
 
 <br/>
 
-To decompose this active variance by sector, we merely group stocks by sector and sum their stock-level contributions.
+To decompose this active variance by sector, we group stocks by sector and sum their stock-level contributions.
 
 ```{r, preview=TRUE}
 variance_active_monthly_cont |> 
   summarise(AV_total = sum(AV_cont), .by = sector) |> 
-  arrange(desc(AV_total)) |> 
   mutate(
     sector = as_factor(sector),
     sector = fct_reorder(sector, AV_total)) |> 

@@ -1,77 +1,212 @@
 ---
-title: "Who bats best?"
+title: "Have batting averages improved over time?"
 date: "2016-10-09"
 categories: [animation, sport]
 image: "batsman.jpg"
 code-fold: true
 code-summary: "</>"
 description: |
-  Cricket commentators often talk of changes in batting quality through the ages. Or they say that batting order matters to averages (or vice-versa). But is there anything in these questions?
+  Cricket commentators often talk of changes in batting quality through the ages. But is there any truth to this?
 ---
 
-A couple of years ago, I downloaded the top 200 averages for each batting order from the wonderful stats engine at [espnCricinfo](http://stats.espncricinfo.com/ci/engine/stats/index.html), before:
+It seems that way, although the answer might surprise you. In short, typical averages by order of batting seem to have *worsened* a little over time. Of course, that doesn't necessarily mean that batting skill levels have declined, as other factors might also be involved (such as DRS reviews, use of helmets and video analysis).
 
--   Ignoring averages from players with fewer than twenty innings
--   Considering only results against Australia, England, India, New Zealand, Pakistan, South Africa, Sri Lanka and the West Indies
+Here are the details. To answer this question, I analysed data from the wonderful [espnCricinfo stats engine](http://stats.espncricinfo.com/ci/engine/stats/index.html). That is, I retrieved the batting averages of all male test players for a given batting order, only considering:
 
-For reference, here is a summary of the resulting data.
+-   Players with twenty innings or more
+-   Results against Australia, England, India, New Zealand, Pakistan, South Africa, Sri Lanka and the West Indies
 
 ```{r}
-#| message: false
-#| code-fold: true
+#| eval: false
+#| echo: true
 
+library(rvest)
 library(tidyverse)
+
+scrape_stats <- function(value_count){
+  
+  value_url <- paste0(
+    "https://stats.espncricinfo.com/ci/engine/stats/index.html?batting_positionmax1=",
+    value_count,
+    ";batting_positionmin1=",
+    value_count,
+    ";batting_positionval1=batting_position;class=1;filter=advanced;opposition=1;opposition=2;opposition=3;opposition=4;opposition=5;opposition=6;opposition=7;opposition=8;orderby=runs;qualmin1=20;qualval1=innings;size=200;template=results;type=batting"
+    )
+  
+  read_html(value_url) |> rvest::html_table() |> _[[3]]
+  
+}
+
+data_scraped <- map(
+  .x = 1:11, 
+  .f = ~scrape_stats(value_count = .x)
+  ) |> 
+  list_rbind(names_to = "order_batting")
+
+write_rds(x = data_scraped, file = "data_scraped.rds")
+```
+
+After a little tidying, we get the following data on over 1,000 batsmen.
+
+```{r}
+suppressPackageStartupMessages(library(tidyverse))
 library(gganimate)
 library(glue)
 library(magick)
-  
-batOrder <- read_csv("BattingOrder.csv") |>  
+
+data_batsmen <- read_rds("data_scraped.rds") |> 
   mutate(
     Name = word(Player, start = 1L, end = -2L),
     fullCountry = word(Player, -1),
-    Country = str_sub(fullCountry, 2,-2)) %>% 
-  filter(
-    Country %in% c("Aus", "Ban", "Eng", "India", "NZ", "Pak", "SA", "SL", "WI")
-    ) |> 
-  mutate(
+    Country = str_sub(fullCountry, 2,-2),
     Start = as.integer(str_sub(Span, 1, 4)),
     Decade = 10*trunc(Start/10),
     Name = str_replace_all(Name, "'", " ") 
     ) |> 
-  select(Name, Country, Start, Decade, Ave, Innings = Inns, Runs, Bat)
+  select(Name, Country, Decade, "Average" = Ave, "Innings" = Inns, "Order" = order_batting) |> 
+  arrange(Order, desc(Average))
 
-glimpse(batOrder, width = 70)
+data_batsmen
 ```
-
-</br>
 
 We can then analyse the data by batting order, using the splendid `gganimate`.
 
 ```{r}
-#| code-fold: true
-
-batOrder |> 
+data_batsmen |> 
   ggplot(
     aes(
       x = Decade,
-      y = Ave,
+      y = Average,
       color = Country, 
       size = Innings
       )
     ) +
   geom_point(alpha = 1) +
   labs(
-    x = "Last decade of the batsman's career",
+    x = "First decade of the batsman's career",
     y = ""
-    ) +
+    ) + 
+  theme_minimal() +
   ggtitle(
-    'The best players who have ever batted at {closest_state} in the order',
+    'Players who have ever batted at {closest_state} in the order',
     subtitle = 'Average when batting at that position'
     ) + 
   transition_states(
-    states = Bat,
+    states = Order,
     transition_length = 2,
     state_length = 1
     ) + 
   ease_aes('cubic-in-out') 
 ```
+
+<br/>
+
+Although that looks cool, I find it hard to detect patterns in animations, so prefer to use a static plot.
+
+```{r}
+data_batsmen |> 
+  ggplot(
+    aes(
+      x = Order,
+      y = Average,
+      colour = Decade
+      )
+    ) +
+  geom_jitter() +
+  scale_x_continuous(labels = c(1, 3, 5, 7, 9, 11), breaks = c(1, 3, 5, 7, 9, 11)) +
+  scale_y_continuous(labels = c(0, 50, 100), breaks = c(0, 50, 100)) +
+  facet_wrap(~Decade) +
+  theme_minimal() +
+  labs(
+    title = 'Data is limited before the 1950s\n',
+    subtitle = 'Batting average, when batting at that position, for a career that started in the given decade',
+    x = "\nBatting order",
+    y = NULL
+    ) + 
+  theme(
+    plot.title.position = "plot",
+    legend.position = "none",
+    axis.title.x = element_text(hjust = 1)
+  )
+```
+
+It looks like we should only consider 1940s to 2010s ... for these reasons:
+
+...
+
+If we do so (and calculate the best-fit lines), we get the following:
+
+```{r}
+#| message: false
+
+data_batsmen |> 
+  filter(
+    between(Decade, 1950, 2010)
+  ) |>
+  mutate(Decade = as_factor(Decade)) |> 
+  ggplot(
+    aes(
+      x = Order,
+      y = Average,
+      colour = Decade
+      )
+    ) +
+  geom_jitter() + 
+  geom_smooth(se = FALSE) + 
+  scale_colour_brewer(palette = "Blues", direction = -1) +
+  scale_x_continuous(labels = c(1, 3, 5, 7, 9, 11), breaks = c(1, 3, 5, 7, 9, 11)) +
+  scale_y_continuous(labels = c(0, 50, 100), breaks = c(0, 50, 100)) +
+  facet_wrap(~Decade) +
+  theme_minimal() +
+  labs(
+    title = 'Data is limited before the 1950s\n',
+    subtitle = 'Batting average, when batting at that position, for a career that started in the given decade',
+    x = "\nBatting order",
+    y = NULL
+    ) + 
+  theme(
+    plot.title.position = "plot",
+    legend.position = "none",
+    axis.title.x = element_text(hjust = 1)
+  )
+```
+
+If we now just consider these best-fit lines together, ...
+
+```{r}
+#| message: false
+
+data_batsmen |> 
+  filter(
+    between(Decade, 1950, 2010)
+  ) |> 
+  mutate(Decade = as_factor(Decade)) |> 
+  ggplot(
+    aes(
+      x = Order,
+      y = Average,
+      colour = Decade,
+      group = Decade
+      )
+    ) +
+  geom_smooth(se = FALSE) + 
+  scale_colour_brewer(palette = "Blues", direction = -1) +
+  scale_x_continuous(labels = 1:11, breaks = 1:11, minor_breaks = NULL) +
+  scale_y_continuous(minor_breaks = NULL, limits = c(0, NA), labels = 20 * 0:2, breaks = 20 * 0:2) +
+  theme_minimal() +
+  labs(
+    title = 'Higher-order averages have typically declined since the 1950s\n',
+    subtitle = 'Batting average, when batting at that position, for a career that started in the given decade',
+    colour = "Decade start",
+    x = "\nBatting order",
+    y = NULL
+    ) + 
+  theme(
+    plot.title.position = "plot",
+    axis.title.x = element_text(hjust = 1)
+  )
+```
+
+Pitches, DRS, helmets, etc. And survivor bias, recording, etc. And not all the major sides have always been strong.
+
+But interesting. Especially after five in the batting order. Nothing has really changed.

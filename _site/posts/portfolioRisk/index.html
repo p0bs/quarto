@@ -223,8 +223,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Given this equation, I see that I need to begin the analysis by downloading the holdings of the index and the pricing data for the constituent stocks.</p>
 <div class="cell">
-<details>
-<summary>&lt;/&gt;</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reactable)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyquant)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -239,15 +237,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">#   get = "stock.prices", </span></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">#   from = "2022-01-01")</span></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># write_rds(x = stock_prices, file = "stock_prices.rds", compress = "xz")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p><br></p>
 <section id="stock-holdings" class="level4">
 <h4 class="anchored" data-anchor-id="stock-holdings">Stock holdings</h4>
 <p>With this data, I can see that the DJIA has the following stocks. For the sake of simplicity, I assume that these thirty stocks are weighted equally in our portfolio.</p>
 <div class="cell">
-<details>
-<summary>&lt;/&gt;</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data_weights <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"weights_index.rds"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">wt_port =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">30</span>,</span>
@@ -256,7 +251,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>data_weights <span class="sc">|&gt;</span> </span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(company, symbol, <span class="st">`</span><span class="at">excess weight</span><span class="st">`</span> <span class="ot">=</span> wt_excess)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -273,8 +267,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Before I can project the risk in this portfolio, though, I also need to find the covariances between the returns of the stocks in question.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <p>For the sake of brevity, here are the first four rows and columns of this covariance matrix.</p>
 <div class="cell">
-<details>
-<summary>&lt;/&gt;</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>return_covariances <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="at">file =</span> <span class="st">"stock_prices.rds"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tsibble</span>(<span class="at">index =</span> date, <span class="at">key =</span> symbol) <span class="sc">|&gt;</span> </span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">yyyymm =</span> tsibble<span class="sc">::</span><span class="fu">yearmonth</span>(date)) <span class="sc">|&gt;</span> </span>
@@ -286,7 +278,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cov</span>(<span class="at">use =</span> <span class="st">"pairwise.complete.obs"</span>)</span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">as_tibble</span>(return_covariances[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -302,23 +293,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4 class="anchored" data-anchor-id="projecting-risk">Projecting risk</h4>
 <p>We now have the two ingredients that we need for risk analysis: excess weights and covariances of stock returns. As a final test, let’s confirm that the order of the tickers in our vector matches that for our matrix.</p>
 <div class="cell">
-<details>
-<summary>&lt;/&gt;</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(data_weights, symbol), </span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>(return_covariances)</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>✔ No differences</code></pre>
 </div>
 </div>
 <p>With that confirmed, I can use the formula above to project the active variance of the portfolio.</p>
 <div class="cell">
-<details>
-<summary>&lt;/&gt;</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(variance_active_monthly <span class="ot">&lt;-</span> <span class="fu">t</span>(data_weights<span class="sc">$</span>wt_excess) <span class="sc">%*%</span> return_covariances <span class="sc">%*%</span> data_weights<span class="sc">$</span>wt_excess)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  variance_active_monthly <span class="ot">&lt;-</span> <span class="fu">t</span>(data_weights<span class="sc">$</span>wt_excess) <span class="sc">%*%</span> return_covariances <span class="sc">%*%</span> data_weights<span class="sc">$</span>wt_excess</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           [,1]
 [1,] 0.01163479</code></pre>
@@ -326,10 +313,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Because I am considering covariances with a monthly periodicity, it will help to annualise the result, so that it can be compared with corresponding values from other portfolios. To do so, I multiply the active variance by 12.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Finally, I square-root the result to obtain <span class="math inline">\(\omega\)</span>, the annualised level of projected active risk:</p>
 <div class="cell">
-<details>
-<summary>&lt;/&gt;</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(risk_active_annual <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">sqrt</span>(variance_active_monthly <span class="sc">*</span> <span class="dv">12</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  risk_active_annual <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sqrt</span>(variance_active_monthly <span class="sc">*</span> <span class="dv">12</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.3736543</code></pre>
 </div>
@@ -342,8 +330,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The question then becomes: “What portfolio positions contribute most to this active risk?”</p>
 <p>To answer this question, we can tweak the equation above. Calculating <span class="math inline">\(X^T V\)</span> generates a vector of length thirty, with each element showing a form of ‘unit marginal impact’ on active portfolio variance for a given stock. If we then multiply this value for a given stock by its excess weight, we obtain its contribution to monthly active portfolio variance.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
 <div class="cell">
-<details>
-<summary>&lt;/&gt;</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>variance_active_monthly_cont <span class="ot">&lt;-</span> return_covariances <span class="sc">%*%</span> data_weights<span class="sc">$</span>wt_excess <span class="sc">|&gt;</span> </span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="at">var =</span> <span class="st">"symbol"</span>) <span class="sc">|&gt;</span> </span>
@@ -353,7 +339,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>variance_active_monthly_cont <span class="sc">|&gt;</span> </span>
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(symbol, sector, <span class="st">`</span><span class="at">AV contribution</span><span class="st">`</span> <span class="ot">=</span> AV_cont)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
@@ -366,8 +351,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><br></p>
 <p>To decompose this active variance by sector, we group stocks by sector and sum their stock-level contributions.</p>
 <div class="cell" data-preview="true">
-<details>
-<summary>&lt;/&gt;</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>variance_active_monthly_cont <span class="sc">|&gt;</span> </span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">AV_total =</span> <span class="fu">sum</span>(AV_cont), <span class="at">.by =</span> sector) <span class="sc">|&gt;</span> </span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
@@ -387,7 +370,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
 <span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title.position =</span> <span class="st">"plot"</span>,</span>
 <span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>

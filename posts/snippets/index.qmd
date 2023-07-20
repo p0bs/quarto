@@ -1,5 +1,5 @@
 ---
-title: "Code snippets that I often use but rarely recall"
+title: "Code that I often use but rarely recall"
 date: "2023-07-09"
 categories: [code]
 image: "code-snip.png"
@@ -269,7 +269,7 @@ From there, you can use `stringi::stri_escape_unicode('@')` to get the Unicode e
 
 The second niggle of package building concerns **variable binding**. It occurs during the package check and creates a note along the following lines.
 
-``` R
+``` r
 no visible binding for global variable
     ‘ABC’
 ```

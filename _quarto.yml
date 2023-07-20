@@ -10,7 +10,6 @@ website:
     Otherwise, you'll find me with my family and friends, or supporting sports teams that rarely win
   navbar:
     right:
-      - about.qmd
       - icon: github
         href: https://github.com/P0BS
       - icon: twitter

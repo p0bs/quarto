@@ -11,7 +11,6 @@ website:
   navbar:
     right:
       - about.qmd
-      - tweets.qmd
       - icon: github
         href: https://github.com/P0BS
       - icon: twitter

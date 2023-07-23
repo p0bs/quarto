@@ -1,0 +1,14 @@
+/* css styles */
+/* was background-color: #edd9c0 !important; */
+.quarto-title-banner {
+    color: #63431c !important;
+    background-color: #f9f3ec !important;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.quarto-title-meta {
+    color: #63431c !important;
+    font-size: 15px;
+    font-weight: 600;
+}

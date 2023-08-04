@@ -1,7 +1,7 @@
 ---
 title: "PremPredict"
 date: "2020-09-19"
-categories: [sport]
+categories: [fun, sport]
 image: "PPlogo.png"
 description: "They think it's all over. It is now."
 ---

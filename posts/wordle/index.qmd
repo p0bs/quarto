@@ -2,7 +2,7 @@
 title: "Winning at Wordle"
 date: "2022-12-30"
 categories: [fun]
-image: "streak.jpg"
+image: "streak.jpeg"
 code-fold: false
 code-summary: "</>"
 df-print: paged

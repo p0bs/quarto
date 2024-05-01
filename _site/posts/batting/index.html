@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.549">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2016-10-09">
+<meta name="description" content="Cricket commentators often talk of changes in batting quality through the ages. But is there any truth to this?">
+
+<title>Robin Penfold - Have batting averages improved over time?</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Robin Penfold</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/P0BS"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/p0bs"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Have batting averages improved over time?</h1>
+                  <div>
+        <div class="description">
+          <p>Cricket commentators often talk of changes in batting quality through the ages. But is there any truth to this?</p>
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">animation</div>
+                <div class="quarto-category">sport</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">October 9, 2016</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>Batting averages seem to have changed over time, but not in the direction that you might expect.</p>
+<p>Typical averages have <em>worsened</em> over time, but only for top-order batsmen. Of course, that doesn’t necessarily mean that batting skill levels have declined, as other factors might also be involved.</p>
+<p>I’ll now explain how I arrived at this conclusion and the assumptions that I made along the way. The starting point, as ever, was data. Specifically, the wonderful data from the <a href="http://stats.espncricinfo.com/ci/engine/stats/index.html">espnCricinfo stats engine</a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>scrape_stats <span class="ot">&lt;-</span> <span class="cf">function</span>(value_count){</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  value_url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://stats.espncricinfo.com/ci/engine/stats/index.html?batting_positionmax1="</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    value_count,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">";batting_positionmin1="</span>,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    value_count,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">";batting_positionval1=batting_position;class=1;filter=advanced;opposition=1;opposition=2;opposition=3;opposition=4;opposition=5;opposition=6;opposition=7;opposition=8;orderby=runs;qualmin1=20;qualval1=innings;size=200;template=results;type=batting"</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_html</span>(value_url) <span class="sc">|&gt;</span> </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    rvest<span class="sc">::</span><span class="fu">html_table</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    _[[<span class="dv">3</span>]]</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>data_scraped <span class="ot">&lt;-</span> <span class="fu">map</span>(</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">.x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">11</span>, </span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">.f =</span> <span class="sc">~</span><span class="fu">scrape_stats</span>(<span class="at">value_count =</span> .x)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list_rbind</span>(<span class="at">names_to =</span> <span class="st">"order_batting"</span>)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">write_rds</span>(<span class="at">x =</span> data_scraped, <span class="at">file =</span> <span class="st">"data_scraped.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>That said, I only consider:</p>
+<ul>
+<li>Players with twenty innings or more</li>
+<li>Scores for and against the ‘top sides’ (i.e.&nbsp;Australia, England, India, New Zealand, Pakistan, South Africa, Sri Lanka and the West Indies) at some point</li>
+</ul>
+<p>After a little more tidying, we get the following data on about 1,000 batsmen, sorted by batting order and (descending) average.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>(<span class="fu">library</span>(tidyverse))</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gganimate)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glue)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magick)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>data_batsmen <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"data_scraped.rds"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">Name =</span> <span class="fu">word</span>(Player, <span class="at">start =</span> <span class="dv">1</span>L, <span class="at">end =</span> <span class="sc">-</span><span class="dv">2</span>L),</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">fullCountry =</span> <span class="fu">word</span>(Player, <span class="sc">-</span><span class="dv">1</span>),</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">Country =</span> <span class="fu">str_sub</span>(fullCountry, <span class="dv">2</span>,<span class="sc">-</span><span class="dv">2</span>),</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">Start =</span> <span class="fu">as.integer</span>(<span class="fu">str_sub</span>(Span, <span class="dv">1</span>, <span class="dv">4</span>)),</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">Decade =</span> <span class="dv">10</span><span class="sc">*</span><span class="fu">trunc</span>(Start<span class="sc">/</span><span class="dv">10</span>),</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">Name =</span> <span class="fu">str_replace_all</span>(Name, <span class="st">"'"</span>, <span class="st">" "</span>) </span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>(Country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"BAN"</span>, <span class="st">"ZIM"</span>))) <span class="sc">|&gt;</span> </span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Name, Country, Decade, <span class="st">"Average"</span> <span class="ot">=</span> Ave, <span class="st">"Innings"</span> <span class="ot">=</span> Inns, <span class="st">"Order"</span> <span class="ot">=</span> order_batting) <span class="sc">|&gt;</span> </span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Order, <span class="fu">desc</span>(Average))</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>data_batsmen</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["Name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Country"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Decade"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Average"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Innings"],"name":[5],"type":["int"],"align":["right"]},{"label":["Order"],"name":[6],"type":["int"],"align":["right"]}],"data":[{"1":"B Mitchell","2":"SA","3":"1930","4":"65.04","5":"26","6":"1"},{"1":"JB Hobbs","2":"ENG","3":"1900","4":"58.14","5":"87","6":"1"},{"1":"RB Simpson","2":"AUS","3":"1960","4":"58.03","5":"28","6":"1"},{"1":"L Hutton","2":"ENG","3":"1930","4":"57.74","5":"120","6":"1"},{"1":"V Sehwag","2":"IND","3":"2000","4":"55.19","5":"21","6":"1"},{"1":"H Sutcliffe","2":"ENG","3":"1920","4":"54.38","5":"20","6":"1"},{"1":"BC Broad","2":"ENG","3":"1980","4":"53.84","5":"21","6":"1"},{"1":"ST Jayasuriya","2":"SL","3":"1990","4":"52.68","5":"41","6":"1"},{"1":"EAB Rowan","2":"SA","3":"1940","4":"52.66","5":"23","6":"1"},{"1":"MA Taylor","2":"AUS","3":"1980","4":"52.00","5":"90","6":"1"},{"1":"JL Langer","2":"AUS","3":"1990","4":"50.29","5":"105","6":"1"},{"1":"WM Lawry","2":"AUS","3":"1960","4":"50.07","5":"74","6":"1"},{"1":"WM Woodfull","2":"AUS","3":"1920","4":"49.90","5":"35","6":"1"},{"1":"Sadiq Mohammad","2":"PAK","3":"1960","4":"49.28","5":"26","6":"1"},{"1":"Saeed Anwar","2":"PAK","3":"1990","4":"49.13","5":"67","6":"1"},{"1":"DC Boon","2":"AUS","3":"1980","4":"48.41","5":"27","6":"1"},{"1":"DL Amiss","2":"ENG","3":"1970","4":"48.33","5":"31","6":"1"},{"1":"SM Gavaskar","2":"IND","3":"1970","4":"48.08","5":"186","6":"1"},{"1":"GC Smith","2":"ICC/SA","3":"2000","4":"47.98","5":"128","6":"1"},{"1":"CC Hunte","2":"WI","3":"1950","4":"47.69","5":"71","6":"1"},{"1":"MJ Slater","2":"AUS","3":"1990","4":"46.96","5":"66","6":"1"},{"1":"Abdullah Shafique","2":"PAK","3":"2020","4":"46.77","5":"20","6":"1"},{"1":"HL Collins","2":"AUS","3":"1920","4":"46.60","5":"24","6":"1"},{"1":"IR Redpath","2":"AUS","3":"1960","4":"46.40","5":"28","6":"1"},{"1":"RG Sharma","2":"IND","3":"2020","4":"46.34","5":"24","6":"1"},{"1":"AF Rae","2":"WI","3":"1940","4":"46.18","5":"24","6":"1"},{"1":"TL Goddard","2":"SA","3":"1960","4":"46.00","5":"32","6":"1"},{"1":"CH Gayle","2":"WI","3":"2000","4":"45.65","5":"125","6":"1"},{"1":"KC Wessels","2":"AUS/SA","3":"1980","4":"45.57","5":"30","6":"1"},{"1":"CJL Rogers","2":"AUS","3":"2000","4":"45.23","5":"40","6":"1"},{"1":"G Gambhir","2":"IND","3":"2000","4":"45.12","5":"75","6":"1"},{"1":"RJ Shastri","2":"IND","3":"1980","4":"45.00","5":"22","6":"1"},{"1":"CG Greenidge","2":"WI","3":"1970","4":"44.97","5":"151","6":"1"},{"1":"B Sutcliffe","2":"NZ","3":"1940","4":"44.96","5":"28","6":"1"},{"1":"DJ McGlew","2":"SA","3":"1950","4":"44.53","5":"57","6":"1"},{"1":"GA Gooch","2":"ENG","3":"1970","4":"44.43","5":"176","6":"1"},{"1":"G Kirsten","2":"SA","3":"1990","4":"44.39","5":"72","6":"1"},{"1":"Mohsin Khan","2":"PAK","3":"1980","4":"44.37","5":"42","6":"1"},{"1":"G Boycott","2":"ENG","3":"1960","4":"43.91","5":"117","6":"1"},{"1":"GM Turner","2":"NZ","3":"1960","4":"43.51","5":"40","6":"1"},{"1":"MH Richardson","2":"NZ","3":"2000","4":"43.48","5":"54","6":"1"},{"1":"Aamer Sohail","2":"PAK","3":"1990","4":"42.89","5":"30","6":"1"},{"1":"KL Rahul","2":"IND","3":"2010","4":"42.88","5":"37","6":"1"},{"1":"RC Fredericks","2":"WI","3":"1960","4":"42.79","5":"105","6":"1"},{"1":"AN Cook","2":"ENG","3":"2000","4":"41.96","5":"134","6":"1"},{"1":"ME Trescothick","2":"ENG","3":"2000","4":"41.96","5":"99","6":"1"},{"1":"SR Watson","2":"AUS","3":"2000","4":"41.79","5":"50","6":"1"},{"1":"Hanif Mohammad","2":"PAK","3":"1950","4":"41.62","5":"56","6":"1"},{"1":"G Pullar","2":"ENG","3":"1950","4":"40.60","5":"36","6":"1"},{"1":"CC McDonald","2":"AUS","3":"1950","4":"40.22","5":"73","6":"1"},{"1":"DA Warner","2":"AUS","3":"2010","4":"40.13","5":"62","6":"1"},{"1":"HW Taylor","2":"SA","3":"1910","4":"40.13","5":"23","6":"1"},{"1":"RB McCosker","2":"AUS","3":"1970","4":"39.94","5":"21","6":"1"},{"1":"HH Gibbs","2":"SA","3":"2000","4":"39.86","5":"29","6":"1"},{"1":"MH Mankad","2":"IND","3":"1940","4":"39.84","5":"34","6":"1"},{"1":"JH Edrich","2":"ENG","3":"1960","4":"39.42","5":"35","6":"1"},{"1":"Majid Khan","2":"PAK","3":"1970","4":"39.07","5":"41","6":"1"},{"1":"M Vijay","2":"IND","3":"2000","4":"38.92","5":"67","6":"1"},{"1":"KR Stackpole","2":"AUS","3":"1960","4":"37.97","5":"45","6":"1"},{"1":"MS Atapattu","2":"SL","3":"1990","4":"37.75","5":"83","6":"1"},{"1":"BM Laird","2":"AUS","3":"1970","4":"37.75","5":"21","6":"1"},{"1":"Mohammad Hafeez","2":"PAK","3":"2000","4":"37.73","5":"69","6":"1"},{"1":"AJ Strauss","2":"ENG","3":"2000","4":"37.45","5":"116","6":"1"},{"1":"PE Richardson","2":"ENG","3":"1950","4":"37.42","5":"54","6":"1"},{"1":"AK Markram","2":"SA","3":"2010","4":"37.40","5":"26","6":"1"},{"1":"JHW Fingleton","2":"AUS","3":"1930","4":"36.30","5":"24","6":"1"},{"1":"FM Engineer","2":"IND","3":"1960","4":"35.86","5":"23","6":"1"},{"1":"CA Roach","2":"WI","3":"1930","4":"35.45","5":"20","6":"1"},{"1":"MA Atherton","2":"ENG","3":"1990","4":"35.31","5":"92","6":"1"},{"1":"FDM Karunaratne","2":"SL","3":"2010","4":"34.84","5":"86","6":"1"},{"1":"W Jaffer","2":"IND","3":"2000","4":"34.82","5":"39","6":"1"},{"1":"DL Haynes","2":"WI","3":"1980","4":"34.47","5":"43","6":"1"},{"1":"ML Hayden","2":"AUS","3":"1990","4":"34.32","5":"37","6":"1"},{"1":"TWM Latham","2":"NZ","3":"2010","4":"34.27","5":"76","6":"1"},{"1":"D Elgar","2":"SA","3":"2010","4":"34.23","5":"59","6":"1"},{"1":"BA Young","2":"NZ","3":"1990","4":"33.88","5":"47","6":"1"},{"1":"AC MacLaren","2":"ENG","3":"1890","4":"33.60","5":"35","6":"1"},{"1":"JG Wright","2":"NZ","3":"1970","4":"33.32","5":"74","6":"1"},{"1":"NT Paranavitana","2":"SL","3":"2000","4":"33.22","5":"50","6":"1"},{"1":"RS Mahanama","2":"SL","3":"1980","4":"33.09","5":"52","6":"1"},{"1":"KC Brathwaite","2":"WI","3":"2010","4":"33.07","5":"115","6":"1"},{"1":"G Fowler","2":"ENG","3":"1980","4":"32.96","5":"27","6":"1"},{"1":"GR Marsh","2":"AUS","3":"1980","4":"32.81","5":"58","6":"1"},{"1":"WG Grace","2":"ENG","3":"1880","4":"32.56","5":"24","6":"1"},{"1":"VT Trumper","2":"AUS","3":"1900","4":"32.18","5":"33","6":"1"},{"1":"Mudassar Nazar","2":"PAK","3":"1970","4":"31.68","5":"66","6":"1"},{"1":"RJ Burns","2":"ENG","3":"2010","4":"31.50","5":"54","6":"1"},{"1":"ML Jaisimha","2":"IND","3":"1960","4":"31.26","5":"24","6":"1"},{"1":"P Roy","2":"IND","3":"1950","4":"31.25","5":"60","6":"1"},{"1":"Shan Masood","2":"PAK","3":"2010","4":"31.16","5":"25","6":"1"},{"1":"GM Wood","2":"AUS","3":"1970","4":"30.90","5":"54","6":"1"},{"1":"AC Hudson","2":"SA","3":"1990","4":"29.83","5":"38","6":"1"},{"1":"Imran Farhat","2":"PAK","3":"2000","4":"29.64","5":"38","6":"1"},{"1":"SL Campbell","2":"WI","3":"1990","4":"29.40","5":"69","6":"1"},{"1":"MA Butcher","2":"ENG","3":"1990","4":"29.27","5":"48","6":"1"},{"1":"AN Petersen","2":"SA","3":"2010","4":"29.20","5":"27","6":"1"},{"1":"S Wettimuny","2":"SL","3":"1980","4":"28.28","5":"35","6":"1"},{"1":"Khurram Manzoor","2":"PAK","3":"2000","4":"28.13","5":"23","6":"1"},{"1":"K Srikkanth","2":"IND","3":"1980","4":"27.96","5":"27","6":"1"},{"1":"IJ Siedle","2":"SA","3":"1920","4":"27.60","5":"20","6":"1"},{"1":"JKC Holt","2":"WI","3":"1950","4":"27.17","5":"23","6":"1"},{"1":"Z Crawley","2":"ENG","3":"2020","4":"26.45","5":"24","6":"1"},{"1":"TG McIntosh","2":"NZ","3":"2000","4":"25.95","5":"26","6":"1"},{"1":"MJ Guptill","2":"NZ","3":"2000","4":"25.88","5":"35","6":"1"},{"1":"GT Dowling","2":"NZ","3":"1960","4":"25.76","5":"52","6":"1"},{"1":"Salman Butt","2":"PAK","3":"2000","4":"25.70","5":"24","6":"1"},{"1":"SS Das","2":"IND","3":"2000","4":"25.53","5":"28","6":"1"},{"1":"TJ Franklin","2":"NZ","3":"1980","4":"23.90","5":"33","6":"1"},{"1":"MJ Horne","2":"NZ","3":"1990","4":"23.47","5":"21","6":"1"},{"1":"AC Bannerman","2":"AUS","3":"1880","4":"22.39","5":"29","6":"1"},{"1":"JA Raval","2":"NZ","3":"2010","4":"22.00","5":"23","6":"1"},{"1":"AB Barath","2":"WI","3":"2010","4":"21.76","5":"21","6":"1"},{"1":"WU Tharanga","2":"SL","3":"2000","4":"21.04","5":"22","6":"1"},{"1":"H Sutcliffe","2":"ENG","3":"1920","4":"63.26","5":"63","6":"2"},{"1":"DL Amiss","2":"ENG","3":"1970","4":"57.97","5":"38","6":"2"},{"1":"Azhar Ali","2":"PAK","3":"2010","4":"57.00","5":"23","6":"2"},{"1":"G Boycott","2":"ENG","3":"1960","4":"55.23","5":"74","6":"2"},{"1":"RB Simpson","2":"AUS","3":"1960","4":"53.76","5":"42","6":"2"},{"1":"ML Hayden","2":"AUS","3":"1990","4":"51.97","5":"137","6":"2"},{"1":"EJ Barlow","2":"SA","3":"1960","4":"50.75","5":"43","6":"2"},{"1":"SM Katich","2":"AUS","3":"2000","4":"50.48","5":"61","6":"2"},{"1":"V Sehwag","2":"ICC/IND","3":"2000","4":"49.77","5":"140","6":"2"},{"1":"GM Turner","2":"NZ","3":"1960","4":"48.72","5":"27","6":"2"},{"1":"DA Warner","2":"AUS","3":"2010","4":"48.59","5":"118","6":"2"},{"1":"JH Edrich","2":"ENG","3":"1960","4":"48.38","5":"47","6":"2"},{"1":"HH Gibbs","2":"SA","3":"1990","4":"48.31","5":"81","6":"2"},{"1":"B Mitchell","2":"SA","3":"1920","4":"47.95","5":"22","6":"2"},{"1":"AJ Strauss","2":"ENG","3":"2000","4":"47.56","5":"50","6":"2"},{"1":"AN Cook","2":"ENG","3":"2000","4":"47.53","5":"133","6":"2"},{"1":"MC Cowdrey","2":"ENG","3":"1950","4":"46.81","5":"34","6":"2"},{"1":"FDM Karunaratne","2":"SL","3":"2010","4":"46.60","5":"40","6":"2"},{"1":"R Dravid","2":"IND","3":"1990","4":"45.93","5":"20","6":"2"},{"1":"CG Greenidge","2":"WI","3":"1970","4":"45.73","5":"31","6":"2"},{"1":"AJ Stewart","2":"ENG","3":"1990","4":"45.50","5":"73","6":"2"},{"1":"MP Vaughan","2":"ENG","3":"2000","4":"45.34","5":"66","6":"2"},{"1":"RT Robinson","2":"ENG","3":"1980","4":"44.96","5":"34","6":"2"},{"1":"Mudassar Nazar","2":"PAK","3":"1970","4":"44.77","5":"43","6":"2"},{"1":"GC Smith","2":"SA","3":"2000","4":"44.59","5":"57","6":"2"},{"1":"DL Haynes","2":"WI","3":"1970","4":"44.50","5":"158","6":"2"},{"1":"WH Ponsford","2":"AUS","3":"1920","4":"44.36","5":"27","6":"2"},{"1":"Imam-ul-Haq","2":"PAK","3":"2010","4":"44.28","5":"23","6":"2"},{"1":"NS Sidhu","2":"IND","3":"1980","4":"44.13","5":"61","6":"2"},{"1":"C Washbrook","2":"ENG","3":"1930","4":"43.66","5":"59","6":"2"},{"1":"W Bardsley","2":"AUS","3":"1900","4":"43.45","5":"34","6":"2"},{"1":"JG Wright","2":"NZ","3":"1970","4":"43.19","5":"70","6":"2"},{"1":"WM Lawry","2":"AUS","3":"1960","4":"43.02","5":"49","6":"2"},{"1":"MA Atherton","2":"ENG","3":"1990","4":"42.87","5":"99","6":"2"},{"1":"BB McCullum","2":"NZ","3":"2000","4":"42.80","5":"28","6":"2"},{"1":"IR Redpath","2":"AUS","3":"1960","4":"42.72","5":"31","6":"2"},{"1":"DC Boon","2":"AUS","3":"1980","4":"42.70","5":"36","6":"2"},{"1":"AR Morris","2":"AUS","3":"1940","4":"42.31","5":"64","6":"2"},{"1":"TWM Latham","2":"NZ","3":"2010","4":"42.00","5":"39","6":"2"},{"1":"Shoaib Mohammad","2":"PAK","3":"1980","4":"41.76","5":"30","6":"2"},{"1":"RW Barber","2":"ENG","3":"1960","4":"41.55","5":"28","6":"2"},{"1":"BW Luckhurst","2":"ENG","3":"1970","4":"40.83","5":"20","6":"2"},{"1":"TM Dilshan","2":"SL","3":"2000","4":"40.63","5":"46","6":"2"},{"1":"Ahmed Shehzad","2":"PAK","3":"2010","4":"39.95","5":"21","6":"2"},{"1":"JB Stollmeyer","2":"WI","3":"1930","4":"39.30","5":"52","6":"2"},{"1":"JA Burns","2":"AUS","3":"2010","4":"38.95","5":"21","6":"2"},{"1":"MJ Slater","2":"AUS","3":"1990","4":"38.73","5":"63","6":"2"},{"1":"Shahid Afridi","2":"PAK","3":"1990","4":"38.71","5":"21","6":"2"},{"1":"ME Trescothick","2":"ENG","3":"2000","4":"38.55","5":"36","6":"2"},{"1":"CJ Tavare","2":"ENG","3":"1980","4":"38.35","5":"21","6":"2"},{"1":"AN Petersen","2":"SA","3":"2010","4":"38.17","5":"34","6":"2"},{"1":"GM Wood","2":"AUS","3":"1970","4":"37.35","5":"38","6":"2"},{"1":"G Kirsten","2":"SA","3":"1990","4":"37.02","5":"72","6":"2"},{"1":"Shubman Gill","2":"IND","3":"2020","4":"36.94","5":"20","6":"2"},{"1":"D Elgar","2":"SA","3":"2010","4":"36.41","5":"67","6":"2"},{"1":"NJ Contractor","2":"IND","3":"1950","4":"36.41","5":"39","6":"2"},{"1":"MA Taylor","2":"AUS","3":"1980","4":"36.18","5":"96","6":"2"},{"1":"Salman Butt","2":"PAK","3":"2000","4":"35.86","5":"30","6":"2"},{"1":"S Ramesh","2":"IND","3":"1990","4":"35.80","5":"21","6":"2"},{"1":"ST Jayasuriya","2":"SL","3":"1990","4":"35.24","5":"91","6":"2"},{"1":"MC Carew","2":"WI","3":"1960","4":"35.03","5":"30","6":"2"},{"1":"GR Marsh","2":"AUS","3":"1980","4":"34.96","5":"33","6":"2"},{"1":"S Dhawan","2":"IND","3":"2010","4":"34.76","5":"40","6":"2"},{"1":"Aamer Sohail","2":"PAK","3":"1990","4":"34.51","5":"30","6":"2"},{"1":"Imtiaz Ahmed","2":"PAK","3":"1950","4":"34.42","5":"29","6":"2"},{"1":"CPS Chauhan","2":"IND","3":"1960","4":"34.37","5":"60","6":"2"},{"1":"WW Hinds","2":"WI","3":"2000","4":"34.10","5":"20","6":"2"},{"1":"Imran Farhat","2":"PAK","3":"2000","4":"34.05","5":"38","6":"2"},{"1":"MS Atapattu","2":"SL","3":"1990","4":"33.96","5":"34","6":"2"},{"1":"W Rhodes","2":"ENG","3":"1900","4":"33.85","5":"38","6":"2"},{"1":"JW Burke","2":"AUS","3":"1950","4":"33.14","5":"33","6":"2"},{"1":"M Vijay","2":"IND","3":"2000","4":"32.44","5":"29","6":"2"},{"1":"AK Markram","2":"SA","3":"2010","4":"31.88","5":"27","6":"2"},{"1":"AD Gaekwad","2":"IND","3":"1970","4":"31.32","5":"49","6":"2"},{"1":"A Turner","2":"AUS","3":"1970","4":"31.04","5":"25","6":"2"},{"1":"Ramiz Raja","2":"PAK","3":"1980","4":"30.97","5":"49","6":"2"},{"1":"K Srikkanth","2":"IND","3":"1980","4":"30.97","5":"45","6":"2"},{"1":"UC Hathurusinghe","2":"SL","3":"1990","4":"30.80","5":"41","6":"2"},{"1":"KL Rahul","2":"IND","3":"2010","4":"30.25","5":"32","6":"2"},{"1":"BA Edgar","2":"NZ","3":"1970","4":"30.13","5":"55","6":"2"},{"1":"FM Engineer","2":"IND","3":"1960","4":"30.08","5":"25","6":"2"},{"1":"HDRL Thirimanne","2":"SL","3":"2010","4":"29.37","5":"25","6":"2"},{"1":"Mohsin Khan","2":"PAK","3":"1970","4":"29.03","5":"29","6":"2"},{"1":"Taufeeq Umar","2":"PAK","3":"2000","4":"29.00","5":"50","6":"2"},{"1":"DP Sibley","2":"ENG","3":"2010","4":"28.94","5":"39","6":"2"},{"1":"JK Silva","2":"SL","3":"2010","4":"28.38","5":"55","6":"2"},{"1":"J Arun Lal","2":"IND","3":"1980","4":"28.21","5":"24","6":"2"},{"1":"TL Goddard","2":"SA","3":"1950","4":"28.15","5":"42","6":"2"},{"1":"SC Williams","2":"WI","3":"1990","4":"27.88","5":"29","6":"2"},{"1":"J Dyson","2":"AUS","3":"1980","4":"27.88","5":"30","6":"2"},{"1":"BC Broad","2":"ENG","3":"1980","4":"27.73","5":"23","6":"2"},{"1":"MD Stoneman","2":"ENG","3":"2010","4":"27.68","5":"20","6":"2"},{"1":"HD Rutherford","2":"NZ","3":"2010","4":"27.62","5":"25","6":"2"},{"1":"AD Hales","2":"ENG","3":"2010","4":"27.28","5":"21","6":"2"},{"1":"Sadiq Mohammad","2":"PAK","3":"1960","4":"27.13","5":"46","6":"2"},{"1":"PV Simmons","2":"WI","3":"1980","4":"27.09","5":"23","6":"2"},{"1":"MJ Horne","2":"NZ","3":"1990","4":"26.92","5":"26","6":"2"},{"1":"EDAS McMorris","2":"WI","3":"1950","4":"26.85","5":"21","6":"2"},{"1":"JHB Waite","2":"SA","3":"1950","4":"26.34","5":"24","6":"2"},{"1":"MJ Guptill","2":"NZ","3":"2000","4":"25.23","5":"34","6":"2"},{"1":"KK Jennings","2":"ENG","3":"2010","4":"25.16","5":"31","6":"2"},{"1":"JM Brearley","2":"ENG","3":"1970","4":"24.75","5":"29","6":"2"},{"1":"MD Bell","2":"NZ","3":"1990","4":"24.60","5":"24","6":"2"},{"1":"Alimuddin","2":"PAK","3":"1950","4":"24.55","5":"29","6":"2"},{"1":"D Ganga","2":"WI","3":"1990","4":"24.37","5":"50","6":"2"},{"1":"Z Crawley","2":"ENG","3":"2020","4":"23.86","5":"24","6":"2"},{"1":"DS Smith","2":"WI","3":"2000","4":"23.52","5":"51","6":"2"},{"1":"CH Gayle","2":"WI","3":"2000","4":"22.65","5":"26","6":"2"},{"1":"JD Campbell","2":"WI","3":"2010","4":"22.38","5":"29","6":"2"},{"1":"TE Bailey","2":"ENG","3":"1950","4":"22.10","5":"20","6":"2"},{"1":"KOA Powell","2":"WI","3":"2010","4":"21.57","5":"52","6":"2"},{"1":"Shan Masood","2":"PAK","3":"2010","4":"21.25","5":"20","6":"2"},{"1":"DG Bradman","2":"AUS","3":"1930","4":"103.63","5":"56","6":"3"},{"1":"KF Barrington","2":"ENG","3":"1960","4":"77.23","5":"40","6":"3"},{"1":"WR Hammond","2":"ENG","3":"1920","4":"74.78","5":"52","6":"3"},{"1":"GA Headley","2":"WI","3":"1930","4":"71.17","5":"32","6":"3"},{"1":"SPD Smith","2":"AUS","3":"2010","4":"69.58","5":"27","6":"3"},{"1":"M Labuschagne","2":"AUS","3":"2010","4":"62.91","5":"52","6":"3"},{"1":"IVA Richards","2":"WI","3":"1970","4":"61.54","5":"59","6":"3"},{"1":"BC Lara","2":"WI","3":"1990","4":"60.46","5":"66","6":"3"},{"1":"CG Macartney","2":"AUS","3":"1900","4":"59.34","5":"28","6":"3"},{"1":"AI Kallicharran","2":"WI","3":"1970","4":"58.00","5":"25","6":"3"},{"1":"KC Sangakkara","2":"SL","3":"2000","4":"55.51","5":"181","6":"3"},{"1":"RT Ponting","2":"AUS","3":"1990","4":"55.24","5":"187","6":"3"},{"1":"JF Reid","2":"NZ","3":"1980","4":"54.61","5":"24","6":"3"},{"1":"KS Williamson","2":"NZ","3":"2010","4":"54.49","5":"130","6":"3"},{"1":"FMM Worrell","2":"WI","3":"1950","4":"53.95","5":"23","6":"3"},{"1":"DPMD Jayawardene","2":"SL","3":"1990","4":"52.94","5":"20","6":"3"},{"1":"RB Kanhai","2":"WI","3":"1950","4":"52.68","5":"90","6":"3"},{"1":"GN Yallop","2":"AUS","3":"1970","4":"52.42","5":"22","6":"3"},{"1":"CL Walcott","2":"WI","3":"1940","4":"51.86","5":"23","6":"3"},{"1":"Younis Khan","2":"PAK","3":"2000","4":"51.83","5":"78","6":"3"},{"1":"ER Dexter","2":"ENG","3":"1950","4":"51.81","5":"57","6":"3"},{"1":"WJ Edrich","2":"ENG","3":"1930","4":"51.22","5":"41","6":"3"},{"1":"IM Chappell","2":"AUS","3":"1960","4":"50.94","5":"91","6":"3"},{"1":"R Dravid","2":"ICC/IND","3":"1990","4":"49.46","5":"204","6":"3"},{"1":"TW Graveney","2":"ENG","3":"1950","4":"49.45","5":"37","6":"3"},{"1":"DI Gower","2":"ENG","3":"1980","4":"49.41","5":"56","6":"3"},{"1":"HM Amla","2":"SA","3":"2000","4":"49.00","5":"165","6":"3"},{"1":"DM Jones","2":"AUS","3":"1980","4":"48.62","5":"28","6":"3"},{"1":"M Amarnath","2":"IND","3":"1970","4":"47.65","5":"66","6":"3"},{"1":"Shoaib Mohammad","2":"PAK","3":"1980","4":"47.52","5":"22","6":"3"},{"1":"Ijaz Ahmed","2":"PAK","3":"1990","4":"47.29","5":"39","6":"3"},{"1":"VVS Laxman","2":"IND","3":"1990","4":"47.18","5":"33","6":"3"},{"1":"RB Richardson","2":"WI","3":"1980","4":"47.11","5":"107","6":"3"},{"1":"AR Border","2":"AUS","3":"1970","4":"47.09","5":"36","6":"3"},{"1":"RN Harvey","2":"AUS","3":"1940","4":"46.67","5":"79","6":"3"},{"1":"GS Ballance","2":"ENG","3":"2010","4":"46.44","5":"29","6":"3"},{"1":"SP Fleming","2":"NZ","3":"1990","4":"45.85","5":"61","6":"3"},{"1":"DC Boon","2":"AUS","3":"1980","4":"45.48","5":"111","6":"3"},{"1":"MC Cowdrey","2":"ENG","3":"1950","4":"44.71","5":"36","6":"3"},{"1":"IR Redpath","2":"AUS","3":"1960","4":"44.70","5":"23","6":"3"},{"1":"Saeed Ahmed","2":"PAK","3":"1950","4":"43.88","5":"56","6":"3"},{"1":"IJL Trott","2":"ENG","3":"2000","4":"43.60","5":"68","6":"3"},{"1":"GS Chappell","2":"AUS","3":"1970","4":"43.39","5":"38","6":"3"},{"1":"CA Pujara","2":"IND","3":"2010","4":"43.30","5":"145","6":"3"},{"1":"BE Congdon","2":"NZ","3":"1960","4":"43.10","5":"62","6":"3"},{"1":"JH Kallis","2":"SA","3":"1990","4":"42.58","5":"73","6":"3"},{"1":"AH Jones","2":"NZ","3":"1980","4":"42.45","5":"66","6":"3"},{"1":"PBH May","2":"ENG","3":"1950","4":"42.02","5":"46","6":"3"},{"1":"OJ Pope","2":"ENG","3":"2020","4":"41.63","5":"20","6":"3"},{"1":"JL Langer","2":"AUS","3":"1990","4":"41.60","5":"60","6":"3"},{"1":"N Hussain","2":"ENG","3":"1990","4":"41.22","5":"61","6":"3"},{"1":"C Hill","2":"AUS","3":"1890","4":"41.21","5":"63","6":"3"},{"1":"Qasim Umar","2":"PAK","3":"1980","4":"41.20","5":"36","6":"3"},{"1":"Azhar Ali","2":"PAK","3":"2010","4":"41.04","5":"114","6":"3"},{"1":"JE Root","2":"ENG","3":"2010","4":"40.84","5":"55","6":"3"},{"1":"HA Gomes","2":"WI","3":"1970","4":"40.72","5":"28","6":"3"},{"1":"RM Cowper","2":"AUS","3":"1960","4":"40.55","5":"21","6":"3"},{"1":"MW Gatting","2":"ENG","3":"1980","4":"40.35","5":"37","6":"3"},{"1":"DB Vengsarkar","2":"IND","3":"1970","4":"40.04","5":"74","6":"3"},{"1":"Zaheer Abbas","2":"PAK","3":"1970","4":"39.98","5":"60","6":"3"},{"1":"RR Sarwan","2":"WI","3":"2000","4":"39.95","5":"94","6":"3"},{"1":"AJ Stewart","2":"ENG","3":"1990","4":"39.48","5":"31","6":"3"},{"1":"B Mitchell","2":"SA","3":"1920","4":"39.09","5":"23","6":"3"},{"1":"Majid Khan","2":"PAK","3":"1960","4":"38.85","5":"21","6":"3"},{"1":"MS Sinclair","2":"NZ","3":"1990","4":"38.69","5":"28","6":"3"},{"1":"SV Manjrekar","2":"IND","3":"1980","4":"38.51","5":"36","6":"3"},{"1":"UT Khawaja","2":"AUS","3":"2010","4":"38.37","5":"64","6":"3"},{"1":"MA Butcher","2":"ENG","3":"1990","4":"38.20","5":"73","6":"3"},{"1":"IR Bell","2":"ENG","3":"2000","4":"38.00","5":"48","6":"3"},{"1":"JH Edrich","2":"ENG","3":"1960","4":"38.00","5":"38","6":"3"},{"1":"MP Vaughan","2":"ENG","3":"2000","4":"38.00","5":"36","6":"3"},{"1":"WL Murdoch","2":"AUS/ENG","3":"1880","4":"38.00","5":"21","6":"3"},{"1":"SR Watson","2":"AUS","3":"2010","4":"37.96","5":"27","6":"3"},{"1":"FE Woolley","2":"ENG","3":"1920","4":"37.81","5":"24","6":"3"},{"1":"JA Rudolph","2":"SA","3":"2000","4":"37.03","5":"32","6":"3"},{"1":"DM Bravo","2":"WI","3":"2010","4":"36.85","5":"50","6":"3"},{"1":"CJ Tavare","2":"ENG","3":"1980","4":"36.71","5":"21","6":"3"},{"1":"WJ Cronje","2":"SA","3":"1990","4":"36.25","5":"31","6":"3"},{"1":"AP Gurusinha","2":"SL","3":"1980","4":"36.21","5":"54","6":"3"},{"1":"GP Howarth","2":"NZ","3":"1970","4":"35.87","5":"33","6":"3"},{"1":"WW Hinds","2":"WI","3":"2000","4":"35.33","5":"21","6":"3"},{"1":"LG Rowe","2":"WI","3":"1970","4":"35.18","5":"23","6":"3"},{"1":"EAB Rowan","2":"SA","3":"1930","4":"35.00","5":"21","6":"3"},{"1":"DW Randall","2":"ENG","3":"1970","4":"34.90","5":"24","6":"3"},{"1":"GA Hick","2":"ENG","3":"1990","4":"34.57","5":"35","6":"3"},{"1":"S Chanderpaul","2":"WI","3":"1990","4":"33.76","5":"27","6":"3"},{"1":"PR Umrigar","2":"IND","3":"1950","4":"33.09","5":"36","6":"3"},{"1":"AL Wadekar","2":"IND","3":"1960","4":"32.74","5":"59","6":"3"},{"1":"BW Sinclair","2":"NZ","3":"1960","4":"32.68","5":"25","6":"3"},{"1":"NCL O Neill","2":"AUS","3":"1960","4":"32.00","5":"21","6":"3"},{"1":"Yasir Hameed","2":"PAK","3":"2000","4":"30.00","5":"21","6":"3"},{"1":"JT Tyldesley","2":"ENG","3":"1890","4":"29.25","5":"44","6":"3"},{"1":"Waqar Hasan","2":"PAK","3":"1950","4":"28.81","5":"22","6":"3"},{"1":"Mansoor Akhtar","2":"PAK","3":"1980","4":"28.64","5":"20","6":"3"},{"1":"GS Blewett","2":"AUS","3":"1990","4":"27.69","5":"26","6":"3"},{"1":"G Giffen","2":"AUS","3":"1880","4":"26.13","5":"29","6":"3"},{"1":"BKG Mendis","2":"SL","3":"2010","4":"25.75","5":"38","6":"3"},{"1":"KJ Hughes","2":"AUS","3":"1970","4":"24.85","5":"20","6":"3"},{"1":"RP Arnold","2":"SL","3":"1990","4":"21.55","5":"20","6":"3"},{"1":"KWR Fletcher","2":"ENG","3":"1970","4":"21.36","5":"20","6":"3"},{"1":"CWJ Athey","2":"ENG","3":"1980","4":"20.71","5":"21","6":"3"},{"1":"SC Ganguly","2":"IND","3":"1990","4":"66.00","5":"20","6":"4"},{"1":"SPD Smith","2":"AUS","3":"2010","4":"65.91","5":"92","6":"4"},{"1":"Saleem Malik","2":"PAK","3":"1980","4":"64.61","5":"30","6":"4"},{"1":"Babar Azam","2":"PAK","3":"2010","4":"64.41","5":"34","6":"4"},{"1":"GS Sobers","2":"WI","3":"1950","4":"63.75","5":"24","6":"4"},{"1":"ED Weekes","2":"WI","3":"1940","4":"63.62","5":"57","6":"4"},{"1":"RG Pollock","2":"SA","3":"1960","4":"62.57","5":"37","6":"4"},{"1":"JH Kallis","2":"SA","3":"1990","4":"61.43","5":"162","6":"4"},{"1":"KF Barrington","2":"ENG","3":"1960","4":"59.17","5":"44","6":"4"},{"1":"GS Chappell","2":"AUS","3":"1970","4":"59.12","5":"86","6":"4"},{"1":"PBH May","2":"ENG","3":"1950","4":"58.12","5":"49","6":"4"},{"1":"NCL O Neill","2":"AUS","3":"1950","4":"57.42","5":"41","6":"4"},{"1":"Mohammad Yousuf","2":"PAK","3":"2000","4":"56.67","5":"62","6":"4"},{"1":"Javed Miandad","2":"PAK","3":"1970","4":"54.77","5":"136","6":"4"},{"1":"VS Hazare","2":"IND","3":"1940","4":"54.10","5":"35","6":"4"},{"1":"Inzamam-ul-Haq","2":"PAK","3":"1990","4":"53.97","5":"82","6":"4"},{"1":"DCS Compton","2":"ENG","3":"1930","4":"53.59","5":"86","6":"4"},{"1":"JE Root","2":"ENG","3":"2010","4":"52.90","5":"124","6":"4"},{"1":"V Kohli","2":"IND","3":"2010","4":"52.31","5":"129","6":"4"},{"1":"AL Hassett","2":"AUS","3":"1930","4":"51.39","5":"25","6":"4"},{"1":"WR Hammond","2":"ENG","3":"1920","4":"50.79","5":"66","6":"4"},{"1":"SR Tendulkar","2":"IND","3":"1990","4":"50.70","5":"256","6":"4"},{"1":"BC Lara","2":"ICC/WI","3":"1990","4":"50.63","5":"142","6":"4"},{"1":"KD Walters","2":"AUS","3":"1960","4":"50.50","5":"29","6":"4"},{"1":"AR Border","2":"AUS","3":"1980","4":"50.44","5":"88","6":"4"},{"1":"AD Nourse","2":"SA","3":"1930","4":"50.00","5":"53","6":"4"},{"1":"MH Denness","2":"ENG","3":"1970","4":"49.90","5":"21","6":"4"},{"1":"DPMD Jayawardene","2":"SL","3":"1990","4":"49.42","5":"171","6":"4"},{"1":"MD Crowe","2":"NZ","3":"1980","4":"48.40","5":"103","6":"4"},{"1":"DB Vengsarkar","2":"IND","3":"1970","4":"48.24","5":"64","6":"4"},{"1":"KP Pietersen","2":"ENG","3":"2000","4":"48.20","5":"134","6":"4"},{"1":"DR Martyn","2":"AUS","3":"1990","4":"47.90","5":"58","6":"4"},{"1":"RN Harvey","2":"AUS","3":"1950","4":"47.71","5":"41","6":"4"},{"1":"Younis Khan","2":"PAK","3":"2000","4":"47.54","5":"95","6":"4"},{"1":"HW Taylor","2":"SA","3":"1920","4":"47.40","5":"23","6":"4"},{"1":"DJ Cullinan","2":"SA","3":"1990","4":"47.31","5":"94","6":"4"},{"1":"BF Butcher","2":"WI","3":"1950","4":"47.30","5":"52","6":"4"},{"1":"EH Hendren","2":"ENG","3":"1920","4":"46.21","5":"43","6":"4"},{"1":"MEK Hussey","2":"AUS","3":"2000","4":"46.01","5":"62","6":"4"},{"1":"TW Graveney","2":"ENG","3":"1950","4":"45.52","5":"35","6":"4"},{"1":"CH Lloyd","2":"WI","3":"1960","4":"44.18","5":"33","6":"4"},{"1":"PA de Silva","2":"SL","3":"1980","4":"43.12","5":"104","6":"4"},{"1":"GR Viswanath","2":"IND","3":"1960","4":"43.05","5":"124","6":"4"},{"1":"LRPL Taylor","2":"NZ","3":"2000","4":"42.87","5":"154","6":"4"},{"1":"AB de Villiers","2":"SA","3":"2000","4":"42.61","5":"22","6":"4"},{"1":"ME Waugh","2":"AUS","3":"1990","4":"42.12","5":"169","6":"4"},{"1":"GP Thorpe","2":"ENG","3":"1990","4":"41.53","5":"72","6":"4"},{"1":"IVA Richards","2":"WI","3":"1970","4":"41.21","5":"41","6":"4"},{"1":"KJ Hughes","2":"AUS","3":"1970","4":"40.93","5":"64","6":"4"},{"1":"AF Kippax","2":"AUS","3":"1920","4":"40.59","5":"22","6":"4"},{"1":"FE Woolley","2":"ENG","3":"1910","4":"40.45","5":"22","6":"4"},{"1":"AI Kallicharran","2":"WI","3":"1970","4":"40.13","5":"57","6":"4"},{"1":"JP Duminy","2":"SA","3":"2010","4":"40.00","5":"22","6":"4"},{"1":"JR Reid","2":"NZ","3":"1950","4":"39.86","5":"53","6":"4"},{"1":"RA Smith","2":"ENG","3":"1980","4":"39.86","5":"49","6":"4"},{"1":"RT Ponting","2":"AUS","3":"2000","4":"39.76","5":"27","6":"4"},{"1":"PJP Burge","2":"AUS","3":"1950","4":"39.10","5":"33","6":"4"},{"1":"HA Gomes","2":"WI","3":"1970","4":"38.81","5":"39","6":"4"},{"1":"N Hussain","2":"ENG","3":"1990","4":"38.48","5":"73","6":"4"},{"1":"DI Gower","2":"ENG","3":"1970","4":"38.36","5":"91","6":"4"},{"1":"AJ Lamb","2":"ENG","3":"1980","4":"38.36","5":"67","6":"4"},{"1":"MC Cowdrey","2":"ENG","3":"1950","4":"38.28","5":"47","6":"4"},{"1":"HM Amla","2":"SA","3":"2000","4":"38.10","5":"31","6":"4"},{"1":"RL Dias","2":"SL","3":"1980","4":"37.15","5":"21","6":"4"},{"1":"AD Mathews","2":"SL","3":"2010","4":"37.00","5":"35","6":"4"},{"1":"GN Yallop","2":"AUS","3":"1970","4":"36.76","5":"22","6":"4"},{"1":"Mushtaq Mohammad","2":"PAK","3":"1960","4":"36.35","5":"48","6":"4"},{"1":"S Chanderpaul","2":"WI","3":"1990","4":"36.16","5":"36","6":"4"},{"1":"KWR Fletcher","2":"ENG","3":"1960","4":"36.10","5":"23","6":"4"},{"1":"NJ Astle","2":"NZ","3":"1990","4":"35.72","5":"25","6":"4"},{"1":"VL Manjrekar","2":"IND","3":"1950","4":"35.70","5":"52","6":"4"},{"1":"SP Fleming","2":"NZ","3":"1990","4":"35.31","5":"68","6":"4"},{"1":"MW Gatting","2":"ENG","3":"1980","4":"34.84","5":"29","6":"4"},{"1":"CG Borde","2":"IND","3":"1950","4":"34.51","5":"27","6":"4"},{"1":"Javed Burki","2":"PAK","3":"1960","4":"34.33","5":"29","6":"4"},{"1":"LD Chandimal","2":"SL","3":"2010","4":"33.57","5":"22","6":"4"},{"1":"BF Hastings","2":"NZ","3":"1960","4":"33.42","5":"29","6":"4"},{"1":"MJK Smith","2":"ENG","3":"1950","4":"32.90","5":"22","6":"4"},{"1":"MP Vaughan","2":"ENG","3":"1990","4":"32.66","5":"30","6":"4"},{"1":"MG Burgess","2":"NZ","3":"1960","4":"32.48","5":"27","6":"4"},{"1":"BKG Mendis","2":"SL","3":"2010","4":"32.45","5":"39","6":"4"},{"1":"F du Plessis","2":"SA","3":"2010","4":"31.36","5":"23","6":"4"},{"1":"MJ Clarke","2":"AUS","3":"2000","4":"30.92","5":"60","6":"4"},{"1":"MN Samuels","2":"WI","3":"2000","4":"30.20","5":"54","6":"4"},{"1":"MA Noble","2":"AUS","3":"1890","4":"30.04","5":"23","6":"4"},{"1":"AJ Stewart","2":"ENG","3":"1990","4":"29.45","5":"23","6":"4"},{"1":"CL Hooper","2":"WI","3":"1980","4":"29.39","5":"45","6":"4"},{"1":"DM Bravo","2":"WI","3":"2010","4":"29.05","5":"35","6":"4"},{"1":"IR Bell","2":"ENG","3":"2000","4":"28.31","5":"47","6":"4"},{"1":"AW Nourse","2":"SA","3":"1900","4":"27.46","5":"51","6":"4"},{"1":"SD Hope","2":"WI","3":"2010","4":"25.88","5":"27","6":"4"},{"1":"JM Parker","2":"NZ","3":"1970","4":"19.30","5":"20","6":"4"},{"1":"JE Root","2":"ENG","3":"2010","4":"69.67","5":"32","6":"5"},{"1":"SR Tendulkar","2":"IND","3":"1990","4":"65.54","5":"25","6":"5"},{"1":"AB de Villiers","2":"SA","3":"2000","4":"63.00","5":"73","6":"5"},{"1":"MJ Clarke","2":"AUS","3":"2000","4":"61.78","5":"108","6":"5"},{"1":"SPD Smith","2":"AUS","3":"2010","4":"59.52","5":"25","6":"5"},{"1":"FMM Worrell","2":"WI","3":"1940","4":"59.45","5":"23","6":"5"},{"1":"CL Walcott","2":"WI","3":"1940","4":"59.22","5":"31","6":"5"},{"1":"GS Sobers","2":"WI","3":"1950","4":"59.21","5":"37","6":"5"},{"1":"LD Chandimal","2":"SL","3":"2010","4":"59.00","5":"27","6":"5"},{"1":"DCS Compton","2":"ENG","3":"1930","4":"56.94","5":"22","6":"5"},{"1":"MEK Hussey","2":"AUS","3":"2000","4":"56.12","5":"37","6":"5"},{"1":"Javed Miandad","2":"PAK","3":"1970","4":"56.07","5":"32","6":"5"},{"1":"AC Voges","2":"AUS","3":"2010","4":"56.00","5":"21","6":"5"},{"1":"GP Thorpe","2":"ENG","3":"1990","4":"55.62","5":"70","6":"5"},{"1":"Zaheer Abbas","2":"PAK","3":"1960","4":"53.89","5":"42","6":"5"},{"1":"SR Waugh","2":"AUS","3":"1980","4":"52.61","5":"137","6":"5"},{"1":"AR Border","2":"AUS","3":"1970","4":"52.05","5":"70","6":"5"},{"1":"S Chanderpaul","2":"WI","3":"1990","4":"51.50","5":"142","6":"5"},{"1":"Inzamam-ul-Haq","2":"PAK","3":"1990","4":"51.04","5":"49","6":"5"},{"1":"M Azharuddin","2":"IND","3":"1980","4":"49.86","5":"91","6":"5"},{"1":"DB Vengsarkar","2":"IND","3":"1970","4":"49.76","5":"30","6":"5"},{"1":"DI Gower","2":"ENG","3":"1970","4":"49.55","5":"49","6":"5"},{"1":"MC Cowdrey","2":"ENG","3":"1950","4":"49.52","5":"54","6":"5"},{"1":"Misbah-ul-Haq","2":"PAK","3":"2000","4":"49.49","5":"98","6":"5"},{"1":"ER Dexter","2":"ENG","3":"1960","4":"48.16","5":"21","6":"5"},{"1":"VVS Laxman","2":"IND","3":"1990","4":"47.83","5":"73","6":"5"},{"1":"IVA Richards","2":"WI","3":"1970","4":"47.71","5":"63","6":"5"},{"1":"KD Walters","2":"AUS","3":"1960","4":"47.42","5":"49","6":"5"},{"1":"KC Bland","2":"SA","3":"1960","4":"47.38","5":"23","6":"5"},{"1":"TM Head","2":"AUS","3":"2010","4":"47.15","5":"36","6":"5"},{"1":"KWR Fletcher","2":"ENG","3":"1960","4":"46.68","5":"44","6":"5"},{"1":"PR Umrigar","2":"IND","3":"1950","4":"46.64","5":"45","6":"5"},{"1":"R Edwards","2":"AUS","3":"1970","4":"46.61","5":"20","6":"5"},{"1":"CH Lloyd","2":"WI","3":"1960","4":"46.19","5":"72","6":"5"},{"1":"BB McCullum","2":"NZ","3":"2000","4":"45.84","5":"39","6":"5"},{"1":"LEG Ames","2":"ENG","3":"1930","4":"45.68","5":"23","6":"5"},{"1":"IR Bell","2":"ENG","3":"2000","4":"45.37","5":"57","6":"5"},{"1":"TT Samaraweera","2":"SL","3":"2000","4":"45.09","5":"86","6":"5"},{"1":"Mohammad Yousuf","2":"PAK","3":"1990","4":"44.70","5":"63","6":"5"},{"1":"SJ McCabe","2":"AUS","3":"1930","4":"44.56","5":"27","6":"5"},{"1":"KLT Arthurton","2":"WI","3":"1990","4":"44.26","5":"25","6":"5"},{"1":"RA Smith","2":"ENG","3":"1980","4":"44.21","5":"25","6":"5"},{"1":"Yashpal Sharma","2":"IND","3":"1970","4":"44.04","5":"30","6":"5"},{"1":"EH Hendren","2":"ENG","3":"1920","4":"44.04","5":"23","6":"5"},{"1":"KP Pietersen","2":"ENG","3":"2000","4":"43.85","5":"37","6":"5"},{"1":"TW Graveney","2":"ENG","3":"1950","4":"43.58","5":"28","6":"5"},{"1":"Mushtaq Mohammad","2":"PAK","3":"1960","4":"43.39","5":"24","6":"5"},{"1":"JC Adams","2":"WI","3":"1990","4":"43.36","5":"27","6":"5"},{"1":"SE Marsh","2":"AUS","3":"2010","4":"42.54","5":"22","6":"5"},{"1":"BL D Oliveira","2":"ENG","3":"1960","4":"42.44","5":"40","6":"5"},{"1":"KR Miller","2":"AUS","3":"1940","4":"41.97","5":"52","6":"5"},{"1":"KF Barrington","2":"ENG","3":"1950","4":"41.96","5":"31","6":"5"},{"1":"AD Mathews","2":"SL","3":"2010","4":"41.66","5":"64","6":"5"},{"1":"KJ Hughes","2":"AUS","3":"1970","4":"41.21","5":"36","6":"5"},{"1":"AG Prince","2":"SA","3":"2000","4":"40.76","5":"58","6":"5"},{"1":"CL Hooper","2":"WI","3":"1980","4":"40.64","5":"73","6":"5"},{"1":"M Leyland","2":"ENG","3":"1920","4":"40.63","5":"23","6":"5"},{"1":"AJ Lamb","2":"ENG","3":"1980","4":"40.06","5":"49","6":"5"},{"1":"DS Lehmann","2":"AUS","3":"1990","4":"39.95","5":"22","6":"5"},{"1":"V Kohli","2":"IND","3":"2010","4":"39.69","5":"29","6":"5"},{"1":"BA Stokes","2":"ENG","3":"2010","4":"39.55","5":"49","6":"5"},{"1":"JH Kallis","2":"ICC/SA","3":"2000","4":"38.88","5":"20","6":"5"},{"1":"MW Gatting","2":"ENG","3":"1970","4":"38.84","5":"48","6":"5"},{"1":"PD Collingwood","2":"ENG","3":"2000","4":"38.57","5":"69","6":"5"},{"1":"HM Nicholls","2":"NZ","3":"2010","4":"38.38","5":"50","6":"5"},{"1":"JM Bairstow","2":"ENG","3":"2010","4":"38.36","5":"46","6":"5"},{"1":"F du Plessis","2":"SA","3":"2010","4":"38.13","5":"53","6":"5"},{"1":"PJP Burge","2":"AUS","3":"1950","4":"38.12","5":"28","6":"5"},{"1":"AI Kallicharran","2":"WI","3":"1970","4":"37.86","5":"22","6":"5"},{"1":"DM Jones","2":"AUS","3":"1980","4":"37.62","5":"36","6":"5"},{"1":"Saleem Malik","2":"PAK","3":"1980","4":"37.50","5":"53","6":"5"},{"1":"DPMD Jayawardene","2":"SL","3":"1990","4":"37.43","5":"30","6":"5"},{"1":"Asif Iqbal","2":"PAK","3":"1960","4":"37.18","5":"22","6":"5"},{"1":"BC Booth","2":"AUS","3":"1960","4":"37.07","5":"30","6":"5"},{"1":"WW Armstrong","2":"AUS","3":"1900","4":"36.59","5":"23","6":"5"},{"1":"WJ Cronje","2":"SA","3":"1990","4":"36.55","5":"54","6":"5"},{"1":"RA McLean","2":"SA","3":"1950","4":"36.41","5":"31","6":"5"},{"1":"NJ Astle","2":"NZ","3":"1990","4":"35.68","5":"70","6":"5"},{"1":"AM Rahane","2":"IND","3":"2010","4":"35.55","5":"96","6":"5"},{"1":"SC Ganguly","2":"IND","3":"1990","4":"35.39","5":"87","6":"5"},{"1":"ND McKenzie","2":"SA","3":"2000","4":"35.26","5":"29","6":"5"},{"1":"ME Waugh","2":"AUS","3":"1990","4":"35.00","5":"22","6":"5"},{"1":"MR Ramprakash","2":"ENG","3":"1990","4":"34.90","5":"32","6":"5"},{"1":"SP Fleming","2":"NZ","3":"1990","4":"34.55","5":"21","6":"5"},{"1":"GR Viswanath","2":"IND","3":"1960","4":"34.38","5":"21","6":"5"},{"1":"PSP Handscomb","2":"AUS","3":"2010","4":"34.11","5":"20","6":"5"},{"1":"A Ranatunga","2":"SL","3":"1980","4":"33.72","5":"76","6":"5"},{"1":"DJ Malan","2":"ENG","3":"2010","4":"32.65","5":"20","6":"5"},{"1":"MG Burgess","2":"NZ","3":"1960","4":"32.09","5":"43","6":"5"},{"1":"GA Hick","2":"ENG","3":"1990","4":"32.00","5":"35","6":"5"},{"1":"SM Patil","2":"IND","3":"1980","4":"31.46","5":"30","6":"5"},{"1":"JN Rhodes","2":"SA","3":"1990","4":"31.40","5":"23","6":"5"},{"1":"AJ Stewart","2":"ENG","3":"1990","4":"31.16","5":"41","6":"5"},{"1":"JR Reid","2":"NZ","3":"1950","4":"30.91","5":"35","6":"5"},{"1":"JJ Crowe","2":"NZ","3":"1980","4":"30.21","5":"25","6":"5"},{"1":"KR Rutherford","2":"NZ","3":"1980","4":"29.94","5":"38","6":"5"},{"1":"MJ Greatbatch","2":"NZ","3":"1980","4":"29.33","5":"24","6":"5"},{"1":"BF Hastings","2":"NZ","3":"1960","4":"28.14","5":"24","6":"5"},{"1":"Asad Shafiq","2":"PAK","3":"2010","4":"27.34","5":"23","6":"5"},{"1":"BP Patel","2":"IND","3":"1970","4":"27.21","5":"21","6":"5"},{"1":"MAK Pataudi","2":"IND","3":"1960","4":"26.28","5":"45","6":"5"},{"1":"SE Gregory","2":"AUS","3":"1890","4":"26.09","5":"34","6":"5"},{"1":"J Blackwood","2":"WI","3":"2010","4":"25.11","5":"27","6":"5"},{"1":"RL Chase","2":"WI","3":"2010","4":"23.95","5":"45","6":"5"},{"1":"JV Coney","2":"NZ","3":"1980","4":"23.24","5":"26","6":"5"},{"1":"LRD Mendis","2":"SL","3":"1980","4":"22.90","5":"21","6":"5"},{"1":"S Chanderpaul","2":"WI","3":"1990","4":"65.79","5":"42","6":"6"},{"1":"Imran Khan","2":"PAK","3":"1970","4":"61.86","5":"23","6":"6"},{"1":"IR Bell","2":"ENG","3":"2000","4":"57.69","5":"36","6":"6"},{"1":"Saleem Malik","2":"PAK","3":"1980","4":"56.82","5":"36","6":"6"},{"1":"AB de Villiers","2":"SA","3":"2000","4":"55.13","5":"46","6":"6"},{"1":"RG Sharma","2":"IND","3":"2010","4":"54.57","5":"25","6":"6"},{"1":"GS Sobers","2":"WI","3":"1950","4":"53.34","5":"57","6":"6"},{"1":"AR Border","2":"AUS","3":"1970","4":"52.16","5":"63","6":"6"},{"1":"MEK Hussey","2":"AUS","3":"2000","4":"51.75","5":"26","6":"6"},{"1":"MS Dhoni","2":"IND","3":"2000","4":"51.25","5":"21","6":"6"},{"1":"SR Waugh","2":"AUS","3":"1980","4":"51.04","5":"79","6":"6"},{"1":"VVS Laxman","2":"IND","3":"1990","4":"50.36","5":"62","6":"6"},{"1":"RT Ponting","2":"AUS","3":"1990","4":"50.20","5":"44","6":"6"},{"1":"CH Lloyd","2":"WI","3":"1960","4":"49.16","5":"47","6":"6"},{"1":"DR Martyn","2":"AUS","3":"1990","4":"48.39","5":"28","6":"6"},{"1":"AD Mathews","2":"SL","3":"2000","4":"48.02","5":"53","6":"6"},{"1":"KD Walters","2":"AUS","3":"1960","4":"47.92","5":"45","6":"6"},{"1":"MJ Clarke","2":"AUS","3":"2000","4":"47.41","5":"20","6":"6"},{"1":"HP Tillakaratne","2":"SL","3":"1980","4":"47.22","5":"64","6":"6"},{"1":"JC Buttler","2":"ENG","3":"2010","4":"47.00","5":"24","6":"6"},{"1":"JV Coney","2":"NZ","3":"1970","4":"45.43","5":"48","6":"6"},{"1":"MAK Pataudi","2":"IND","3":"1960","4":"45.36","5":"21","6":"6"},{"1":"PD Collingwood","2":"ENG","3":"2000","4":"43.86","5":"26","6":"6"},{"1":"SR Tendulkar","2":"IND","3":"1980","4":"43.82","5":"20","6":"6"},{"1":"Asif Iqbal","2":"PAK","3":"1960","4":"43.75","5":"45","6":"6"},{"1":"CG Borde","2":"IND","3":"1950","4":"43.71","5":"25","6":"6"},{"1":"AW Greig","2":"ENG","3":"1970","4":"43.50","5":"67","6":"6"},{"1":"SC Ganguly","2":"IND","3":"1990","4":"42.10","5":"43","6":"6"},{"1":"Asad Shafiq","2":"PAK","3":"2010","4":"41.53","5":"67","6":"6"},{"1":"JN Rhodes","2":"SA","3":"1990","4":"41.14","5":"47","6":"6"},{"1":"BJ Watling","2":"NZ","3":"2010","4":"41.00","5":"38","6":"6"},{"1":"JM Bairstow","2":"ENG","3":"2010","4":"39.80","5":"48","6":"6"},{"1":"GS Blewett","2":"AUS","3":"1990","4":"39.38","5":"28","6":"6"},{"1":"C Green","2":"AUS","3":"2020","4":"39.14","5":"23","6":"6"},{"1":"Yuvraj Singh","2":"IND","3":"2000","4":"38.78","5":"41","6":"6"},{"1":"CL Hooper","2":"WI","3":"1980","4":"38.62","5":"35","6":"6"},{"1":"MV Boucher","2":"SA","3":"1990","4":"38.35","5":"22","6":"6"},{"1":"A Ranatunga","2":"SL","3":"1980","4":"38.14","5":"52","6":"6"},{"1":"TM Dilshan","2":"SL","3":"2000","4":"37.47","5":"42","6":"6"},{"1":"RR Pant","2":"IND","3":"2010","4":"37.22","5":"24","6":"6"},{"1":"MJ North","2":"AUS","3":"2000","4":"37.09","5":"33","6":"6"},{"1":"J Blackwood","2":"WI","3":"2010","4":"36.82","5":"37","6":"6"},{"1":"BA Stokes","2":"ENG","3":"2010","4":"36.45","5":"87","6":"6"},{"1":"DG Phadkar","2":"IND","3":"1940","4":"36.44","5":"20","6":"6"},{"1":"LD Chandimal","2":"SL","3":"2010","4":"36.41","5":"34","6":"6"},{"1":"HB Cameron","2":"SA","3":"1920","4":"36.23","5":"22","6":"6"},{"1":"M Azharuddin","2":"IND","3":"1980","4":"35.46","5":"31","6":"6"},{"1":"SM Katich","2":"AUS","3":"2000","4":"35.16","5":"20","6":"6"},{"1":"RJ Shastri","2":"IND","3":"1980","4":"35.05","5":"40","6":"6"},{"1":"CD McMillan","2":"NZ","3":"1990","4":"34.36","5":"46","6":"6"},{"1":"L Klusener","2":"SA","3":"1990","4":"34.15","5":"22","6":"6"},{"1":"A Symonds","2":"AUS","3":"2000","4":"34.13","5":"33","6":"6"},{"1":"AJ Stewart","2":"ENG","3":"1990","4":"34.02","5":"42","6":"6"},{"1":"T Bavuma","2":"SA","3":"2010","4":"33.64","5":"46","6":"6"},{"1":"Shoaib Malik","2":"PAK","3":"2000","4":"33.34","5":"28","6":"6"},{"1":"Wasim Raja","2":"PAK","3":"1970","4":"33.25","5":"41","6":"6"},{"1":"AL Logie","2":"WI","3":"1980","4":"33.17","5":"52","6":"6"},{"1":"JP Crawley","2":"ENG","3":"1990","4":"33.09","5":"25","6":"6"},{"1":"DW Hookes","2":"AUS","3":"1970","4":"33.04","5":"23","6":"6"},{"1":"Inzamam-ul-Haq","2":"ICC/PAK","3":"1990","4":"32.77","5":"26","6":"6"},{"1":"MR Ramprakash","2":"ENG","3":"1990","4":"32.56","5":"29","6":"6"},{"1":"SA Thomson","2":"NZ","3":"1990","4":"32.55","5":"30","6":"6"},{"1":"TE Bailey","2":"ENG","3":"1940","4":"32.46","5":"38","6":"6"},{"1":"A Flintoff","2":"ENG","3":"2000","4":"32.11","5":"66","6":"6"},{"1":"Q de Kock","2":"SA","3":"2010","4":"32.03","5":"28","6":"6"},{"1":"PJL Dujon","2":"WI","3":"1980","4":"30.52","5":"25","6":"6"},{"1":"SK Raina","2":"IND","3":"2010","4":"30.47","5":"24","6":"6"},{"1":"JC Adams","2":"WI","3":"1990","4":"30.44","5":"31","6":"6"},{"1":"MG Burgess","2":"NZ","3":"1960","4":"29.88","5":"20","6":"6"},{"1":"Abdul Razzaq","2":"PAK","3":"1990","4":"29.78","5":"23","6":"6"},{"1":"GS Ramchand","2":"IND","3":"1950","4":"29.64","5":"28","6":"6"},{"1":"OJ Pope","2":"ENG","3":"2010","4":"29.33","5":"23","6":"6"},{"1":"AP Sheahan","2":"AUS","3":"1960","4":"29.28","5":"30","6":"6"},{"1":"IT Botham","2":"ENG","3":"1970","4":"29.23","5":"94","6":"6"},{"1":"N Dickwella","2":"SL","3":"2010","4":"29.04","5":"24","6":"6"},{"1":"RJ Christiani","2":"WI","3":"1940","4":"27.83","5":"20","6":"6"},{"1":"V Pollard","2":"NZ","3":"1960","4":"27.56","5":"25","6":"6"},{"1":"MN Samuels","2":"WI","3":"2000","4":"27.26","5":"28","6":"6"},{"1":"JP Duminy","2":"SA","3":"2000","4":"27.04","5":"25","6":"6"},{"1":"BM McMillan","2":"SA","3":"1990","4":"26.84","5":"23","6":"6"},{"1":"DJ Bravo","2":"WI","3":"2000","4":"26.61","5":"50","6":"6"},{"1":"MR Marsh","2":"AUS","3":"2010","4":"26.61","5":"41","6":"6"},{"1":"MJK Smith","2":"ENG","3":"1960","4":"25.04","5":"26","6":"6"},{"1":"JA Rudolph","2":"SA","3":"2000","4":"23.15","5":"21","6":"6"},{"1":"APE Knott","2":"ENG","3":"1960","4":"22.95","5":"20","6":"6"},{"1":"GP Thorpe","2":"ENG","3":"1990","4":"19.65","5":"21","6":"6"},{"1":"BM McMillan","2":"SA","3":"1990","4":"52.94","5":"22","6":"7"},{"1":"Q de Kock","2":"SA","3":"2010","4":"50.54","5":"35","6":"7"},{"1":"HP Tillakaratne","2":"SL","3":"1980","4":"50.07","5":"22","6":"7"},{"1":"AC Gilchrist","2":"AUS","3":"1990","4":"45.44","5":"97","6":"7"},{"1":"GRJ Matthews","2":"AUS","3":"1980","4":"45.41","5":"33","6":"7"},{"1":"CL Cairns","2":"NZ","3":"1990","4":"43.74","5":"35","6":"7"},{"1":"Wasim Raja","2":"PAK","3":"1970","4":"43.34","5":"31","6":"7"},{"1":"JDP Oram","2":"NZ","3":"2000","4":"43.06","5":"21","6":"7"},{"1":"MJ Prior","2":"ENG","3":"2000","4":"41.09","5":"78","6":"7"},{"1":"APE Knott","2":"ENG","3":"1960","4":"41.00","5":"81","6":"7"},{"1":"LEG Ames","2":"ENG","3":"1930","4":"40.42","5":"24","6":"7"},{"1":"IT Botham","2":"ENG","3":"1970","4":"40.27","5":"36","6":"7"},{"1":"JM Bairstow","2":"ENG","3":"2010","4":"38.40","5":"40","6":"7"},{"1":"RA Jadeja","2":"IND","3":"2010","4":"38.22","5":"33","6":"7"},{"1":"BJ Haddin","2":"AUS","3":"2000","4":"38.10","5":"92","6":"7"},{"1":"RR Pant","2":"IND","3":"2010","4":"37.78","5":"20","6":"7"},{"1":"C de Grandhomme","2":"NZ","3":"2010","4":"36.25","5":"29","6":"7"},{"1":"Moin Khan","2":"PAK","3":"1990","4":"35.94","5":"41","6":"7"},{"1":"BT Foakes","2":"ENG","3":"2010","4":"35.70","5":"25","6":"7"},{"1":"TD Paine","2":"AUS","3":"2010","4":"35.04","5":"51","6":"7"},{"1":"Imran Khan","2":"PAK","3":"1970","4":"34.81","5":"63","6":"7"},{"1":"MM Ali","2":"ENG","3":"2010","4":"34.67","5":"34","6":"7"},{"1":"Sarfaraz Ahmed","2":"PAK","3":"2010","4":"34.39","5":"62","6":"7"},{"1":"JM Parks","2":"ENG","3":"1960","4":"33.74","5":"34","6":"7"},{"1":"PJL Dujon","2":"WI","3":"1980","4":"33.53","5":"69","6":"7"},{"1":"A Flintoff","2":"ENG/ICC","3":"1990","4":"33.22","5":"52","6":"7"},{"1":"SM Pollock","2":"SA","3":"1990","4":"32.39","5":"49","6":"7"},{"1":"Sir RJ Hadlee","2":"NZ","3":"1970","4":"32.15","5":"48","6":"7"},{"1":"BJ Watling","2":"NZ","3":"2010","4":"32.09","5":"51","6":"7"},{"1":"N Dickwella","2":"SL","3":"2010","4":"31.41","5":"43","6":"7"},{"1":"GE Gomez","2":"WI","3":"1940","4":"31.38","5":"21","6":"7"},{"1":"BB McCullum","2":"NZ","3":"2000","4":"31.33","5":"41","6":"7"},{"1":"Kamran Akmal","2":"PAK","3":"2000","4":"31.28","5":"43","6":"7"},{"1":"N Kapil Dev","2":"IND","3":"1970","4":"30.94","5":"96","6":"7"},{"1":"MS Dhoni","2":"IND","3":"2000","4":"30.54","5":"103","6":"7"},{"1":"HAPW Jayawardene","2":"SL","3":"2000","4":"30.18","5":"55","6":"7"},{"1":"PA Patel","2":"IND","3":"2000","4":"29.61","5":"23","6":"7"},{"1":"MS Wade","2":"AUS","3":"2010","4":"29.36","5":"24","6":"7"},{"1":"KJ Wadsworth","2":"NZ","3":"1960","4":"29.07","5":"31","6":"7"},{"1":"RD Jacobs","2":"WI","3":"1990","4":"28.96","5":"76","6":"7"},{"1":"Rashid Latif","2":"PAK","3":"1990","4":"28.44","5":"22","6":"7"},{"1":"RC Russell","2":"ENG","3":"1980","4":"27.95","5":"49","6":"7"},{"1":"IA Healy","2":"AUS","3":"1980","4":"27.85","5":"120","6":"7"},{"1":"G Miller","2":"ENG","3":"1970","4":"27.84","5":"27","6":"7"},{"1":"JC Buttler","2":"ENG","3":"2010","4":"27.62","5":"54","6":"7"},{"1":"RS Kaluwitharana","2":"SL","3":"1990","4":"26.95","5":"47","6":"7"},{"1":"GO Jones","2":"ENG","3":"2000","4":"26.66","5":"39","6":"7"},{"1":"RW Marsh","2":"AUS","3":"1970","4":"26.39","5":"123","6":"7"},{"1":"DL Murray","2":"WI","3":"1960","4":"25.28","5":"51","6":"7"},{"1":"MV Boucher","2":"SA","3":"1990","4":"25.18","5":"119","6":"7"},{"1":"SO Dowrich","2":"WI","3":"2010","4":"25.16","5":"35","6":"7"},{"1":"JR Murray","2":"WI","3":"1990","4":"25.16","5":"34","6":"7"},{"1":"Abdul Razzaq","2":"PAK","3":"2000","4":"25.12","5":"33","6":"7"},{"1":"AC Parore","2":"NZ","3":"1990","4":"24.95","5":"47","6":"7"},{"1":"DAJ Holford","2":"WI","3":"1960","4":"24.68","5":"24","6":"7"},{"1":"ED Solkar","2":"IND","3":"1960","4":"24.47","5":"20","6":"7"},{"1":"WP Saha","2":"IND","3":"2010","4":"24.32","5":"30","6":"7"},{"1":"D Ramdin","2":"WI","3":"2000","4":"24.31","5":"79","6":"7"},{"1":"SMH Kirmani","2":"IND","3":"1970","4":"23.96","5":"35","6":"7"},{"1":"S Madan Lal","2":"IND","3":"1970","4":"23.73","5":"20","6":"7"},{"1":"JO Holder","2":"WI","3":"2010","4":"23.66","5":"32","6":"7"},{"1":"AK Davidson","2":"AUS","3":"1950","4":"23.23","5":"22","6":"7"},{"1":"Wasim Akram","2":"PAK","3":"1980","4":"23.08","5":"29","6":"7"},{"1":"Intikhab Alam","2":"PAK","3":"1960","4":"23.07","5":"28","6":"7"},{"1":"PR Downton","2":"ENG","3":"1980","4":"22.70","5":"20","6":"7"},{"1":"R Illingworth","2":"ENG","3":"1950","4":"22.67","5":"38","6":"7"},{"1":"R Benaud","2":"AUS","3":"1950","4":"21.88","5":"37","6":"7"},{"1":"R Ashwin","2":"IND","3":"2010","4":"21.82","5":"24","6":"7"},{"1":"WK Lees","2":"NZ","3":"1970","4":"21.69","5":"28","6":"7"},{"1":"CC Lewis","2":"ENG","3":"1990","4":"21.14","5":"21","6":"7"},{"1":"C White","2":"ENG","3":"1990","4":"20.95","5":"23","6":"7"},{"1":"NR Mongia","2":"IND","3":"1990","4":"20.88","5":"30","6":"7"},{"1":"CS Baugh","2":"WI","3":"2000","4":"20.13","5":"25","6":"7"},{"1":"TG Evans","2":"ENG","3":"1940","4":"19.60","5":"69","6":"7"},{"1":"DJ Richardson","2":"SA","3":"1990","4":"19.38","5":"23","6":"7"},{"1":"WAS Oldfield","2":"AUS","3":"1920","4":"18.29","5":"20","6":"7"},{"1":"MV Boucher","2":"ICC/SA","3":"1990","4":"37.83","5":"45","6":"8"},{"1":"MJ Prior","2":"ENG","3":"2000","4":"36.47","5":"22","6":"8"},{"1":"DL Vettori","2":"NZ","3":"1990","4":"36.23","5":"61","6":"8"},{"1":"PR Reiffel","2":"AUS","3":"1990","4":"35.00","5":"24","6":"8"},{"1":"JO Holder","2":"WI","3":"2010","4":"33.64","5":"52","6":"8"},{"1":"Kamran Akmal","2":"PAK","3":"2000","4":"33.61","5":"28","6":"8"},{"1":"N Kapil Dev","2":"IND","3":"1970","4":"33.52","5":"58","6":"8"},{"1":"RA Jadeja","2":"IND","3":"2010","4":"31.61","5":"30","6":"8"},{"1":"SM Pollock","2":"SA","3":"1990","4":"30.96","5":"79","6":"8"},{"1":"RC Russell","2":"ENG","3":"1980","4":"30.14","5":"20","6":"8"},{"1":"RG Nadkarni","2":"IND","3":"1950","4":"29.50","5":"20","6":"8"},{"1":"SM Curran","2":"ENG","3":"2010","4":"29.30","5":"23","6":"8"},{"1":"CL Cairns","2":"NZ","3":"1980","4":"29.23","5":"28","6":"8"},{"1":"KJ O Keeffe","2":"AUS","3":"1970","4":"28.88","5":"23","6":"8"},{"1":"D Ramdin","2":"WI","3":"2000","4":"28.81","5":"20","6":"8"},{"1":"SMH Kirmani","2":"IND","3":"1970","4":"28.61","5":"43","6":"8"},{"1":"IK Pathan","2":"IND","3":"2000","4":"28.55","5":"20","6":"8"},{"1":"IDS Smith","2":"NZ","3":"1980","4":"28.23","5":"35","6":"8"},{"1":"JE Emburey","2":"ENG","3":"1980","4":"27.85","5":"31","6":"8"},{"1":"Sir RJ Hadlee","2":"NZ","3":"1970","4":"27.44","5":"53","6":"8"},{"1":"Imran Khan","2":"PAK","3":"1970","4":"27.15","5":"30","6":"8"},{"1":"BR Taylor","2":"NZ","3":"1960","4":"26.95","5":"22","6":"8"},{"1":"R Ashwin","2":"IND","3":"2010","4":"26.88","5":"68","6":"8"},{"1":"AK Davidson","2":"AUS","3":"1950","4":"26.52","5":"22","6":"8"},{"1":"MM Ali","2":"ENG","3":"2010","4":"26.48","5":"31","6":"8"},{"1":"DJ Richardson","2":"SA","3":"1990","4":"26.34","5":"27","6":"8"},{"1":"IA Healy","2":"AUS","3":"1980","4":"25.64","5":"43","6":"8"},{"1":"KS More","2":"IND","3":"1980","4":"25.63","5":"23","6":"8"},{"1":"MG Hughes","2":"AUS","3":"1980","4":"25.00","5":"26","6":"8"},{"1":"VD Philander","2":"SA","3":"2010","4":"24.68","5":"43","6":"8"},{"1":"TG Evans","2":"ENG","3":"1940","4":"23.80","5":"41","6":"8"},{"1":"CC Lewis","2":"ENG","3":"1990","4":"23.77","5":"24","6":"8"},{"1":"APE Knott","2":"ENG","3":"1960","4":"23.50","5":"33","6":"8"},{"1":"MG Johnson","2":"AUS","3":"2000","4":"23.08","5":"67","6":"8"},{"1":"Harbhajan Singh","2":"IND","3":"2000","4":"22.92","5":"54","6":"8"},{"1":"WPUJC Vaas","2":"SL","3":"1990","4":"22.34","5":"82","6":"8"},{"1":"MW Tate","2":"ENG","3":"1920","4":"22.30","5":"20","6":"8"},{"1":"Moin Khan","2":"PAK","3":"1990","4":"22.22","5":"31","6":"8"},{"1":"SCJ Broad","2":"ENG","3":"2000","4":"22.00","5":"64","6":"8"},{"1":"CR Woakes","2":"ENG","3":"2010","4":"21.47","5":"43","6":"8"},{"1":"DJG Sammy","2":"WI","3":"2000","4":"21.31","5":"45","6":"8"},{"1":"PAJ DeFreitas","2":"ENG","3":"1980","4":"21.10","5":"21","6":"8"},{"1":"MD Marshall","2":"WI","3":"1980","4":"21.00","5":"75","6":"8"},{"1":"R Illingworth","2":"ENG","3":"1950","4":"20.75","5":"28","6":"8"},{"1":"Wasim Akram","2":"PAK","3":"1980","4":"20.62","5":"51","6":"8"},{"1":"AF Giles","2":"ENG","3":"2000","4":"20.58","5":"40","6":"8"},{"1":"KD Ghavri","2":"IND","3":"1970","4":"20.08","5":"28","6":"8"},{"1":"SK Warne","2":"AUS","3":"1990","4":"19.48","5":"110","6":"8"},{"1":"FJ Titmus","2":"ENG","3":"1950","4":"19.22","5":"39","6":"8"},{"1":"AC Parore","2":"NZ","3":"1990","4":"19.16","5":"23","6":"8"},{"1":"A Kumble","2":"IND","3":"1990","4":"19.03","5":"77","6":"8"},{"1":"HMRKB Herath","2":"SL","3":"1990","4":"18.88","5":"31","6":"8"},{"1":"HDPK Dharmasena","2":"SL","3":"1990","4":"18.61","5":"24","6":"8"},{"1":"Saqlain Mushtaq","2":"PAK","3":"1990","4":"18.50","5":"21","6":"8"},{"1":"J Briggs","2":"ENG","3":"1880","4":"18.31","5":"20","6":"8"},{"1":"TG Southee","2":"NZ","3":"2000","4":"18.11","5":"29","6":"8"},{"1":"DG Cork","2":"ENG","3":"1990","4":"17.83","5":"21","6":"8"},{"1":"Yasir Shah","2":"PAK","3":"2010","4":"17.73","5":"24","6":"8"},{"1":"S Abid Ali","2":"IND","3":"1960","4":"17.61","5":"20","6":"8"},{"1":"DR Pringle","2":"ENG","3":"1980","4":"16.73","5":"20","6":"8"},{"1":"MA Starc","2":"AUS","3":"2010","4":"16.53","5":"35","6":"8"},{"1":"WAS Oldfield","2":"AUS","3":"1920","4":"16.42","5":"26","6":"8"},{"1":"KA Maharaj","2":"SA","3":"2010","4":"16.32","5":"27","6":"8"},{"1":"DAJ Bracewell","2":"NZ","3":"2010","4":"15.34","5":"25","6":"8"},{"1":"B Yardley","2":"AUS","3":"1970","4":"15.21","5":"37","6":"8"},{"1":"PR Downton","2":"ENG","3":"1980","4":"15.00","5":"22","6":"8"},{"1":"RW Taylor","2":"ENG","3":"1970","4":"14.71","5":"34","6":"8"},{"1":"Fazal Mahmood","2":"PAK","3":"1950","4":"14.57","5":"20","6":"8"},{"1":"Wasim Bari","2":"PAK","3":"1960","4":"14.48","5":"41","6":"8"},{"1":"AR Caddick","2":"ENG","3":"1990","4":"14.17","5":"20","6":"8"},{"1":"GD McKenzie","2":"AUS","3":"1960","4":"14.13","5":"24","6":"8"},{"1":"CM Old","2":"ENG","3":"1970","4":"13.90","5":"38","6":"8"},{"1":"RJ Bright","2":"AUS","3":"1970","4":"13.82","5":"21","6":"8"},{"1":"AB Agarkar","2":"IND","3":"1990","4":"13.33","5":"21","6":"8"},{"1":"MDK Perera","2":"SL","3":"2010","4":"13.26","5":"45","6":"8"},{"1":"PJ Cummins","2":"AUS","3":"2010","4":"13.26","5":"40","6":"8"},{"1":"Mohammad Amir","2":"PAK","3":"2000","4":"13.12","5":"36","6":"8"},{"1":"PM Siddle","2":"AUS","3":"2010","4":"12.80","5":"21","6":"8"},{"1":"Abdul Qadir","2":"PAK","3":"1980","4":"12.45","5":"22","6":"8"},{"1":"IR Bishop","2":"WI","3":"1990","4":"12.25","5":"30","6":"8"},{"1":"KD Ghavri","2":"IND","3":"1970","4":"31.41","5":"22","6":"9"},{"1":"WPUJC Vaas","2":"SL","3":"1990","4":"28.53","5":"40","6":"9"},{"1":"IDS Smith","2":"NZ","3":"1980","4":"28.46","5":"36","6":"9"},{"1":"VD Philander","2":"SA","3":"2010","4":"28.23","5":"28","6":"9"},{"1":"N Boje","2":"SA","3":"2000","4":"26.80","5":"37","6":"9"},{"1":"JJ Kelly","2":"AUS","3":"1890","4":"26.75","5":"21","6":"9"},{"1":"KS More","2":"IND","3":"1980","4":"25.52","5":"29","6":"9"},{"1":"RJ Harris","2":"AUS","3":"2010","4":"24.53","5":"21","6":"9"},{"1":"DL Vettori","2":"ICC/NZ","3":"1990","4":"23.82","5":"47","6":"9"},{"1":"GP Swann","2":"ENG","3":"2000","4":"23.18","5":"41","6":"9"},{"1":"DW Steyn","2":"SA","3":"2000","4":"23.00","5":"20","6":"9"},{"1":"DJ Nash","2":"NZ","3":"1990","4":"23.00","5":"23","6":"9"},{"1":"SMH Kirmani","2":"IND","3":"1970","4":"22.88","5":"25","6":"9"},{"1":"MA Starc","2":"AUS","3":"2010","4":"22.51","5":"57","6":"9"},{"1":"B Kumar","2":"IND","3":"2010","4":"22.44","5":"22","6":"9"},{"1":"J Srinath","2":"IND","3":"1990","4":"22.03","5":"29","6":"9"},{"1":"Wasim Akram","2":"PAK","3":"1980","4":"21.96","5":"29","6":"9"},{"1":"B Lee","2":"AUS","3":"1990","4":"20.81","5":"59","6":"9"},{"1":"PR Reiffel","2":"AUS","3":"1990","4":"20.77","5":"23","6":"9"},{"1":"Intikhab Alam","2":"PAK","3":"1960","4":"20.57","5":"22","6":"9"},{"1":"SCJ Broad","2":"ENG","3":"2000","4":"20.40","5":"72","6":"9"},{"1":"Sir RJ Hadlee","2":"NZ","3":"1970","4":"20.33","5":"22","6":"9"},{"1":"AF Giles","2":"ENG","3":"1990","4":"19.93","5":"36","6":"9"},{"1":"HJ Tayfield","2":"SA","3":"1950","4":"19.17","5":"29","6":"9"},{"1":"JN Gillespie","2":"AUS","3":"1990","4":"18.44","5":"39","6":"9"},{"1":"RW Taylor","2":"ENG","3":"1970","4":"18.18","5":"22","6":"9"},{"1":"Abdul Qadir","2":"PAK","3":"1970","4":"18.09","5":"23","6":"9"},{"1":"MA Holding","2":"WI","3":"1970","4":"17.52","5":"23","6":"9"},{"1":"BL Cairns","2":"NZ","3":"1970","4":"17.28","5":"34","6":"9"},{"1":"JC Laker","2":"ENG","3":"1940","4":"16.88","5":"31","6":"9"},{"1":"DG Cork","2":"ENG","3":"1990","4":"16.72","5":"20","6":"9"},{"1":"JE Emburey","2":"ENG","3":"1970","4":"15.89","5":"39","6":"9"},{"1":"Sarfraz Nawaz","2":"PAK","3":"1970","4":"15.73","5":"34","6":"9"},{"1":"SJ Benn","2":"WI","3":"2000","4":"15.66","5":"25","6":"9"},{"1":"PM Siddle","2":"AUS","3":"2000","4":"15.58","5":"35","6":"9"},{"1":"CV Grimmett","2":"AUS","3":"1920","4":"15.55","5":"24","6":"9"},{"1":"RR Lindwall","2":"AUS","3":"1940","4":"15.52","5":"37","6":"9"},{"1":"WW Hall","2":"WI","3":"1960","4":"15.11","5":"20","6":"9"},{"1":"TG Southee","2":"NZ","3":"2000","4":"15.09","5":"78","6":"9"},{"1":"Wasim Bari","2":"PAK","3":"1960","4":"15.04","5":"30","6":"9"},{"1":"PL Harris","2":"SA","3":"2000","4":"14.95","5":"26","6":"9"},{"1":"KAJ Roach","2":"WI","3":"2010","4":"14.79","5":"48","6":"9"},{"1":"SK Warne","2":"AUS","3":"1990","4":"14.58","5":"52","6":"9"},{"1":"RC Motz","2":"NZ","3":"1960","4":"14.32","5":"31","6":"9"},{"1":"PAJ DeFreitas","2":"ENG","3":"1980","4":"14.20","5":"26","6":"9"},{"1":"JA Snow","2":"ENG","3":"1960","4":"14.13","5":"33","6":"9"},{"1":"AV Bedser","2":"ENG","3":"1940","4":"13.95","5":"26","6":"9"},{"1":"HMRKB Herath","2":"SL","3":"1990","4":"13.84","5":"71","6":"9"},{"1":"Mohammed Shami","2":"IND","3":"2010","4":"13.84","5":"22","6":"9"},{"1":"MG Hughes","2":"AUS","3":"1980","4":"13.57","5":"20","6":"9"},{"1":"D Gough","2":"ENG","3":"1990","4":"13.32","5":"28","6":"9"},{"1":"NBF Mann","2":"SA","3":"1940","4":"13.14","5":"22","6":"9"},{"1":"K Rabada","2":"SA","3":"2010","4":"13.07","5":"48","6":"9"},{"1":"A Kumble","2":"IND","3":"1990","4":"13.05","5":"40","6":"9"},{"1":"PH Edmonds","2":"ENG","3":"1970","4":"13.05","5":"22","6":"9"},{"1":"S Venkataraghavan","2":"IND","3":"1960","4":"12.82","5":"27","6":"9"},{"1":"Harbhajan Singh","2":"IND","3":"1990","4":"12.78","5":"52","6":"9"},{"1":"CJ McDermott","2":"AUS","3":"1980","4":"12.69","5":"36","6":"9"},{"1":"RAS Lakmal","2":"SL","3":"2010","4":"12.33","5":"27","6":"9"},{"1":"GF Lawson","2":"AUS","3":"1980","4":"12.14","5":"35","6":"9"},{"1":"CEL Ambrose","2":"WI","3":"1980","4":"12.01","5":"97","6":"9"},{"1":"FS Trueman","2":"ENG","3":"1950","4":"11.97","5":"40","6":"9"},{"1":"Mushtaq Ahmed","2":"PAK","3":"1990","4":"11.80","5":"23","6":"9"},{"1":"JE Taylor","2":"WI","3":"2000","4":"11.67","5":"30","6":"9"},{"1":"DK Lillee","2":"AUS","3":"1970","4":"11.53","5":"37","6":"9"},{"1":"Z Khan","2":"IND","3":"2000","4":"11.52","5":"61","6":"9"},{"1":"VA Holder","2":"WI","3":"1960","4":"11.47","5":"23","6":"9"},{"1":"GP Wickramasinghe","2":"SL","3":"1990","4":"11.29","5":"26","6":"9"},{"1":"ATW Grout","2":"AUS","3":"1950","4":"10.96","5":"29","6":"9"},{"1":"EAS Prasanna","2":"IND","3":"1960","4":"10.85","5":"43","6":"9"},{"1":"KA Maharaj","2":"SA","3":"2010","4":"10.60","5":"27","6":"9"},{"1":"GD McKenzie","2":"AUS","3":"1960","4":"10.51","5":"39","6":"9"},{"1":"Umar Gul","2":"PAK","3":"2000","4":"10.36","5":"37","6":"9"},{"1":"Yasir Shah","2":"PAK","3":"2010","4":"10.25","5":"29","6":"9"},{"1":"AR Caddick","2":"ENG","3":"1990","4":"9.73","5":"29","6":"9"},{"1":"Waqar Younis","2":"PAK","3":"1990","4":"9.21","5":"42","6":"9"},{"1":"DL Underwood","2":"ENG","3":"1960","4":"9.16","5":"24","6":"9"},{"1":"I Sharma","2":"IND","3":"2010","4":"9.15","5":"23","6":"9"},{"1":"MJ Hoggard","2":"ENG","3":"2000","4":"8.24","5":"38","6":"9"},{"1":"Saqlain Mushtaq","2":"PAK","3":"1990","4":"6.90","5":"22","6":"9"},{"1":"M Dillon","2":"WI","3":"1990","4":"6.83","5":"24","6":"9"},{"1":"DBL Powell","2":"WI","3":"2000","4":"6.47","5":"24","6":"9"},{"1":"PM Pollock","2":"SA","3":"1960","4":"22.46","5":"20","6":"10"},{"1":"FS Trueman","2":"ENG","3":"1950","4":"21.05","5":"26","6":"10"},{"1":"DK Lillee","2":"AUS","3":"1970","4":"19.05","5":"30","6":"10"},{"1":"SK Warne","2":"AUS","3":"1990","4":"18.93","5":"21","6":"10"},{"1":"N Wagner","2":"NZ","3":"2010","4":"18.46","5":"45","6":"10"},{"1":"SB Doull","2":"NZ","3":"1990","4":"18.26","5":"25","6":"10"},{"1":"Sarfraz Nawaz","2":"PAK","3":"1970","4":"17.60","5":"23","6":"10"},{"1":"TG Southee","2":"NZ","3":"2000","4":"17.47","5":"22","6":"10"},{"1":"CEL Ambrose","2":"WI","3":"1980","4":"17.27","5":"28","6":"10"},{"1":"A Kumble","2":"IND","3":"1990","4":"16.78","5":"21","6":"10"},{"1":"GAR Lock","2":"ENG","3":"1950","4":"16.68","5":"21","6":"10"},{"1":"MA Wood","2":"ENG","3":"2010","4":"16.05","5":"26","6":"10"},{"1":"VA Holder","2":"WI","3":"1960","4":"15.95","5":"26","6":"10"},{"1":"PM Siddle","2":"AUS","3":"2000","4":"15.86","5":"28","6":"10"},{"1":"M Morkel","2":"SA","3":"2000","4":"15.80","5":"35","6":"10"},{"1":"NS Yadav","2":"IND","3":"1970","4":"15.65","5":"30","6":"10"},{"1":"WW Hall","2":"WI","3":"1950","4":"14.90","5":"41","6":"10"},{"1":"GRA Langley","2":"AUS","3":"1950","4":"14.57","5":"22","6":"10"},{"1":"Iqbal Qasim","2":"PAK","3":"1970","4":"14.47","5":"30","6":"10"},{"1":"D Gough","2":"ENG","3":"1990","4":"14.14","5":"29","6":"10"},{"1":"MJ Leach","2":"ENG","3":"2010","4":"13.84","5":"30","6":"10"},{"1":"JN Gillespie","2":"AUS","3":"1990","4":"13.47","5":"34","6":"10"},{"1":"EAS Prasanna","2":"IND","3":"1960","4":"13.46","5":"23","6":"10"},{"1":"SCG MacGill","2":"AUS","3":"1990","4":"13.28","5":"24","6":"10"},{"1":"DK Morrison","2":"NZ","3":"1980","4":"13.05","5":"32","6":"10"},{"1":"NM Lyon","2":"AUS","3":"2010","4":"13.01","5":"67","6":"10"},{"1":"MA Holding","2":"WI","3":"1970","4":"12.86","5":"26","6":"10"},{"1":"CJ McDermott","2":"AUS","3":"1980","4":"12.78","5":"39","6":"10"},{"1":"Wasim Bari","2":"PAK","3":"1960","4":"12.42","5":"25","6":"10"},{"1":"SCJ Broad","2":"ENG","3":"2000","4":"12.36","5":"76","6":"10"},{"1":"Waqar Younis","2":"PAK","3":"1990","4":"12.30","5":"41","6":"10"},{"1":"DW Steyn","2":"SA","3":"2000","4":"12.15","5":"59","6":"10"},{"1":"JR Thomson","2":"AUS","3":"1970","4":"12.08","5":"35","6":"10"},{"1":"M Ntini","2":"SA","3":"2000","4":"11.89","5":"35","6":"10"},{"1":"DL Underwood","2":"ENG","3":"1960","4":"11.67","5":"49","6":"10"},{"1":"SJ Harmison","2":"ENG/ICC","3":"2000","4":"11.54","5":"43","6":"10"},{"1":"AME Roberts","2":"WI","3":"1970","4":"11.09","5":"26","6":"10"},{"1":"Z Khan","2":"IND","3":"2000","4":"11.06","5":"36","6":"10"},{"1":"J Srinath","2":"IND","3":"1990","4":"10.94","5":"23","6":"10"},{"1":"RS Cunis","2":"NZ","3":"1960","4":"10.93","5":"22","6":"10"},{"1":"Mohammed Shami","2":"IND","3":"2010","4":"10.88","5":"37","6":"10"},{"1":"HMRKB Herath","2":"SL","3":"2000","4":"10.73","5":"22","6":"10"},{"1":"M Muralidaran","2":"SL","3":"1990","4":"10.63","5":"47","6":"10"},{"1":"RAS Lakmal","2":"SL","3":"2010","4":"10.57","5":"37","6":"10"},{"1":"AV Bedser","2":"ENG","3":"1940","4":"10.41","5":"24","6":"10"},{"1":"GG Arnold","2":"ENG","3":"1970","4":"10.35","5":"20","6":"10"},{"1":"MS Kasprowicz","2":"AUS","3":"1990","4":"10.23","5":"43","6":"10"},{"1":"RGD Willis","2":"ENG","3":"1970","4":"10.21","5":"50","6":"10"},{"1":"JW Gleeson","2":"AUS","3":"1960","4":"10.10","5":"35","6":"10"},{"1":"Mushtaq Ahmed","2":"PAK","3":"1990","4":"9.93","5":"23","6":"10"},{"1":"UT Yadav","2":"IND","3":"2010","4":"9.81","5":"24","6":"10"},{"1":"AA Donald","2":"SA","3":"1990","4":"9.23","5":"53","6":"10"},{"1":"JM Anderson","2":"ENG","3":"2000","4":"9.13","5":"49","6":"10"},{"1":"KAJ Roach","2":"WI","3":"2000","4":"9.09","5":"30","6":"10"},{"1":"RO Collinge","2":"NZ","3":"1960","4":"9.06","5":"21","6":"10"},{"1":"BS Bedi","2":"IND","3":"1960","4":"9.03","5":"69","6":"10"},{"1":"IE O Brien","2":"NZ","3":"2000","4":"8.86","5":"26","6":"10"},{"1":"Shoaib Akhtar","2":"PAK","3":"1990","4":"8.68","5":"25","6":"10"},{"1":"Danish Kaneria","2":"PAK","3":"2000","4":"8.58","5":"20","6":"10"},{"1":"CA Walsh","2":"WI","3":"1980","4":"8.35","5":"55","6":"10"},{"1":"FH Edwards","2":"WI","3":"2000","4":"8.03","5":"37","6":"10"},{"1":"K Rabada","2":"SA","3":"2010","4":"7.90","5":"25","6":"10"},{"1":"I Sharma","2":"IND","3":"2000","4":"7.82","5":"54","6":"10"},{"1":"RM Hogg","2":"AUS","3":"1970","4":"7.71","5":"29","6":"10"},{"1":"CD Collymore","2":"WI","3":"1990","4":"7.66","5":"20","6":"10"},{"1":"JB Statham","2":"ENG","3":"1950","4":"7.38","5":"31","6":"10"},{"1":"J Garner","2":"WI","3":"1970","4":"7.34","5":"29","6":"10"},{"1":"Mahmood Hussain","2":"PAK","3":"1950","4":"7.11","5":"21","6":"10"},{"1":"GP Wickramasinghe","2":"SL","3":"1990","4":"7.04","5":"25","6":"10"},{"1":"AR Caddick","2":"ENG","3":"1990","4":"6.90","5":"35","6":"10"},{"1":"S Ramadhin","2":"WI","3":"1950","4":"6.42","5":"33","6":"10"},{"1":"SF Barnes","2":"ENG","3":"1900","4":"6.29","5":"23","6":"10"},{"1":"ARC Fraser","2":"ENG","3":"1980","4":"5.17","5":"30","6":"10"},{"1":"PT Collins","2":"WI","3":"1990","4":"2.66","5":"21","6":"10"},{"1":"DL Underwood","2":"ENG","3":"1960","4":"18.20","5":"27","6":"11"},{"1":"NM Lyon","2":"AUS","3":"2010","4":"15.27","5":"50","6":"11"},{"1":"Mohammed Shami","2":"IND","3":"2010","4":"14.80","5":"22","6":"11"},{"1":"TA Boult","2":"NZ","3":"2010","4":"14.73","5":"75","6":"11"},{"1":"WA Johnston","2":"AUS","3":"1940","4":"14.45","5":"33","6":"11"},{"1":"JR Thomson","2":"AUS","3":"1970","4":"14.35","5":"24","6":"11"},{"1":"JB Statham","2":"ENG","3":"1950","4":"13.92","5":"46","6":"11"},{"1":"AA Donald","2":"SA","3":"1990","4":"13.60","5":"32","6":"11"},{"1":"JR Hazlewood","2":"AUS","3":"2010","4":"13.42","5":"45","6":"11"},{"1":"HJ Howarth","2":"NZ","3":"1960","4":"13.28","5":"21","6":"11"},{"1":"RGD Willis","2":"ENG","3":"1970","4":"12.91","5":"78","6":"11"},{"1":"AA Mailey","2":"AUS","3":"1920","4":"12.21","5":"22","6":"11"},{"1":"J Srinath","2":"IND","3":"1990","4":"12.20","5":"20","6":"11"},{"1":"SJ Harmison","2":"ENG","3":"2000","4":"11.84","5":"29","6":"11"},{"1":"AN Connolly","2":"AUS","3":"1960","4":"11.14","5":"38","6":"11"},{"1":"M Muralidaran","2":"ICC/SL","3":"1990","4":"10.92","5":"90","6":"11"},{"1":"T Richardson","2":"ENG","3":"1890","4":"10.64","5":"21","6":"11"},{"1":"CEH Croft","2":"WI","3":"1970","4":"10.57","5":"24","6":"11"},{"1":"UT Yadav","2":"IND","3":"2010","4":"10.33","5":"24","6":"11"},{"1":"M Ntini","2":"SA","3":"1990","4":"8.97","5":"74","6":"11"},{"1":"FJ Cameron","2":"NZ","3":"1960","4":"8.90","5":"29","6":"11"},{"1":"S Sreesanth","2":"IND","3":"2000","4":"8.84","5":"21","6":"11"},{"1":"EJ Chatfield","2":"NZ","3":"1970","4":"8.38","5":"52","6":"11"},{"1":"Mohammad Asif","2":"PAK","3":"2000","4":"8.21","5":"26","6":"11"},{"1":"GR Dilley","2":"ENG","3":"1980","4":"8.17","5":"28","6":"11"},{"1":"BS Bedi","2":"IND","3":"1960","4":"8.12","5":"27","6":"11"},{"1":"M Morkel","2":"SA","3":"2010","4":"8.07","5":"38","6":"11"},{"1":"NG Cowans","2":"ENG","3":"1980","4":"7.90","5":"27","6":"11"},{"1":"TM Alderman","2":"AUS","3":"1980","4":"7.86","5":"42","6":"11"},{"1":"I Sharma","2":"IND","3":"2000","4":"7.77","5":"47","6":"11"},{"1":"JM Anderson","2":"ENG","3":"2000","4":"7.75","5":"172","6":"11"},{"1":"C Blythe","2":"ENG","3":"1900","4":"7.64","5":"23","6":"11"},{"1":"GD McGrath","2":"AUS","3":"1990","4":"7.56","5":"127","6":"11"},{"1":"MJ Hoggard","2":"ENG","3":"2000","4":"7.45","5":"23","6":"11"},{"1":"CA Walsh","2":"WI","3":"1980","4":"7.42","5":"120","6":"11"},{"1":"CD Collymore","2":"WI","3":"2000","4":"7.33","5":"26","6":"11"},{"1":"ARC Fraser","2":"ENG","3":"1990","4":"7.30","5":"21","6":"11"},{"1":"SP Gupte","2":"IND","3":"1950","4":"7.23","5":"23","6":"11"},{"1":"Sikander Bakht","2":"PAK","3":"1970","4":"7.23","5":"24","6":"11"},{"1":"AJ Bell","2":"SA","3":"1920","4":"7.00","5":"20","6":"11"},{"1":"BP Patterson","2":"WI","3":"1980","4":"6.90","5":"37","6":"11"},{"1":"H Strudwick","2":"ENG","3":"1910","4":"6.85","5":"25","6":"11"},{"1":"M Hendrick","2":"ENG","3":"1970","4":"6.84","5":"28","6":"11"},{"1":"Danish Kaneria","2":"PAK","3":"2000","4":"6.65","5":"57","6":"11"},{"1":"DVP Wright","2":"ENG","3":"1940","4":"6.56","5":"21","6":"11"},{"1":"ND Hirwani","2":"IND","3":"1980","4":"6.00","5":"21","6":"11"},{"1":"BKV Prasad","2":"IND","3":"1990","4":"5.53","5":"26","6":"11"},{"1":"MS Panesar","2":"ENG","3":"2000","4":"5.43","5":"52","6":"11"},{"1":"DE Malcolm","2":"ENG","3":"1980","4":"5.37","5":"49","6":"11"},{"1":"L Ngidi","2":"SA","3":"2010","4":"5.23","5":"26","6":"11"},{"1":"PCR Tufnell","2":"ENG","3":"1990","4":"5.05","5":"42","6":"11"},{"1":"PR Adams","2":"SA","3":"1990","4":"5.00","5":"28","6":"11"},{"1":"LR Gibbs","2":"WI","3":"1960","4":"4.94","5":"71","6":"11"},{"1":"AL Valentine","2":"WI","3":"1950","4":"4.92","5":"46","6":"11"},{"1":"JD Higgs","2":"AUS","3":"1970","4":"4.92","5":"27","6":"11"},{"1":"BA Reid","2":"AUS","3":"1980","4":"4.86","5":"28","6":"11"},{"1":"FH Edwards","2":"WI","3":"2000","4":"4.61","5":"34","6":"11"},{"1":"Mohammed Siraj","2":"IND","3":"2020","4":"4.58","5":"22","6":"11"},{"1":"BS Chandrasekhar","2":"IND","3":"1960","4":"4.43","5":"75","6":"11"},{"1":"NAT Adcock","2":"SA","3":"1950","4":"4.34","5":"35","6":"11"},{"1":"ST Gabriel","2":"WI","3":"2010","4":"4.33","5":"67","6":"11"},{"1":"DR Doshi","2":"IND","3":"1970","4":"4.33","5":"36","6":"11"},{"1":"N Pradeep","2":"SL","3":"2010","4":"3.80","5":"47","6":"11"},{"1":"Maninder Singh","2":"IND","3":"1980","4":"3.36","5":"30","6":"11"},{"1":"CN McCarthy","2":"SA","3":"1940","4":"2.87","5":"23","6":"11"},{"1":"JJ Bumrah","2":"IND","3":"2010","4":"2.43","5":"27","6":"11"},{"1":"JV Saunders","2":"AUS","3":"1900","4":"2.40","5":"21","6":"11"},{"1":"CS Martin","2":"NZ","3":"2000","4":"2.18","5":"95","6":"11"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p><br></p>
+<p>We can then analyse the data by batting order, using the splendid <code>gganimate</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data_batsmen <span class="sc">|&gt;</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> Decade,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> Average,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> Country, </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">size =</span> Innings</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"First decade of the batsman's career"</span>,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">""</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span> </span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Players who have ever batted at {closest_state} in the order'</span>,</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">'Average when batting at that position'</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span> </span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transition_states</span>(</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">states =</span> Order,</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">transition_length =</span> <span class="dv">2</span>,</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">state_length =</span> <span class="dv">1</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span> </span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ease_aes</span>(<span class="st">'cubic-in-out'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.gif" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br></p>
+<p>Although that looks cool, I find it hard to detect patterns in animations, and so switch to a static plot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data_batsmen <span class="sc">|&gt;</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> Order,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> Average,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">colour =</span> Decade</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">11</span>), <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">11</span>)) <span class="sc">+</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">50</span>, <span class="dv">100</span>), <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">50</span>, <span class="dv">100</span>)) <span class="sc">+</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Decade) <span class="sc">+</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">'Data is limited before the 1950s</span><span class="sc">\n</span><span class="st">'</span>,</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">'Batting average, when batting at that position, for a career that started in the given decade'</span>,</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">Batting order"</span>,</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="cn">NULL</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span> </span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title.position =</span> <span class="st">"plot"</span>,</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="dv">1</span>)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br></p>
+<p>Given the paucity of data before the 1950s and in this decade, it makes sense to drop these decades from our analysis. If we do so and also add best-fit lines to the decade-by-decade charts above, we get the following.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data_batsmen <span class="sc">|&gt;</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">between</span>(Decade, <span class="dv">1950</span>, <span class="dv">2010</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Decade =</span> <span class="fu">as_factor</span>(Decade)) <span class="sc">|&gt;</span> </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> Order,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> Average,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">colour =</span> Decade</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span> </span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_brewer</span>(<span class="at">palette =</span> <span class="st">"Blues"</span>, <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">11</span>), <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>, <span class="dv">11</span>)) <span class="sc">+</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">50</span>, <span class="dv">100</span>), <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">50</span>, <span class="dv">100</span>)) <span class="sc">+</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Decade) <span class="sc">+</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">'Typical averages by batting order follow a similar shape over the decades</span><span class="sc">\n</span><span class="st">'</span>,</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">'Batting average, when batting at that position, for a career that started in the given decade'</span>,</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">Batting order"</span>,</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="cn">NULL</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span> </span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title.position =</span> <span class="st">"plot"</span>,</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="dv">1</span>)</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br></p>
+<p>To get a better sense of the trends, let’s now just consider these best-fit lines as one chart, where darker lines represent earlier starting decades of a career.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>data_batsmen <span class="sc">|&gt;</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">between</span>(Decade, <span class="dv">1950</span>, <span class="dv">2010</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Decade =</span> <span class="fu">as_factor</span>(Decade)) <span class="sc">|&gt;</span> </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> Order,</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> Average,</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">colour =</span> Decade,</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">group =</span> Decade</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_brewer</span>(<span class="at">palette =</span> <span class="st">"Blues"</span>, <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">11</span>, <span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">11</span>, <span class="at">minor_breaks =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">minor_breaks =</span> <span class="cn">NULL</span>, <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="cn">NA</span>), <span class="at">labels =</span> <span class="dv">20</span> <span class="sc">*</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">breaks =</span> <span class="dv">20</span> <span class="sc">*</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">'Higher-order averages have typically declined since the 1950s</span><span class="sc">\n</span><span class="st">'</span>,</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">'Typical batting average, when batting at that position, for a career that started in the given decade'</span>,</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour =</span> <span class="st">"Decade start"</span>,</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">Batting order"</span>,</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="cn">NULL</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span> </span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title.position =</span> <span class="st">"plot"</span>,</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="dv">1</span>)</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br></p>
+<p>So, what does this chart show us?</p>
+<p>To me, it shows that typical latter-order averages haven’t changed that much over the decades, whilst there’s a lot more variation by decade for the typical averages of higher-order batsmen. Furthermore, the lines with higher typical top-order averages all seem to be darker (and therefore earlier).</p>
+<p>To get more specific, let’s split this top-order data into two eras: the 1950s to the 1970s; and the 1980s and beyond. I can then compare the typical top-order batting averages in these eras.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>data_test <span class="ot">&lt;-</span> data_batsmen <span class="sc">|&gt;</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">between</span>(Decade, <span class="dv">1950</span>, <span class="dv">2010</span>),</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    Order <span class="sc">&lt;=</span> <span class="dv">5</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">is_1950s_to_1970s =</span> Decade <span class="sc">&lt;=</span> <span class="dv">1970</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Average, is_1950s_to_1970s) </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> data_test, </span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  Average <span class="sc">~</span> is_1950s_to_1970s, </span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">alternative =</span> <span class="st">"less"</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  Average by is_1950s_to_1970s
+t = -2.0788, df = 348.5, p-value = 0.01918
+alternative hypothesis: true difference in means between group FALSE and group TRUE is less than 0
+95 percent confidence interval:
+       -Inf -0.4100609
+sample estimates:
+mean in group FALSE  mean in group TRUE 
+           39.55741            41.54190 </code></pre>
+</div>
+</div>
+<p><br></p>
+<p>OK, so that’s a lot of detail! But what does it show?</p>
+<p>Essentially, it says that the reduction in typical top-order batting averages since the 1950s to 1980s is statistically significant. (That is, beyond what we would usually expect from chance alone.)</p>
+<p>Of course, this reduction might not be solely due to lower inherent skill levels relative to the prevailing bowlers. Two possible reasons are that:</p>
+<ul>
+<li><p>The game is now different to before, with DRS, helmets and masses of analysis</p></li>
+<li><p>Survivor bias might be a factor. After all, we are only considering players with twenty or more innings, for and against the ‘top sides’; a point also complicated by the fact that there are now more test matches per year than in the past</p></li>
+</ul>
+<p>As is often the way with cricket, so much is in the interpretation and debate. And that’s just another reason to love it!</p>
+<p><br></p>
+<hr>
+<p><br></p>
+<p>[Updated on March 25, 2023]</p>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

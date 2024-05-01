@@ -23,7 +23,6 @@ Given this equation, I see that I need to begin the analysis by downloading the 
 
 ```{r}
 #| message: false
-library(reactable)
 library(tidyquant)
 library(tidyverse)
 library(tsibble)
@@ -141,7 +140,7 @@ variance_active_monthly_cont |>
 
 To decompose this active variance by sector, we group stocks by sector and sum their stock-level contributions.
 
-```{r, preview=TRUE}
+```{r}
 variance_active_monthly_cont |> 
   summarise(AV_total = sum(AV_cont), .by = sector) |> 
   mutate(

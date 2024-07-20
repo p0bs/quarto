@@ -12,8 +12,9 @@ website:
     right:
       - icon: github
         href: https://github.com/P0BS
-      - icon: twitter
-        href: https://twitter.com/p0bs
+      - icon: mastodon
+        href: https://mastodon.social/@p0bs
+        rel: me
 format:
   html:
     theme: [morph, theming.scss]

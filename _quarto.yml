@@ -13,7 +13,7 @@ website:
       - icon: github
         href: https://github.com/P0BS
       - icon: headset
-        href: https://bsky.app/profile/p0bs
+        href: https://bsky.app/profile/p0bs.bsky.social
       - icon: mastodon
         href: https://mastodon.social/@p0bs
         rel: me

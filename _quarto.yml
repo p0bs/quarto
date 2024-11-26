@@ -12,6 +12,8 @@ website:
     right:
       - icon: github
         href: https://github.com/P0BS
+      - icon: bluesky
+        href: https://bsky.app/profile/p0bs
       - icon: mastodon
         href: https://mastodon.social/@p0bs
         rel: me

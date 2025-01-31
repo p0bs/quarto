@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/temperature/index.html",
       "/posts/snippets/index.html",
       "/posts/portfolioRisk/index.html",
       "/posts/wordle/index.html",

@@ -35,14 +35,14 @@ library(riem)
 #   station = "EGLL",
 #   date_start = "1990-01-01",
 #   date_end = "2023-12-31"
-#   )
+#   ) |> 
+#   select(valid, tmpf)
 
 # write_rds(data_temp, "data_temp.rds")
 
 data_temp <- read_rds("data_temp.rds")
 
 data <- data_temp |> 
-  select(valid, tmpf) |> 
   mutate(
     value_year = year(valid),
     value_week = if_else(week(valid) == 53, 52, week(valid)),

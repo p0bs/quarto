@@ -2,7 +2,7 @@
 title: "Making sense of English seasons"
 date: "2025-01-31"
 categories: [weather]
-image: "map.png"
+image: "weather.jpg"
 code-fold: true
 code-summary: "</>"
 df-print: paged

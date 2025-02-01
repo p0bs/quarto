@@ -55,6 +55,7 @@ After a little more tidying, we get the following data on about 1,000 batsmen, s
 
 ```{r}
 #| message: false
+#| warning: false
 
 suppressPackageStartupMessages(library(tidyverse))
 library(gganimate)

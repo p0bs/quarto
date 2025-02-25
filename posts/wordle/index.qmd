@@ -7,7 +7,7 @@ code-fold: false
 code-summary: "</>"
 df-print: paged
 description: |
-  Wordle is a source of healthy competition in our family. So, with a long train journey ahead of me, I thought I would embrace my nerd power and gain a competitive edge over my wife! I downloaded the most common five-letter words from the internet and analysed them with the following code. This leads me to suggest --- only in the context of Wordle --- that you should **STARE at the CHILD that is FUNKY**. 
+  Wordle is a source of healthy competition in our family. So, I downloaded the most common five-letter words from the internet and analysed them with the following code. This leads me to suggest --- only in the context of Wordle --- that you should **STARE at the CHILD that is FUNKY**. 
 ---
 
 #### Understanding the data

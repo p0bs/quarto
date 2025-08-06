@@ -10,6 +10,6 @@ typography:
     family: "Helvetica Neue"
     color: "#eb5e28"
     weight: semi-bold
-  monospace-block: Fira Code
+  monospace: Fira Code
   monospace-inline: 
     color: "#403d39"

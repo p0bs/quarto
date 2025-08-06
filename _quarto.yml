@@ -11,7 +11,11 @@ website:
         href: https://bsky.app/profile/p0bs.bsky.social
 format:
   html:
-    theme: [morph, theming.scss]
-    css: styles.css
-
+    theme:
+      light:
+        - cosmo
+        - brand
+      dark:
+        - slate
+        - brand
 editor: visual

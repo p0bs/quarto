@@ -55,12 +55,16 @@ brand:
     primary: "#252422"
     secondary: "#ccc5b9"
   typography: 
-    fonts: 
-      - family: "Helvetica Neue"
+    fonts:
+      - family: Helvetica Neue
+      - family: Fira Code
+        source: google
     headings:
       family: "Helvetica Neue"
       color: "#eb5e28"
-    monospace: "Fira Code"
+      weight: semi-bold
+    monospace: 
+      family: "Fira Code"
       color: "#403d39"
 format: 
   html: 

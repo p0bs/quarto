@@ -5,11 +5,13 @@ color:
   secondary: "#ccc5b9"
 typography: 
   fonts:
-    - family: "Helvetica Neue"
+    - family: Helvetica Neue
+    - family: Fira Code
+      source: google
   headings:
     family: "Helvetica Neue"
     color: "#eb5e28"
     weight: semi-bold
-  monospace: "Fira Code"
-  monospace-inline: 
+  monospace: 
+    family: "Fira Code"
     color: "#403d39"

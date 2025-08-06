@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-01-31">
-<meta name="description" content="Or how it only takes four days of Autumn cooling to undo five days of Spring warming.">
+<meta name="dcterms.date" content="2023-05-20">
+<meta name="description" content="Risk analysis is a standard technique within quantitative investment. In this post, I’ll describe how to perform it succinctly in R.">
 
-<title>Making sense of English seasons – Rob’s Quanty Ramblings</title>
+<title>Projecting portfolio risk – Rob’s Quanty Ramblings</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -71,11 +71,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-287b263770ab4b159b645c4df1420c2c.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-30755c2ff6400448f9249512c6bd89ae.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-29e2c20b02301cfff04dc8050bf30c7e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-43df0d6f53b733b42d37fa7808e17715.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-ab38d644b9af76cd9e734330cb3bd79a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-ee702d5a8c0fca4ac0da42c61047c129.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark-74c5ea3682cb7d652db43078775c8757.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -107,6 +107,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
 <script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -149,14 +178,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Making sense of English seasons</h1>
+      <h1 class="title">Projecting portfolio risk</h1>
                   <div>
         <div class="description">
-          <p>Or how it only takes four days of Autumn cooling to undo five days of Spring warming.</p>
+          Risk analysis is a standard technique within quantitative investment. In this post, I’ll describe how to perform it succinctly in R.
         </div>
       </div>
                           <div class="quarto-categories">
-                <div class="quarto-category">weather</div>
+                <div class="quarto-category">investment</div>
+                <div class="quarto-category">risk</div>
               </div>
                   </div>
   </div>
@@ -168,7 +198,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">January 31, 2025</p>
+        <p class="date">May 20, 2023</p>
       </div>
     </div>
     
@@ -187,168 +217,190 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>Like so many Brits, I’m obsessed with the weather. I ask questions like, “When is spring coming?” and “How long is summer?”</p>
-<p>Annoyingly, though, I never had reasonable answers for these sorts of questions. And, for that reason, I thought I’d consult the data to get better answers.</p>
-<p>I turns out that this data-driven approach helps, as I now have better working definitions of the seasons and can judge my expectations accordingly.</p>
-<p>Before we get to those conclusions, I take two steps with the data.</p>
-<p>First, I get it and clean it. Specifically, for each day of the year, I collect the maximum temperature achieved at Heathrow in each year from 1990 to 2022. I then average these 33 data points to get one value for the typical maximum temperature on that day at Heathrow.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>&lt;/&gt;</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggformula)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(riem)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># riem_stations(network = "GB__ASOS")</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># data_temp &lt;- riem_measures(</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#   station = "EGLL",</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">#   date_start = "1990-01-01",</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#   date_end = "2023-12-31"</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">#   ) |&gt; </span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">#   select(valid, tmpf)</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># write_rds(data_temp, "data_temp.rds")</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>data_temp <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"data_temp.rds"</span>)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data_temp <span class="sc">|&gt;</span> </span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">value_year =</span> <span class="fu">year</span>(valid),</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">value_week =</span> <span class="fu">if_else</span>(<span class="fu">week</span>(valid) <span class="sc">==</span> <span class="dv">53</span>, <span class="dv">52</span>, <span class="fu">week</span>(valid)),</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">value_month =</span> <span class="fu">month</span>(valid),</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">value_day =</span> <span class="fu">day</span>(valid),</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">value_hour =</span> <span class="fu">hour</span>(valid),</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">value_minute =</span> <span class="fu">minute</span>(valid),</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">value_dayofweek =</span> <span class="fu">wday</span>(valid),</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">value_dayofyear =</span> <span class="fu">yday</span>(valid),</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">value_fortnight =</span> <span class="fu">ceiling</span>(value_week <span class="sc">/</span> <span class="dv">2</span>)</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">temp_max =</span> <span class="fu">max</span>(tmpf, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">.by =</span> <span class="fu">c</span>(value_year, value_month, value_day)</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">temp_max_ave =</span> <span class="fu">mean</span>(temp_max, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">.by =</span> <span class="fu">c</span>(value_month, value_day)</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="at">var =</span> <span class="st">"value_daynumber"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">value_daynumber =</span> <span class="fu">as.integer</span>(value_daynumber),</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">name_month =</span> <span class="fu">as_factor</span>(month.name[value_month]),</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">value_date =</span> <span class="fu">make_date</span>(<span class="at">year =</span> <span class="dv">2019</span>, <span class="at">month =</span> value_month, <span class="at">day =</span> value_day)</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span> </span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>(value_month <span class="sc">==</span> <span class="dv">2</span> <span class="sc">&amp;</span> value_day <span class="sc">==</span> <span class="dv">29</span>))</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(data, <span class="at">width =</span> <span class="dv">80</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 365
-Columns: 6
-$ value_daynumber &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,…
-$ value_month     &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
-$ value_day       &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,…
-$ temp_max_ave    &lt;dbl&gt; 47.56235, 46.76294, 46.39176, 46.17941, 47.32471, 47.6…
-$ name_month      &lt;fct&gt; January, January, January, January, January, January, …
-$ value_date      &lt;date&gt; 2019-01-01, 2019-01-02, 2019-01-03, 2019-01-04, 2019-…</code></pre>
-</div>
-</div>
-<p><br></p>
-<p>Second, I’ll chart how this average temperature varies by the day of the year.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>&lt;/&gt;</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>plot_seasons <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span> </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> value_daynumber,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> temp_max_ave,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">colour =</span> name_month</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span> </span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="dv">40</span> <span class="sc">+</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">3</span> <span class="sc">*</span> <span class="dv">10</span>, </span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="dv">40</span> <span class="sc">+</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">3</span> <span class="sc">*</span> <span class="dv">10</span>, </span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">minor_breaks =</span> <span class="cn">NULL</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="dv">30</span> <span class="sc">*</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">12</span>) <span class="sc">+</span> </span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">type =</span> <span class="st">"qual"</span>, <span class="at">palette =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title.position =</span> <span class="st">'plot'</span>,</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>, <span class="at">hjust =</span> <span class="dv">1</span>),</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.title =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.line =</span> <span class="fu">element_line</span>(<span class="at">colour =</span> <span class="st">"grey50"</span>),</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.ticks =</span> <span class="fu">element_line</span>(<span class="at">colour =</span> <span class="st">"grey50"</span>)</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span> </span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Typical Maximum Daily Temperature at Heathrow"</span>,</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Daily averages in Fahrenheit from 1990 to 2022</span><span class="sc">\n</span><span class="st">"</span>,</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="cn">NULL</span>,</span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">Day of the year"</span></span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  ) </span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>plot_seasons</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><br></p>
-<p>OK, so that chart helps, but it is more useful if we add some context to it.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>&lt;/&gt;</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>plot_seasons <span class="sc">+</span> </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_spline</span>(</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> value_daynumber,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> temp_max_ave</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      ),</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">spar =</span> <span class="fl">0.66</span>,</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour =</span> <span class="st">'magenta'</span>, </span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">linewidth =</span> <span class="dv">1</span> </span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="fl">0.19</span>, <span class="at">intercept =</span> <span class="fl">38.5</span>, <span class="at">color =</span> <span class="st">'grey15'</span>) <span class="sc">+</span> </span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> <span class="sc">-</span><span class="fl">0.25</span>, <span class="at">intercept =</span> <span class="fl">132.5</span>, <span class="at">color =</span> <span class="st">'grey15'</span>) <span class="sc">+</span> </span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">60</span>, <span class="at">color =</span> <span class="st">'grey50'</span>, <span class="at">linetype =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">165</span>, <span class="at">color =</span> <span class="st">'grey50'</span>, <span class="at">linetype =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">250</span>, <span class="at">color =</span> <span class="st">'grey50'</span>, <span class="at">linetype =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">330</span>, <span class="at">color =</span> <span class="st">'grey50'</span>, <span class="at">linetype =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">50</span>, <span class="at">color =</span> <span class="st">'grey50'</span>, <span class="at">linetype =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">70</span>, <span class="at">color =</span> <span class="st">'grey50'</span>, <span class="at">linetype =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><br></p>
-<p>So, what does this mean?</p>
-<p>Based upon the chart above, I will now use the following definitions:</p>
+<p>To do so, I’ll deliberately pick a minimal example and assume that our portfolio has the thirty-stock Dow-Jones Industrial Average (DJIA) as its index.</p>
+<p>I’ll show the results in a couple of paragraphs. Before that, let’s consider a little of <a href="https://en.wikipedia.org/wiki/Tracking_error">the theory</a> behind this analysis. Specifically, that the active variance of a portfolio relative to its index is: <span class="math display">\[\omega^2 = X^T V X\]</span></p>
+<p>, where:</p>
 <ul>
-<li><strong>Long Linear Spring</strong> warms linearly and is the longest season, running from March until mid June</li>
-<li><strong>Short Summer</strong> is the shortest season … 🙄 … lasting from mid June until the end of August, when typical daily temperatures exceed 70°F</li>
-<li><strong>Linear Autumn</strong> cools linearly over September, October and November</li>
-<li><strong>Winter</strong> consists of December, January and February, when typical daily temperatures fall below 50°F</li>
+<li><p>X is a vector of ‘excess weights’ for the thirty stocks (i.e.&nbsp;portfolio weight less index weight)</p></li>
+<li><p>V is a square matrix of the covariances between the returns of the thirty stocks</p></li>
 </ul>
-<p>So, daily temperature change in Spring and Autumn is typically linear. Sadly, though, Autumn cools faster than Spring warms. Specifically, Spring sees maximum temperatures typically rise by 0.19°F per day, whilst the corresponding decline in Autumn is 0.25°F per day. In other words, five days of gains in Spring are needed to counteract four days of losses in Autumn.</p>
+<p>Given this equation, I see that I need to begin the analysis by downloading the holdings of the index and the pricing data for the constituent stocks.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyquant)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tsibble)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(waldo)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># weights_index &lt;- tq_index("DOW")</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># write_rds(x = weights_index, file = "weights_index.rds")</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># stock_prices  &lt;- tq_get(</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">#   x = weights_index |&gt; pull(symbol), </span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#   get = "stock.prices", </span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">#   from = "2022-01-01")</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># write_rds(x = stock_prices, file = "stock_prices.rds", compress = "xz")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+<section id="stock-holdings" class="level4">
+<h4 class="anchored" data-anchor-id="stock-holdings">Stock holdings</h4>
+<p>With this data, I can see that the DJIA has the following stocks. For the sake of simplicity, I assume that these thirty stocks are weighted equally in our portfolio.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data_weights <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"weights_index.rds"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">wt_port =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">30</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">wt_excess =</span> wt_port <span class="sc">-</span> weight) <span class="sc">|&gt;</span> </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(symbol)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>data_weights <span class="sc">|&gt;</span> </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(company, symbol, <span class="st">`</span><span class="at">excess weight</span><span class="st">`</span> <span class="ot">=</span> wt_excess)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["company"],"name":[1],"type":["chr"],"align":["left"]},{"label":["symbol"],"name":[2],"type":["chr"],"align":["left"]},{"label":["excess weight"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Apple Inc.","2":"AAPL","3":"-0.0007798357"},{"1":"Amgen Inc.","2":"AMGN","3":"-0.0126822422"},{"1":"American Express Company","2":"AXP","3":"0.0041094822"},{"1":"Boeing Company","2":"BA","3":"-0.0061428505"},{"1":"Caterpillar Inc.","2":"CAT","3":"-0.0085663682"},{"1":"Salesforce Inc.","2":"CRM","3":"-0.0069310353"},{"1":"Cisco Systems Inc.","2":"CSCO","3":"0.0241522315"},{"1":"Chevron Corporation","2":"CVX","3":"0.0024564583"},{"1":"Walt Disney Company","2":"DIS","3":"0.0134537234"},{"1":"Dow Inc.","2":"DOW","3":"0.0228274462"},{"1":"Goldman Sachs Group Inc.","2":"GS","3":"-0.0300656003"},{"1":"Home Depot Inc.","2":"HD","3":"-0.0234770658"},{"1":"Honeywell International Inc.","2":"HON","3":"-0.0054549014"},{"1":"International Business Machines Corporation","2":"IBM","3":"0.0093496501"},{"1":"Intel Corporation","2":"INTC","3":"0.0274425685"},{"1":"Johnson & Johnson","2":"JNJ","3":"0.0015601573"},{"1":"JPMorgan Chase & Co.","2":"JPM","3":"0.0065074586"},{"1":"Coca-Cola Company","2":"KO","3":"0.0208520639"},{"1":"McDonald's Corporation","2":"MCD","3":"-0.0249590900"},{"1":"3M Company","2":"MMM","3":"0.0135008961"},{"1":"Merck & Co. Inc.","2":"MRK","3":"0.0101594561"},{"1":"Microsoft Corporation","2":"MSFT","3":"-0.0280528759"},{"1":"NIKE Inc. Class B","2":"NKE","3":"0.0090567835"},{"1":"Procter & Gamble Company","2":"PG","3":"0.0030579125"},{"1":"Travelers Companies Inc.","2":"TRV","3":"-0.0026677530"},{"1":"UnitedHealth Group Incorporated","2":"UNH","3":"-0.0629925518"},{"1":"Visa Inc. Class A","2":"V","3":"-0.0121240305"},{"1":"Verizon Communications Inc.","2":"VZ","3":"0.0259369529"},{"1":"Walgreens Boots Alliance Inc.","2":"WBA","3":"0.0271241504"},{"1":"Walmart Inc.","2":"WMT","3":"0.0033488090"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p><br></p>
+</section>
+<section id="return-covariances" class="level4">
+<h4 class="anchored" data-anchor-id="return-covariances">Return covariances</h4>
+<p>Before I can project the risk in this portfolio, though, I also need to find the covariances between the returns of the stocks in question.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>For the sake of brevity, here are the first four rows and columns of this covariance matrix.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>return_covariances <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="at">file =</span> <span class="st">"stock_prices.rds"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tsibble</span>(<span class="at">index =</span> date, <span class="at">key =</span> symbol) <span class="sc">|&gt;</span> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">yyyymm =</span> tsibble<span class="sc">::</span><span class="fu">yearmonth</span>(date)) <span class="sc">|&gt;</span> </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(<span class="at">order_by =</span> date, <span class="at">by =</span> yyyymm) <span class="sc">|&gt;</span> </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tsibble</span>(<span class="at">index =</span> date, <span class="at">key =</span> symbol) <span class="sc">|&gt;</span> </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">return =</span> (adjusted<span class="sc">/</span><span class="fu">lag</span>(adjusted)) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">id_cols =</span> date, <span class="at">names_from =</span> symbol, <span class="at">values_from =</span> return) <span class="sc">|&gt;</span> </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(<span class="at">var =</span> <span class="st">"date"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cov</span>(<span class="at">use =</span> <span class="st">"pairwise.complete.obs"</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">as_tibble</span>(return_covariances[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["AAPL"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["AMGN"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["AXP"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["BA"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"0.008828210","2":"0.002962460","3":"0.005350393","4":"0.006616771"},{"1":"0.002962460","2":"0.009017254","3":"-0.001116983","4":"0.008412490"},{"1":"0.005350393","2":"-0.001116983","3":"0.011592201","4":"0.002442701"},{"1":"0.006616771","2":"0.008412490","3":"0.002442701","4":"0.024077662"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p><br></p>
+</section>
+<section id="projecting-risk" class="level4">
+<h4 class="anchored" data-anchor-id="projecting-risk">Projecting risk</h4>
+<p>We now have the two ingredients that we need for risk analysis: excess weights and covariances of stock returns. As a final test, let’s confirm that the order of the tickers in our vector matches that for our matrix.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare</span>(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(data_weights, symbol), </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>(return_covariances)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>✔ No differences</code></pre>
+</div>
+</div>
+<p>With that confirmed, I can use the formula above to project the active variance of the portfolio.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  variance_active_monthly <span class="ot">&lt;-</span> <span class="fu">t</span>(data_weights<span class="sc">$</span>wt_excess) <span class="sc">%*%</span> return_covariances <span class="sc">%*%</span> data_weights<span class="sc">$</span>wt_excess</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           [,1]
+[1,] 0.01163479</code></pre>
+</div>
+</div>
+<p>Because I am considering covariances with a monthly periodicity, it will help to annualise the result, so that it can be compared with corresponding values from other portfolios. To do so, I multiply the active variance by 12.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Finally, I square-root the result to obtain <span class="math inline">\(\omega\)</span>, the annualised level of projected active risk:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  risk_active_annual <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sqrt</span>(variance_active_monthly <span class="sc">*</span> <span class="dv">12</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3736543</code></pre>
+</div>
+</div>
+<p>This annualised ‘tracking-error’ of 37.4% is very high for a US equity portfolio, but is not surprising given my arbitrary choices around the portfolio and index.</p>
+<p><br></p>
+</section>
+<section id="decomposing-risk" class="level4">
+<h4 class="anchored" data-anchor-id="decomposing-risk">Decomposing risk</h4>
+<p>The question then becomes: “What portfolio positions contribute most to this active risk?”</p>
+<p>To answer this question, we can tweak the equation above. Calculating <span class="math inline">\(X^T V\)</span> generates a vector of length thirty, with each element showing a form of ‘unit marginal impact’ on active portfolio variance for a given stock. If we then multiply this value for a given stock by its excess weight, we obtain its contribution to monthly active portfolio variance.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>variance_active_monthly_cont <span class="ot">&lt;-</span> return_covariances <span class="sc">%*%</span> data_weights<span class="sc">$</span>wt_excess <span class="sc">|&gt;</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="at">var =</span> <span class="st">"symbol"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(data_weights, <span class="at">by =</span> <span class="st">"symbol"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">AV_cont =</span> wt_excess <span class="sc">*</span> V1) <span class="sc">|&gt;</span> </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(symbol, company, sector, wt_excess, AV_cont)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>variance_active_monthly_cont <span class="sc">|&gt;</span> </span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(symbol, sector, <span class="st">`</span><span class="at">AV contribution</span><span class="st">`</span> <span class="ot">=</span> AV_cont)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["symbol"],"name":[1],"type":["chr"],"align":["left"]},{"label":["sector"],"name":[2],"type":["chr"],"align":["left"]},{"label":["AV contribution"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"AAPL","2":"Information Technology","3":"1.207239e-08"},{"1":"AMGN","2":"Health Care","3":"8.222219e-05"},{"1":"AXP","2":"Financials","3":"2.659503e-05"},{"1":"BA","2":"Industrials","3":"5.332634e-05"},{"1":"CAT","2":"Industrials","3":"-8.945410e-06"},{"1":"CRM","2":"Information Technology","3":"1.618290e-05"},{"1":"CSCO","2":"Information Technology","3":"4.650462e-04"},{"1":"CVX","2":"Energy","3":"-1.069517e-04"},{"1":"DIS","2":"Communication Services","3":"2.852764e-05"},{"1":"DOW","2":"Materials","3":"2.739671e-04"},{"1":"GS","2":"Financials","3":"4.253691e-03"},{"1":"HD","2":"Consumer Discretionary","3":"6.863872e-05"},{"1":"HON","2":"Industrials","3":"-4.457738e-05"},{"1":"IBM","2":"Information Technology","3":"9.140832e-05"},{"1":"INTC","2":"Information Technology","3":"4.415472e-04"},{"1":"JNJ","2":"Health Care","3":"-1.860266e-04"},{"1":"JPM","2":"Financials","3":"2.098915e-05"},{"1":"KO","2":"Consumer Staples","3":"3.137388e-04"},{"1":"MCD","2":"Consumer Discretionary","3":"1.931325e-03"},{"1":"MMM","2":"Industrials","3":"1.571341e-04"},{"1":"MRK","2":"Health Care","3":"6.612404e-05"},{"1":"MSFT","2":"Information Technology","3":"1.172040e-03"},{"1":"NKE","2":"Consumer Discretionary","3":"1.265359e-04"},{"1":"PG","2":"Consumer Staples","3":"-2.040067e-05"},{"1":"TRV","2":"Financials","3":"2.688150e-06"},{"1":"UNH","2":"Health Care","3":"2.533474e-03"},{"1":"V","2":"Financials","3":"-1.742568e-04"},{"1":"VZ","2":"Communication Services","3":"5.274462e-04"},{"1":"WBA","2":"Consumer Staples","3":"-1.866141e-04"},{"1":"WMT","2":"Consumer Staples","3":"-2.900952e-04"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p><br></p>
+<p>To decompose this active variance by sector, we group stocks by sector and sum their stock-level contributions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>variance_active_monthly_cont <span class="sc">|&gt;</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">AV_total =</span> <span class="fu">sum</span>(AV_cont), <span class="at">.by =</span> sector) <span class="sc">|&gt;</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">sector =</span> <span class="fu">as_factor</span>(sector),</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">sector =</span> <span class="fu">fct_reorder</span>(sector, AV_total)) <span class="sc">|&gt;</span> </span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> AV_total,</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> sector,</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> AV_total <span class="sc">&lt;</span> <span class="dv">0</span>)) <span class="sc">+</span> </span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Contribution to active variance by sector</span><span class="sc">\n</span><span class="st">"</span>,</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title.position =</span> <span class="st">"plot"</span>,</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br></p>
+</section>
+<section id="conclusions" class="level4">
+<h4 class="anchored" data-anchor-id="conclusions">Conclusions</h4>
+<p>So, what does this analysis tell us? To me, there are two main points:</p>
+<ul>
+<li><p><strong>The portfolio’s tracking error is very high</strong>, although that is an artefact of the simplified nature of my example</p></li>
+<li><p><strong>Financials stocks are a key contributor to this active variance</strong>. This sector has high weights in the index but lower weights in the portfolio. However, the portfolio’s positions in Energy and Consumer Staples stocks generates a diversification benefit that reduces overall portfolio risk.</p></li>
+</ul>
+<p>Although these results might be useful, it is worth recognising that I have limited this risk analysis to only a standard covariance matrix, decomposed by sector. In reality, the returns data and covariance matrix could be more nuanced and decomposition could extend beyond sectors. For example, we could decompose risk by ESG scores, diversity criteria, valuation ratios or anything else that seems relevant and that can be measured.</p>
 <p><br></p>
 
 
+</section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>For the sake of simplicity, I only consider split-adjusted price returns rather than the equivalent total returns in this example<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>This might be a heroic assumption, as it implies an independence between the risks experienced in different months<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Note that the sum of these values will add to the total active variance, as this calculation is essentially vector multiplication.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

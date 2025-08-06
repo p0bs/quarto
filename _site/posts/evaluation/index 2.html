@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2016-10-20">
+<meta name="description" content="Back in the day, I wrote research papers about investment practice. One example concerned how asset owners could better evaluate the investment performance of their asset managers. Basically, the idea is to view performance in the way that a Bayesian would.">
 
-<title>Rob’s Quanty Ramblings</title>
+<title>Asset manager evaluation – Rob’s Quanty Ramblings</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,26 +25,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-29e2c20b02301cfff04dc8050bf30c7e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-43df0d6f53b733b42d37fa7808e17715.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-ee702d5a8c0fca4ac0da42c61047c129.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-74c5ea3682cb7d652db43078775c8757.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-29e2c20b02301cfff04dc8050bf30c7e.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-43df0d6f53b733b42d37fa7808e17715.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-ee702d5a8c0fca4ac0da42c61047c129.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-74c5ea3682cb7d652db43078775c8757.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,76 +70,18 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Rob’s Quanty Ramblings</span>
     </a>
   </div>
@@ -168,227 +110,66 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block"></header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Asset manager evaluation</h1>
+                  <div>
+        <div class="description">
+          <p>Back in the day, I wrote research papers about investment practice. One example concerned how asset owners could better evaluate the investment performance of their asset managers. Basically, the idea is to view performance in the way that a Bayesian would.</p>
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">performance</div>
+                <div class="quarto-category">presentations</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">October 20, 2016</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
+<p>The idea is pretty simple, which I’ll outline below. (I can do so, as the materials are already in the public domain.)</p>
+<p>If you want the details, check out <a href="http://papers.ssrn.com/sol3/papers.cfm?abstract_id=2101771">the formal paper</a> at SSRN. For a more accessible introduction, I’d recommend the video below that was taken (and won an award) at the International Congress of Actuaries in 2014.</p>
+<p class="half-line">
+</p>
+<section id="the-gist-of-the-idea" class="level3">
+<h3 class="anchored" data-anchor-id="the-gist-of-the-idea">The gist of the idea</h3>
+<p>In short, a key mantra of investment advisors is that asset owners should ignore the performance of their asset manager. Whether the manager has outperformed for you or not, it is claimed, is irrelevant to how you should expect them to perform in the future. However, a key idea in statistics, called Bayesian thinking, suggests the opposite: that you should use any new information you get about something to update your thinking on it.</p>
+<p>In this work, I therefore used Bayesian thinking to understand the advice that asset owners <strong>should</strong> get. It turns out that this advice makes common sense, particularly when paired with an understanding of whether the asset manager has some longer-term cyclicality in their performance.</p>
+<p>Here’s that video that I mentioned:</p>
+<p class="half-line">
+</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xutu2axBa0o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+</iframe>
 
 
+</section>
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="d2VhdGhlcg==" data-listing-date-sort="1738281600000" data-listing-file-modified-sort="1738414168045" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="865">
-<div class="thumbnail">
-<p><a href="./posts/temperature/index.html" class="no-external"></a></p><a href="./posts/temperature/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/temperature/weather.jpg" class="thumbnail-image"></p>
-</a><p><a href="./posts/temperature/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/temperature/index.html" class="no-external">Making sense of English seasons</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/temperature/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/temperature/index.html" class="no-external">Or how it only takes four days of Autumn cooling to undo five days of Spring warming. </a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/temperature/index.html" class="no-external">
-<div class="listing-date">
-Jan 31, 2025
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="Y29kZQ==" data-listing-date-sort="1688857200000" data-listing-file-modified-sort="1714558349384" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1288">
-<div class="thumbnail">
-<p><a href="./posts/snippets/index.html" class="no-external"></a></p><a href="./posts/snippets/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/snippets/code-snip.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/snippets/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/snippets/index.html" class="no-external">Code that I often use but rarely recall</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/snippets/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/snippets/index.html" class="no-external">Here’s the post on this site that I view the most … and one that I hope will help you. It contains the code snippets that I often use but rarely recall. </a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/snippets/index.html" class="no-external">
-<div class="listing-date">
-Jul 9, 2023
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="aW52ZXN0bWVudCUyQ3Jpc2s=" data-listing-date-sort="1684537200000" data-listing-file-modified-sort="1714553883005" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="962">
-<div class="thumbnail">
-<p><a href="./posts/portfolioRisk/index.html" class="no-external"></a></p><a href="./posts/portfolioRisk/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/portfolioRisk/sectorRisk.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/portfolioRisk/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/portfolioRisk/index.html" class="no-external">Projecting portfolio risk</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/portfolioRisk/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/portfolioRisk/index.html" class="no-external">Risk analysis is a standard technique within quantitative investment. In this post, I’ll describe how to perform it succinctly in R.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/portfolioRisk/index.html" class="no-external">
-<div class="listing-date">
-May 20, 2023
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="ZnVu" data-listing-date-sort="1672358400000" data-listing-file-modified-sort="1740493766322" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1224">
-<div class="thumbnail">
-<p><a href="./posts/wordle/index.html" class="no-external"></a></p><a href="./posts/wordle/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/wordle/streak.jpeg" class="thumbnail-image"></p>
-</a><p><a href="./posts/wordle/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/wordle/index.html" class="no-external">Winning at Wordle</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/wordle/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/wordle/index.html" class="no-external">Wordle is a source of healthy competition in our family. So, I downloaded the most common five-letter words from the internet and analysed them with the following code. This leads me to suggest — only in the context of Wordle — that you should <strong>STARE at the CHILD that is FUNKY</strong>. </a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/wordle/index.html" class="no-external">
-<div class="listing-date">
-Dec 30, 2022
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="ZnVuJTJDc3BvcnQ=" data-listing-date-sort="1600470000000" data-listing-file-modified-sort="1691150274602" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="171">
-<div class="thumbnail">
-<p><a href="./posts/prempredict/index.html" class="no-external"></a></p><a href="./posts/prempredict/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/prempredict/PPlogo.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/prempredict/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/prempredict/index.html" class="no-external">PremPredict</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/prempredict/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/prempredict/index.html" class="no-external">They think it’s all over. It is now.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/prempredict/index.html" class="no-external">
-<div class="listing-date">
-Sep 19, 2020
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="cGVyZm9ybWFuY2UlMkNwcmVzZW50YXRpb25z" data-listing-date-sort="1476918000000" data-listing-file-modified-sort="1672912427543" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="195">
-<div class="thumbnail">
-<p><a href="./posts/evaluation/index.html" class="no-external"></a></p><a href="./posts/evaluation/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/evaluation/evaluation1.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/evaluation/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/evaluation/index.html" class="no-external">Asset manager evaluation</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/evaluation/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/evaluation/index.html" class="no-external">Back in the day, I wrote research papers about investment practice. One example concerned how asset owners could better evaluate the investment performance of their asset managers. Basically, the idea is to view performance in the way that a Bayesian would. </a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/evaluation/index.html" class="no-external">
-<div class="listing-date">
-Oct 20, 2016
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-categories="cG9saXRpY3MlMkNnZW8tdml6" data-listing-date-sort="1476226800000" data-listing-file-modified-sort="1684313618969" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="877">
-<div class="thumbnail">
-<p><a href="./posts/brexit/index.html" class="no-external"></a></p><a href="./posts/brexit/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/brexit/map1.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/brexit/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/brexit/index.html" class="no-external">Brexit vote analysis</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/brexit/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/brexit/index.html" class="no-external">I wanted more insight into the recent vote and so investigated each constituency, comparing the Brexit vote with that of the winning parliamentary party from 2016 </a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/brexit/index.html" class="no-external">
-<div class="listing-date">
-Oct 12, 2016
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="7" data-categories="YW5pbWF0aW9uJTJDc3BvcnQ=" data-listing-date-sort="1475967600000" data-listing-file-modified-sort="1738414538650" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1390">
-<div class="thumbnail">
-<p><a href="./posts/batting/index.html" class="no-external"></a></p><a href="./posts/batting/index.html" class="no-external">
-<p><img loading="lazy" src="./posts/batting/batsman.jpg" class="thumbnail-image"></p>
-</a><p><a href="./posts/batting/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/batting/index.html" class="no-external">Have batting averages improved over time?</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/batting/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/batting/index.html" class="no-external">Cricket commentators often talk of changes in batting quality through the ages. But is there any truth to this? </a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/batting/index.html" class="no-external">
-<div class="listing-date">
-Oct 9, 2016
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

@@ -25,6 +25,8 @@ Specifically, these snippets enable me to:
 To demonstrate these code snippets, I'll use the `tidyverse` packages with data from `palmerpenguins`.
 
 ```{r}
+#| warning: false
+#| message: false
 suppressPackageStartupMessages(library(tidyverse))
 library(palmerpenguins)
 ```
@@ -46,31 +48,51 @@ subtitle: "Add subtitle here"
 author:
   - Robin Penfold 
 date: today
+brand:     
+  color:
+    link: "#eb5e28"
+    background: "#fffcf2"
+    primary: "#252422"
+    secondary: "#ccc5b9"
+  typography: 
+    fonts: 
+      - family: "Helvetica Neue"
+    headings:
+      family: "Helvetica Neue"
+      color: "#eb5e28"
+    monospace: 
+      color: "#403d39"
 format: 
-  html:
+  html: 
     anchor-sections: true 
     code-copy: hover 
-    code-fold: true 
+    code-fold: true
     code-link: true 
     code-overflow: wrap 
-    code-summary: "</>" 
-    code-tools: false 
+    code-summary: "code" 
+    code-tools: true 
     df-print: paged 
     embed-resources: true 
+    fig-width: 8
+    fig-height: 6
     float: true
     footnotes-hover: true 
     highlight-style: pygments
     lang: en-GB 
-    linkcolor: "#63431c"
-    mainfont: "Arial"
-    table-of-contents: true 
+    table-of-contents: true
     toc-depth: 4
     toc-title: " "
-    title-block-banner: "#edd9c0"
-    title-block-banner-color: "#63431c"
-    title-block-categories: false
-editor_options:
-  chunk_output_type: inline
+  typst: 
+    code-block-border-left: true
+    code-overflow: wrap 
+    fig-width: 7
+    fig-height: 5
+    highlight-style: pygments
+    lang: en-GB 
+    number-depth: 4
+    number-sections: true
+    table-of-contents: true
+    toc-depth: 4
 ---
 ```
 

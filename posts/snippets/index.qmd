@@ -60,7 +60,7 @@ brand:
     headings:
       family: "Helvetica Neue"
       color: "#eb5e28"
-    monospace: 
+    monospace: "Fira Code"
       color: "#403d39"
 format: 
   html: 

@@ -22,7 +22,7 @@ editor: visual
 listing:
   contents:
     - posts
-    - path: https://github.com/p0bs/PL-scan?tab=readme-ov-file#predicting-this-seasons-premier-league
+    - path: https://github.com/p0bs/PL-scan?tab=readme-ov-file#predicting-this-seasons-premier-league{target="_blank"}
       title: "Today's preditions for the 2025/26 Premier League"
       date: "2025-10-27"
       categories: [sport]

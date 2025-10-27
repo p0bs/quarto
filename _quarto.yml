@@ -11,6 +11,7 @@ website:
         href: https://bsky.app/profile/p0bs.bsky.social
 format:
   html:
+    include-after-body: _include-after-body.html
     theme:
       light:
         - cosmo

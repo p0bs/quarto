@@ -401,6 +401,16 @@ window.Quarto = {
 <li id="fn3"><p>Note that the sum of these values will add to the total active variance, as this calculation is essentially vector multiplication.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll("a[href^='http']").forEach(a => {
+    if (!a.href.includes(window.location.hostname)) {
+      a.setAttribute("target", "_blank");
+      a.setAttribute("rel", "noopener");
+    }
+  });
+});
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

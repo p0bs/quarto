@@ -401,6 +401,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li id="fn1"><p>These ‘best’ guesses might not be perfect, as my assumptions above and the approach in general could probably be improved, perhaps with Operational Research techniques. That said, I suspect that ‘stare’ and the next guesses are decent approximations to the ideal solution.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll("a[href^='http']").forEach(a => {
+    if (!a.href.includes(window.location.hostname)) {
+      a.setAttribute("target", "_blank");
+      a.setAttribute("rel", "noopener");
+    }
+  });
+});
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

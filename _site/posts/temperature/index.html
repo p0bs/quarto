@@ -349,6 +349,16 @@ $ value_date      &lt;date&gt; 2019-01-01, 2019-01-02, 2019-01-03, 2019-01-04, 2
 
 
 </main> <!-- /main -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll("a[href^='http']").forEach(a => {
+    if (!a.href.includes(window.location.hostname)) {
+      a.setAttribute("target", "_blank");
+      a.setAttribute("rel", "noopener");
+    }
+  });
+});
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

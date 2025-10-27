@@ -10,33 +10,5 @@
       "/posts/evaluation/index.html",
       "/posts/batting/index.html"
     ]
-  },
-  {
-    "listing": "/posts/temperature/index.html",
-    "items": []
-  },
-  {
-    "listing": "/posts/batting/index.html",
-    "items": []
-  },
-  {
-    "listing": "/posts/portfolioRisk/index.html",
-    "items": []
-  },
-  {
-    "listing": "/posts/snippets/index.html",
-    "items": []
-  },
-  {
-    "listing": "/posts/wordle/index.html",
-    "items": []
-  },
-  {
-    "listing": "/posts/evaluation/index.html",
-    "items": []
-  },
-  {
-    "listing": "/posts/prempredict/index.html",
-    "items": []
   }
 ]

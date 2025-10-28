@@ -2,7 +2,7 @@ project:
   type: website
 
 website:
-  title: "Rob's Quanty Ramblings"
+  title: "Quanty Ramblings"
   navbar:
     right:
       - icon: github
@@ -15,9 +15,6 @@ format:
     theme:
       light:
         - cosmo
-        - brand
-      dark:
-        - slate
         - brand
 editor: visual
 listing:

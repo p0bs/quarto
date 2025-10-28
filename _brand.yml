@@ -1,8 +1,8 @@
 color:
-  link: "#eb5e28"
-  background: "#fffcf2"
-  primary: "#252422"
-  secondary: "#ccc5b9"
+  link: "#f95738"
+  background: "#faf0ca"
+  primary: "#0d3b66"
+  secondary: "#f4d35e"
 typography: 
   fonts:
     - family: Helvetica Neue
@@ -10,8 +10,8 @@ typography:
       source: google
   headings:
     family: "Helvetica Neue"
-    color: "#eb5e28"
+    color: "#ee964b"
     weight: semi-bold
   monospace: 
     family: "Fira Code"
-    color: "#403d39"
+    color: "#0d3b66"

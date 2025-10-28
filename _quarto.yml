@@ -24,7 +24,7 @@ listing:
       title: "Today's preditions for the 2025/26 Premier League"
       date: "2025-10-27"
       categories: [sport]
-      image: "posts/prempredict/PPlogo.png"
+      image: "posts/prempredict/eden.jpeg"
       description: "Updated daily, here are my estimates for each team's chances of winning the league, getting into Europe and getting relegated."
   sort: "date desc"
   type: default

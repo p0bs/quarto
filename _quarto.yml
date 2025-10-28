@@ -21,11 +21,11 @@ listing:
   contents:
     - posts
     - path: https://github.com/p0bs/PL-scan?tab=readme-ov-file#predicting-this-seasons-premier-league
-      title: "Today's preditions for the 2025/26 Premier League"
+      title: "Predicting the 2025/26 Premier League"
       date: "2025-10-27"
       categories: [sport]
-      image: "posts/prempredict/eden.jpeg"
-      description: "Updated daily, here are my estimates for each team's chances of winning the league, getting into Europe and getting relegated."
+      image: "posts/prempredict/michy.jpeg"
+      description: "Updated daily to reflect the latest scores, here are my estimates for each team's chances of winning the league, getting into Europe and getting relegated."
   sort: "date desc"
   type: default
   

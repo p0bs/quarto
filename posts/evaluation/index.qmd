@@ -2,7 +2,7 @@
 title: "Asset manager evaluation"
 date: "2016-10-20"
 categories: [performance, presentations]
-image: "evaluation1.png"
+image: "evaluation1.jpeg"
 description: |
   Back in the day, I wrote research papers about investment practice. One example concerned how asset owners could better evaluate the investment performance of their asset managers. Basically, the idea is to view performance in the way that a Bayesian would.
 ---

@@ -1,17 +1,23 @@
 color:
-  link: "#f95738"
-  background: "#faf0ca"
-  primary: "#0d3b66"
-  secondary: "#f4d35e"
-typography: 
-  fonts:
-    - family: Helvetica Neue
-    - family: Fira Code
-      source: google
+  palette:
+    alabaster: "#FFFCF2"
+    charcoal: "#2D3436"
+    watermelon: "#E15F5F"
+    mint: "#00A896"
+    blurple: "#4834D4"
+    white: "#FFFFFF"
+
+  background: alabaster
+  foreground: charcoal
+  primary: watermelon
+  secondary: mint
+  info: blurple
+  light: white
+
+typography:
+  base:
+    family: "Segoe UI, system-ui, sans-serif"
   headings:
-    family: "Helvetica Neue"
-    color: "#ee964b"
-    weight: semi-bold
-  monospace: 
-    family: "Fira Code"
-    color: "#0d3b66"
+    weight: 800
+  link:
+    color: info

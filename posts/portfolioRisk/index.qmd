@@ -23,6 +23,7 @@ Given this equation, I see that I need to begin the analysis by downloading the 
 
 ```{r}
 #| message: false
+#| warning: false
 library(tidyquant)
 library(tidyverse)
 library(tsibble)

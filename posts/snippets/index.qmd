@@ -207,7 +207,7 @@ I use the wonderful `DBI` and `dbplyr` all the time, not least for exploratory a
 (Note that whilst I typically [don't use SQLite](https://dbi.r-dbi.org/reference/dbconnect), I will do so here, as it plays better with my website architecture.)
 
 ```{r}
-#| warning: true
+#| warning: false
 library(RSQLite)
 
 con <- dbConnect(RSQLite::SQLite(), ":memory:")

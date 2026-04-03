@@ -75,7 +75,7 @@ glimpse(data, width = 80)
 
 <br/>
 
-Second, I'll chart how this average temperature varies by the day of the year.
+Second, I'll chart how this average maximum temperature varies by the day of the year.
 
 ```{r}
 plot_seasons <- data |> 
@@ -146,10 +146,10 @@ So, what does this mean?
 Based upon the chart above, I will now use the following definitions:
 
 -   **Long Linear Spring** warms linearly and is the longest season, running from March until mid June
--   **Short Summer** is the shortest season ... 🙄 ... lasting from mid June until the end of August, when typical daily temperatures exceed 70°F
+-   **Short Summer** is the shortest season ... 🙄 ... lasting from mid June until the end of August, when typical daily maximum temperatures exceed 70°F
 -   **Linear Autumn** cools linearly over September, October and November
--   **Winter** consists of December, January and February, when typical daily temperatures fall below 50°F
+-   **Winter** consists of December, January and February, when typical daily maximum temperatures fall below 50°F
 
-So, daily temperature change in Spring and Autumn is typically linear. Sadly, though, Autumn cools faster than Spring warms. Specifically, Spring sees maximum temperatures typically rise by 0.19°F per day, whilst the corresponding decline in Autumn is 0.25°F per day. In other words, five days of gains in Spring are needed to counteract four days of losses in Autumn.
+So, daily maximum temperature change in Spring and Autumn is typically linear. Sadly, though, Autumn cools faster than Spring warms. Specifically, Spring sees maximum temperatures typically rise by 0.19°F per day, whilst the corresponding decline in Autumn is 0.25°F per day. In other words, five days of gains in Spring are needed to counteract four days of losses in Autumn.
 
 <br/>

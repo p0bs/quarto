@@ -16,6 +16,7 @@ Let's start by getting the \~500 most commonly-occurring five-letter words (that
 
 ```{r}
 #| message: false
+#| warning: false
 
 suppressPackageStartupMessages(library(tidyverse))
 
@@ -40,6 +41,7 @@ words
 For reference, I'll also chart the popularity of each letter by their order in these five-letter words.
 
 ```{r}
+#| warning: false
 words_long <- words |> 
   pivot_longer(
     cols = -word, 

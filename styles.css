@@ -3,8 +3,8 @@
 /* The embedded content */
 .weeklyMain {
   display: block;
-  width: clamp(575px, 75vh, 500px);
-  height: clamp(575px, 75vh, 500px);
+  width: clamp(675px, 75vh, 600px);
+  height: clamp(975px, 75vh, 900px);
   box-sizing: border-box;
   border: 1px solid #d0d7de;
   border-radius: 8px;

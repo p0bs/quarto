@@ -1,0 +1,19 @@
+---
+title: "About this site"
+---
+
+We believe in 'predictions with zero BS' and so that's why we called this site 'p0bs'.
+
+And it is possible that we'll predict other things in the future, but we're happy to focus on the Premier League for now.
+
+As with anything technical today, someone will ask about AI, so we'll answer: 
+
+  * AI didn't write any words here
+
+  * However, we did use AI in a way that we would have used StackOverflow in the past
+  
+  * AI was really useful at helping us to plan the architecture of this site and its associated calculations
+  
+  * Once validated (because it lied repeatedly), AI also helped to create a faster simulator for our code, using C++ (which we tested for correctness in the private R package that runs these calculations)
+  
+  * Although it wasn't a linear process, AI also helped us with incremental improvements to the interactive charts and tables that reside in the aforementioned R package; the output of which forms part of this site

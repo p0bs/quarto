@@ -1,12 +1,36 @@
----
-title: ""
-listing:
-  contents: posts
-  sort: "date desc"
-  type: default
-  categories: false
-  sort-ui: false
-  filter-ui: false
-page-layout: full
-title-block-banner: true
----
+*Will my side win the title this season? Or are they going to be relegated?* 
+
+On this site, we answer these questions. And you're probably thinking, "but lots of sites answer these questions." 
+
+And you'd be right. But unlike other prediction sites, we also focus on what will change if your team loses, draws or wins its next game. That way, you can answer another crucial question: *How important is my team's next game?*  That's a question we often have, which is why we built this site the way that we did.
+
+<br/>
+
+<h3>What are my team's chances this season? And how important is their next game?</h3>
+
+In each cell of the table below, the large number in bold is the *current chance* of a season-long event happening. Of Arsenal being the winner, for example, or of Liverpool finishing in the top 5. The small numbers below it show what that chance will become if the team loses, draws or wins its next game. Below each team's name, you'll also find its opponent in this next game.
+
+<iframe
+  src="https://p0bs.github.io/pp2-scan/table.html"
+  title="table-chancesAndNext"
+  class="weekly-content"
+  loading="lazy"
+  referrerpolicy="no-referrer">
+</iframe>
+
+<br/>
+
+As you'll see, some games really don't matter much. That is, the chances for some teams barely change due to the result of the next game. Consider the example where your team is near the top of the table after ten games, having made it into the Champions League in the previous season. In this case, the odds of your team finishing in the top five this year aren't really going to change if your next game is away to the current champions (although your odds of being champions might).
+
+Conversely, if your team is new to the league and sits mid-table after ten games then its next result likely matters a lot to its chances of finishing in the top half or getting relegated. (That's because the model behind these calculations uses past results and doesn't have much Premier League history for this team, making one more data point particularly insightful.)
+
+
+<br/>
+
+<h3>Details, details</h3>
+
+While some people prefer tables of numbers to understand outcomes, others prefer charts that show the same thing. If that's your preference, use our [interactive chart](chart.qmd).
+
+You might also be wondering about the methodology that we used to calculate the values above. If so, peruse [our approach](approach.qmd) and its associated caveats, such as: the fact that values like 0% or 100% aren't always quite what they seem; or our license about how to use (or not use) these values.
+
+<br/>

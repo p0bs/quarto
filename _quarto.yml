@@ -1,31 +1,25 @@
 project:
   type: website
+  output-dir: _site
+  resources:
+    - "_headers"
 
 website:
-  title: "Quanty Ramblings"
+  title: "Premier League Prediction"
   navbar:
-    right:
-      - icon: github
-        href: https://github.com/P0BS
-      - icon: bluesky
-        href: https://bsky.app/profile/p0bs.bsky.social
+    left:
+      - href: index.qmd
+        text: Home
+      - href: chart.qmd
+        text: Charts
+      - href: approach.qmd
+        text: Approach
+      - href: about.qmd
+        text: About
+
 format:
   html:
-    include-after-body: _include-after-body.html
-    theme:
-      light:
-        - cosmo
-        - brand
-editor: visual
-listing:
-  contents:
-    - posts
-    - path: https://p0bs.github.io/pp2-scan/
-      title: "Predicting the 2026/27 Premier League"
-      date: today
-      categories: [sport]
-      image: "posts/prempredict/michy.jpeg"
-      description: "Updated to reflect the latest scores, here are my estimates for each team's chances of winning the league, getting into Europe and getting relegated."
-  sort: "date desc"
-  type: default
-  
+    theme: cosmo
+    css: styles.css
+    lang: en-GB
+    toc: false

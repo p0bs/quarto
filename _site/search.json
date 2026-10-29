@@ -46,7 +46,7 @@
     "href": "approach.html#show-me-the-numbers",
     "title": "Our approach to calculating the numbers",
     "section": "Show me the numbers",
-    "text": "Show me the numbers\nOK, so that’s the theory, but what does it mean in reality? We’ll now discuss the latest values for these three settings, which we update after every round of games.\nIn this instance, we’ll deliberately use results from this season so far and its two complete predecessors.\nWhen we collect all this data and seek the best-fit mix of settings, we currently find the following coefficients.\n\n\nYou now have all the information that you need to make your own predictions!"
+    "text": "Show me the numbers\nOK, so that’s the theory, but what does it mean in reality? We’ll now discuss our latest values for these three settings, which we update after every round of games.\nSpecifically, we use results from the last 76 rounds of matches (i.e. over this season so far, all of the last season and some of the season before that).\nWhen we collect all this data and seek the best-fit mix of settings, we arrive at the following coefficients.\n\n\nYou now have all the information that you need to make your own predictions!"
   },
   {
     "objectID": "approach.html#license-and-disclaimer",

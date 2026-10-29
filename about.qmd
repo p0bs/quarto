@@ -10,7 +10,7 @@ As with anything technical today, someone will ask about AI, so we'll answer:
 
   * AI didn't write any words here
 
-  * However, we did use AI in a way that we would have used StackOverflow in the past
+  * However, we did use AI in a similar way to how we would have used StackOverflow in the past
   
   * AI was really useful at helping us to plan the architecture of this site and its associated calculations
   

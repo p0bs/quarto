@@ -175,7 +175,7 @@ When we collect all this data and seek the best-fit mix of settings, we currentl
 <iframe
   src="https://p0bs.github.io/pp2-scan/table_coefficients.html"
   title="table_coefficients"
-  class="weekly-content-coeff"
+  class="weeklyCoeff"
   loading="lazy"
   referrerpolicy="no-referrer">
 </iframe>

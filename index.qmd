@@ -13,7 +13,7 @@ In each cell of the table below, the large number in bold is the *current chance
 <iframe
   src="https://p0bs.github.io/pp2-scan/table.html"
   title="table-chancesAndNext"
-  class="weekly-content"
+  class="weeklyMain"
   loading="lazy"
   referrerpolicy="no-referrer">
 </iframe>

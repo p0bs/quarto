@@ -24,7 +24,7 @@ We order the teams according to their current expected position at the end of th
 <iframe
   src="https://p0bs.github.io/pp2-scan/echart.html"
   title="chart-chancesAndNext"
-  class="weekly-content-chart"
+  class="weeklyChart"
   loading="lazy"
   referrerpolicy="no-referrer">
 </iframe>

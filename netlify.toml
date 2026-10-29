@@ -2,3 +2,4 @@
   for = "/*"
   [headers.values]
     Content-Security-Policy = "default-src 'self'; img-src 'self' data: https://p0bs.github.io"
+    Content-Security-Policy = "default-src 'self'; html 'self' data: https://p0bs.github.io"

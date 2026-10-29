@@ -18,7 +18,7 @@ In each cell of the table below, the large number in bold is the *current chance
   referrerpolicy="no-referrer">
 </iframe> -->
 
-<img src="https://p0bs.github.io/pp2-scan/table.png" width="600" style="max-width:80%; height:auto;">
+![](https://p0bs.github.io/pp2-scan/table.png)
 
 <br/>
 

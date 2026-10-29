@@ -10,13 +10,16 @@ And you'd be right. But unlike other prediction sites, we also focus on what wil
 
 In each cell of the table below, the large number in bold is the *current chance* of a season-long event happening. Of Arsenal being the winner, for example, or of Liverpool finishing in the top 5. The small numbers below it show what that chance will become if the team loses, draws or wins its next game. Below each team's name, you'll also find its opponent in this next game.
 
-<iframe
-  src="https://p0bs.github.io/pp2-scan/table.html"
+<!-- <iframe
+  src="https://p0bs.github.io/pp2-scan/table.png"
   title="table-chancesAndNext"
   class="weeklyMain"
   loading="lazy"
   referrerpolicy="no-referrer">
-</iframe>
+</iframe> -->
+
+<img src="https://p0bs.github.io/pp2-scan/table.png" alt="Summary of the PP2 scan results"
+     width="600" style="max-width:80%; height:auto;">
 
 <br/>
 

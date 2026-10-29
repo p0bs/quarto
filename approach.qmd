@@ -50,7 +50,7 @@ In short, our approach reduces to collecting the past results for all the teams 
 
 ## A worked example
 
-We can then make our predictions for a specific game. In this case, we'll choose the late-season game with Aston Villa at home to Tottenham Hotspur, and use example settings as they were some time ago (although you could use the settings directly above if you wish).
+Let's make our predictions for a specific game. In this case, we'll choose a late-season game from a previous season, with Aston Villa at home to Tottenham Hotspur, and use the settings as they were then. (Of course, you could use the current settings, shown later on this page, should you wish.)
 
 Going back to the snippet above, we now have:
 

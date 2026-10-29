@@ -5,7 +5,7 @@ project:
     - "_headers"
 
 website:
-  title: "Premier League Prediction"
+  title: "Premier Prediction"
   navbar:
     left:
       - href: index.qmd

@@ -1,6 +1,6 @@
 *Will my side win the title this season? Or are they going to be relegated?* 
 
-On this site, we answer these questions. And you're probably thinking, "but lots of sites answer these questions." 
+On this site, we answer these questions about the Premier League. And you're probably thinking, "but lots of sites answer these questions." 
 
 And you'd be right. But unlike other prediction sites, we also focus on what will change if your team loses, draws or wins its next game. That way, you can answer another crucial question: *How important is my team's next game?*  That's a question we often have, which is why we built this site the way that we did.
 

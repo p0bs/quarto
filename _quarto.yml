@@ -6,9 +6,9 @@ project:
 
 website:
   title: "Premier Prediction"
-  search: false
   page-footer:
     left: "© 2026, Robin Penfold. [Disclaimer and license](approach.qmd#license-and-disclaimer)" 
+  search: false
   navbar:
     left:
       - href: index.qmd
@@ -26,5 +26,13 @@ format:
       - cosmo
       - styles.scss
     css: styles.css
+    include-after-body:
+      text: |
+        <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          var f = document.querySelector("footer.footer .nav-footer");
+          if (f) f.classList.add("page-columns");
+        });
+        </script>
     lang: en-GB
     toc: false

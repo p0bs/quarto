@@ -27,3 +27,15 @@
   border: 1px solid #d0d7de;
   border-radius: 8px;
 }
+
+/* remove Quarto's default side padding so the grid controls alignment */
+footer.footer .nav-footer {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Quarto renders empty centre/right footer cells; in a grid they'd stack as blank rows */
+footer.footer .nav-footer-center,
+footer.footer .nav-footer-right {
+  display: none;
+}

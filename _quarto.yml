@@ -5,10 +5,17 @@ project:
 
 website:
   title: "Premier Prediction"
+  description: "Statistical Prediction of this Premier League season, showing how those predictions change if your team wins, draws or loses its next game"
   page-footer:
     left: "© 2026, Robin Penfold. [License and disclaimer](approach.qmd#license-and-disclaimer)" 
   search: false
   favicon: images/favicon.png
+  twitter-card:
+    site: "@mr_p0bs"
+    image: "https://p0bs.github.io/pp2-scan/chart.svg"
+  open-graph:
+    locale: en_GB
+    image: "https://p0bs.github.io/pp2-scan/chart.svg"
   navbar:
     left:
       - href: index.qmd

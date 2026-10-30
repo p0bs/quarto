@@ -57,16 +57,3 @@ iframe {
   border: 1px solid $pitch-line;
   border-radius: 4px;
 }
-
-/* Align footer content with the main article column */
-footer.footer .nav-footer {
-  width: 300%;
-  max-width: $grid-body-width;
-  margin-left: auto;
-  margin-right: auto;
-
-  padding-left: 0;
-  padding-right: 0;
-
-  text-align: left;
-}

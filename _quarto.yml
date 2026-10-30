@@ -5,7 +5,7 @@ project:
 
 website:
   title: "Premier Prediction"
-  description: "Statistical Prediction of this Premier League season, showing how those predictions change if your team wins, draws or loses its next game"
+  description: "In plain English, we statistically predict this Premier League season, focusing on how these EPL predictions will change if your team wins, draws or loses its next game"
   page-footer:
     left: "© 2026, Robin Penfold. [License and disclaimer](approach.qmd#license-and-disclaimer)" 
   search: false

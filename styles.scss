@@ -1,0 +1,59 @@
+
+/*-- scss:defaults --*/
+
+// A restrained football-inspired palette
+$pitch-green: #315F49;
+$pitch-line: #E1E9E3;
+
+// Theme overrides
+$link-color: $pitch-green;
+$primary: $pitch-green;
+$body-color: #26312B;
+$border-color: $pitch-line;
+
+
+/*-- scss:rules --*/
+
+// A subtle touchline beneath the navigation
+.navbar {
+  border-bottom: 1px solid $pitch-line;
+}
+
+// A small pitch-green accent beneath page titles
+#title-block-header .title::after {
+  content: "";
+  display: block;
+  width: 2.5rem;
+  height: 3px;
+  margin-top: 0.6rem;
+  background: $pitch-green;
+  border-radius: 2px;
+}
+
+// Fine pitch-line style section dividers
+main h2 {
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid $pitch-line;
+}
+
+// Slightly more refined link treatment
+a {
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 0.06em;
+}
+
+a:hover {
+  text-decoration-thickness: 0.12em;
+}
+
+// Make numerical displays easier to compare
+table {
+  font-variant-numeric: tabular-nums;
+}
+
+// Give embedded content a subtle boundary
+iframe {
+  max-width: 100%;
+  border: 1px solid $pitch-line;
+  border-radius: 4px;
+}

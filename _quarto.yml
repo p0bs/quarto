@@ -26,6 +26,11 @@ website:
         text: Approach
       - href: about.qmd
         text: About
+    right:
+      - icon: bluesky
+        href: https://bsky.app/profile/p0bs.com
+      - icon: twitter
+        href: https://x.com/mr_p0bs
 
 format:
   html:

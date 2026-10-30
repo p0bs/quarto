@@ -39,3 +39,8 @@ footer.footer .nav-footer-center,
 footer.footer .nav-footer-right {
   display: none;
 }
+
+/* Colour for footer link */
+footer.footer .nav-footer a {
+  color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
+}

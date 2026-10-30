@@ -9,7 +9,7 @@ website:
   page-footer:
     left: "© 2026, Robin Penfold. [License and disclaimer](approach.qmd#license-and-disclaimer)" 
   search: false
-  favicon: p0bs-favicon.svg
+  favicon: favicon.svg
   navbar:
     left:
       - href: index.qmd

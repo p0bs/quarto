@@ -1,15 +1,16 @@
 project:
   type: website
-  output-dir: _site
   resources:
-    - "_headers"
+    - favicon.ico
+    - _headers
+  output-dir: _site
 
 website:
   title: "Premier Prediction"
   page-footer:
     left: "© 2026, Robin Penfold. [License and disclaimer](approach.qmd#license-and-disclaimer)" 
   search: false
-  favicon: favicon.svg
+  favicon: favicon.png
   navbar:
     left:
       - href: index.qmd

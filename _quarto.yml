@@ -7,7 +7,7 @@ project:
 website:
   title: "Premier Prediction"
   page-footer:
-    left: "© 2026, Robin Penfold. [Disclaimer and license](approach.qmd#license-and-disclaimer)" 
+    left: "© 2026, Robin Penfold. [License and disclaimer](approach.qmd#license-and-disclaimer)" 
   search: false
   navbar:
     left:

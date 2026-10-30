@@ -159,8 +159,6 @@ Furthermore, given that the model only considers results, it cannot directly ref
 
 Whilst this is not an exhaustive list of assumptions, the final one to note is that the team strengths are fixed across the year when they are set and are not assumed to evolve week-by-week based upon future performances.
 
-Overall, this suggests that our model is useful in simplifying the real world in order to give a framework to understand the mechanisms at play in the Premier League competition. It is not, however, a way to predict with perfect foresight the outcome of any game or season. As such, if a number says 0% or 100%, treat it with a pinch of salt.
-
 <br/>
 
 ## Show me the numbers
@@ -192,3 +190,5 @@ The license for any materials on this website is set to be identical to its [ass
 You can [read this license here](https://github.com/p0bs/pp2-scan?tab=MIT-2-ov-file). It includes (but is not limited to):
 
 > THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Overall, our model is useful in simplifying the real world in order to give a framework to understand the mechanisms at play in the Premier League competition. It is not, however, a way to predict with perfect foresight the outcome of any game or season. As such, treat any number with a pinch of salt, even if that number is 0% or 100%.

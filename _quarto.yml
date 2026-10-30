@@ -29,8 +29,12 @@ website:
     right:
       - icon: bluesky
         href: https://bsky.app/profile/p0bs.com
+        target: _blank
+        rel: noopener
       - icon: twitter
         href: https://x.com/mr_p0bs
+        target: _blank
+        rel: noopener
 
 format:
   html:

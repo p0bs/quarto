@@ -5,6 +5,7 @@ project:
 
 website:
   title: "Premier Prediction"
+  site-url: "https://www.p0bs.com"
   description: "In plain English, we statistically predict this Premier League season, focusing on how these EPL predictions will change if your team wins, draws or loses its next game"
   page-footer:
     left: "© 2026, Robin Penfold. [License and disclaimer](approach.qmd#license-and-disclaimer)" 

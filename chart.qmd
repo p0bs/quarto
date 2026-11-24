@@ -23,7 +23,7 @@ We order the teams according to their current expected position at the end of th
 
 <iframe
   src="https://p0bs.github.io/pp2-scan/echart.html"
-  title="chart-chancesAndNext"
+  title="Premier League season predictor showing champion (winner), European qualification (top 4 and top 5) and relegation probabilities (bottom 3) based upon an interactive chart of simulated football (soccer) games"
   class="weeklyChart"
   loading="lazy"
   referrerpolicy="no-referrer">

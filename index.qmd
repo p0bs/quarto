@@ -12,7 +12,7 @@ In each cell of the table below, the large number in bold is the *current chance
 
 <iframe
   src="https://p0bs.github.io/pp2-scan/table.html"
-  title="table-chancesAndNext"
+  title="Premier League season predictor showing champion (winner), European qualification (top 4 and top 5) and relegation probabilities (bottom 3) based upon an interactive table of simulated football (soccer) games"
   class="weeklyMain"
   loading="lazy"
   referrerpolicy="no-referrer">
